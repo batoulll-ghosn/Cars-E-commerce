@@ -11,6 +11,7 @@
 .as-text{
     font-size:32px;
     margin:auto;
+    width:fit-content;
 }
 .as-imageOfAbout{
     border-radius:10px;
@@ -41,6 +42,7 @@
         font-size:24px;
         margin:auto;
         text-align: center;
+        width: 350px;
     }
     .as-button{
         background-color: #C92424;
