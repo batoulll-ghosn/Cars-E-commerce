@@ -1,0 +1,113 @@
+
+.Navbar{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 20px 80px 20px 60px;
+   box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+}
+
+.N-logo{
+    text-decoration: none;
+    color: #000;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+#N-menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#N-menu .N-menu-items{
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+#N-menu .N-menu-items .N-menu-tag{
+   text-decoration: none;
+   color: #000;
+   font-family: Poppins;
+   font-size: 20px;
+   font-style: normal;
+   font-weight: 500;
+   line-height: normal;
+   transition: 0.3s ease-in-out;
+}
+
+#N-menu .N-menu-items .N-menu-tag:hover::after,
+#N-menu .N-menu-items .N-menu-tag:active::after{
+  content: "";
+  width: 30%;
+  height: 2px;
+  background-color: #C92424;
+  position: absolute;
+  bottom: -4px;
+  left: 20px;
+}
+
+.N-menu-button{
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+.N-menu-button .N-register{
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 10px;
+    background: #C92424;
+    color: #FFF;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 8px;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 11%); 
+}
+#N-mobile{
+    display: none;
+}
+
+#N-mobile i{
+    color: black;
+}
+
+@media (max-width: 766px){
+    #N-menu{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        position: fixed;
+        top: 90px;
+        right: -400px;
+        width: 400px;
+        height: 340px;
+        background-color: white;
+        box-shadow: 0 40px 60px rgba(0,0,0,0.06);
+        padding: 40px 0 0 10px;
+        transition: 0.3s ease-in-out;
+    }
+    #N-menu.active{
+        right: 0px;
+    }
+
+
+    #N-mobile{
+        display: block;
+    }
+    
+    #N-menu .N-menu-items{
+        margin-bottom: 25px;
+    }
+
+    #N-mobile i{
+       font-size: 24px;
+       cursor: pointer;
+    }
+}
