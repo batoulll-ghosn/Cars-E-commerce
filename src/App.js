@@ -3,6 +3,7 @@ import './components/styles/style.css';
 import About from './components/mainComponents/AboutSection';
 import AboutPage from './components/mainComponents/AboutPage';
 import NavBar from './components/mainComponents/NavBar';
+import Header from './components/mainComponents/Header';
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <div className="App">
         <Routes>
           {/* <Route path="/navbar" element={<NavBar/>} /> */}
-          <Route path="/" element={ <> <NavBar/>
+          <Route path="/" element={ <> <Header/>
            </>} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
