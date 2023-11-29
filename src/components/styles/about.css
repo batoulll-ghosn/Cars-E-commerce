@@ -31,7 +31,7 @@
     margin: 0px;
     cursor: pointer;
 }
-@media (max-width: 600px) {
+@media (max-width: 766px) {
     .as-imageOfAbout{
         border-radius:10px;
         display:none;

@@ -1,15 +1,15 @@
 [
     {
-      "question": "What is React?",
-      "answer": "React is a JavaScript library for building user interfaces."
+      "question": "How does car buying process work on your website?",
+      "answer": "To purchase a car, browse our inventory, select the desired vehicle, and follow the easy steps to complete the online purchase."
     },
     {
-      "question": "Why use React?",
-      "answer": "React allows you to create large web applications that can update and render efficiently in response to data changes."
+      "question": "Are the cars listed on your website new or used?",
+      "answer": "Our inventory includes both new and used cars. Each listing provides detailed information about the car's condition and history."
     },
     {
-      "question": "How do you use React?",
-      "answer": "You use React by writing components and then combining them to build complex user interfaces."
+      "question": "What happens if I encounter issues on delivery?",
+      "answer": "Contact our customer support team immediately. We are dedicated to resolving any issues promptly and ensuring your satisfaction."
     }
    ]
    
