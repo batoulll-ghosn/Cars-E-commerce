@@ -1,13 +1,4 @@
- @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-.Header{
+ /* .Header{
     background-image: url('header e commerce.jpg');
     background-repeat: no-repeat;
     height: 860px;
@@ -16,18 +7,76 @@
     display: flex;
     align-content: center;
     justify-content: center;
+} */
+.Header{
+    background-image: url('header e commerce3.jpg');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 750px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-evenly;
+    flex-wrap: wrap; 
+}
+
+.h-main-title{
+    display: flex;
+    flex-direction: column;
+    right: 150px;
+    position: relative;
+    top: 90px;
+}
+.h-title{
+    color: #ffffff;
+font-size: 100px;
+font-style: normal;
+font-weight: 600;
+line-height: 130px;
+text-transform: uppercase;
+
+}
+.h-perfect{
+    color: #C92424;
+font-family: Poppins;
+font-size: 100px;
+font-style: normal;
+font-weight: 600;
+line-height: 100px;
+text-transform: uppercase;
+
+}
+
+.h-description{
+    color: #FFF;
+font-family: Poppins;
+font-size: 30px;
+font-style: normal;
+font-weight: 500;
+line-height: 52px; 
+right: 150px;
+    position: relative;
+}
+
+.h-buttons{
+  display: flex;
+  gap: 15px;
+  right: 150px;
+    position: relative;
+    bottom: 55px;
+   
 }
 
 .h-exploremore-btn{
     border-radius: 10px;
     background: #C92424;
     color: #FFF;
-    font-size: 28px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 500;
-    line-height: 52px;
     cursor: pointer;
-    margin: 3%;
+    width: 200px;
 }
 
 .h-register-btn{
@@ -40,7 +89,7 @@
     line-height: 52px;
     cursor: pointer;
     background: none;
-    margin: 3%;
+    width: 200px;
 }
 
 @media (max-width: 766px){
