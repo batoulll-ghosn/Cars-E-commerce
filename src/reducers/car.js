@@ -21,3 +21,4 @@ const carReducer=(state=[],action)=>{
          default: return state;   
     }
 }
+export default carReducer;
