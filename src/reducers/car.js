@@ -11,7 +11,7 @@ const carReducer=(state=[],action)=>{
         case 'getCarsByType':
             return state.filter((car)=>car.type===action.payload);
         case 'getAllCarsBySelector':
-            return state.filter((car)=>car.type===action.payload);
+            return state.map((car)=>car.action.payload);
         case 'addCar':
             return [...state,action.payload];
         case 'deleteCar':
