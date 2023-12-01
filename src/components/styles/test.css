@@ -1,0 +1,5 @@
+.footerFlexContainer{
+    display: flex;
+   flex-direction: row;
+   column-gap: 200px;
+  }
