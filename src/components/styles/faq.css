@@ -91,10 +91,10 @@
       }
       .arrow-icon {
         transition: transform 0.3s ease;
-        font-size: 20px;
+        font-size: 26px;
         color: #fff;
         background-color: #C92424;
-        padding: 10px;
+        padding: 20.5px;
         cursor: pointer;
       }
       .answer-text {
