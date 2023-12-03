@@ -1,7 +1,7 @@
 import '../styles/about.css'
 function About() {
   return (
-    <div>
+    <div className="about-container">
     <div className="Abouts">
      <div className="as-leftSide"><img src="./images/contactus1.jpg" className="as-imageOfAbout"/></div>
      <div className="as-rightSide"><h1 className="as-title">ABOUT US</h1>

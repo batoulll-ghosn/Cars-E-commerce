@@ -4,6 +4,8 @@ import About from './components/mainComponents/AboutSection';
 import AboutPage from './components/mainComponents/AboutPage';
 import NavBar from './components/mainComponents/NavBar';
 import FAQ from './components/mainComponents/FAQsection';
+import Footer from './components/mainComponents/Footer';
+import Dashboard from './components/dashboard/mainAdminDashboard';
 import Header from './components/mainComponents/Header';
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
           {/* <Route path="/navbar" element={<NavBar/>} /> */}
           <Route path="/" element={ <> <NavBar/><Header/><About /><FAQ/> </>} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
     </Router>

@@ -61,6 +61,7 @@
     cursor: pointer;
     border-radius: 10px;
     background: #C92424;
+    border-color: #C92424;
     color: #FFF;
     font-size: 20px;
     font-style: normal;
@@ -76,7 +77,13 @@
 #N-mobile i{
     color: black;
 }
-
+.Mn-admin{
+    margin-left: -500px;
+}
+.mn-hello{
+    display: flex;
+    flex-direction: row;
+}
 @media (max-width: 766px){
     #N-menu{
         display: flex;
