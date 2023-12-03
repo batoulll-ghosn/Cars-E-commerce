@@ -15,11 +15,26 @@
     flex-direction: column;
     height: 150px;
 }
-
-.ad-menu-item {
+.ad-menu-item1{
     margin-top: 0px;
+    padding: 0px; 
 }
-
+.ad-menu-item {
+    margin-top: 30px;
+    padding: 0px;
+}
+.ad-menu-item a:hover{
+background-color: #E08F8F;
+padding: 10px;
+border-top-left-radius: 15px;
+border-bottom-left-radius: 15px;
+}
+.ad-menu-item1 a:hover{
+    background-color: #E08F8F;
+    padding: 10px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    }
 .ad-menu-content a {
     text-decoration: none;
     color: white;
