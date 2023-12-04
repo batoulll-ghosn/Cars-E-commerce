@@ -1,0 +1,60 @@
+.ov-component{
+    background-color: #D9D9D9;
+}
+.ov-second{
+    margin-top: 20px;
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    column-gap: 50px;
+}
+.ov-second-customers , .ov-second-revenue, .ov-second-shipping{
+  width: 321px;
+  background-color: white;
+  border-radius: 28px;
+  height: 100px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 13px;
+}
+.ov-second-textContent-p{
+  font-weight: 900;
+  font-size: 35px;
+}
+.ov-second-textContent-pp{
+    font-size: 28px;
+  }
+.ov-third{
+    margin-top: 20px;
+}
+.ov-third-main{
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+}
+.ov-third-div-table{
+    width:500px;
+    background-color: white;
+    border-radius:5px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.ov-third-table{
+    width: 500px;
+    font-size: 24px;
+}
+.ov-third-table thead{
+    background-color: #DFDFDF;
+}
+.ov-third-table-th{
+    border-color: #DFDFDF;
+}
+.ov-third-table td {
+    text-align: center;
+}
+.ov-third-graph{
+    background-color: white;
+    width: 620px;
+    margin-top: 20px;
+}
