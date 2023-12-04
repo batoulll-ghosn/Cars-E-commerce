@@ -11,6 +11,7 @@ function MainOfCustomers() {
  const [UpdateshowPopup, setUpdateShowPopup] = useState(false);
  const [currentUser, setCurrentUser] = useState(null);
  const [passwordShown, setPasswordShown] = useState({});
+ const [showPassword, setShowPassword] = useState(false);
  const [formData, setFormData] = useState({
    fullName: '',
    phoneNumber: '',
@@ -82,29 +83,47 @@ const handleUpdateClose =() => {
       {AddshowPopup && (
          <form onSubmit={handleSubmit}>
          <div className='cur-addpopup'>
-           <div className='cur-addpopup-head'><h2>Add a User</h2><span className='cr-addpopup-close' onClick={handleAddClose}> &times;</span></div>
-           <div className='cur-addpopup-first'>
-             <input type='text' placeholder=' Full Name' name='fullName' onChange={handleChange}/>
-           </div>
-           <hr className='cur-horizontal-line'></hr>
-           <div className='cur-addpopup-first'>
-             <input type='text' placeholder=' Email' name='email' onChange={handleChange}/>
-           </div>
-           <hr className='cur-horizontal-line'></hr>
-           <div className='cur-addpopup-first'>
-             <input type='text' placeholder=' Phone Number' name='phoneNumber' onChange={handleChange}/>
-           </div>
-           <hr className='cur-horizontal-line'></hr>
-           <div className='cur-addpopup-first'>
-             <input type='text' placeholder=' Password' name='password' onChange={handleChange}/>
-           </div>
-           <hr className='cur-horizontal-line'></hr>
-           <div className='cur-addpopup-first'>
-             <input type='text' placeholder=' Role' name='role' onChange={handleChange}/>
-           </div>
-           <div><button className='cr-addcar-buttonn' type='submit'>Add</button></div>
+             <div className='cur-addpopup-head'>
+                 <h2>Add a User</h2>
+                 <span className='cr-addpopup-close' onClick={handleAddClose}> &times;</span>
+             </div>
+             <div className='cur-addpopup-first'>
+                 <input type='text' placeholder=' Full Name' name='fullName' onChange={handleChange}/>
+             </div>
+             <hr className='cur-horizontal-line'></hr>
+             <div className='cur-addpopup-first'>
+                 <input type='text' placeholder=' Email' name='email' onChange={handleChange}/>
+             </div>
+             <hr className='cur-horizontal-line'></hr>
+             <div className='cur-addpopup-first'>
+                 <input type='text' placeholder=' Phone Number' name='phoneNumber' onChange={handleChange}/>
+             </div>
+             <hr className='cur-horizontal-line'></hr>
+             <div className='cur-addpopup-first'>
+                 <input 
+                     type={showPassword ? 'text' : 'password'} 
+                     placeholder=' Password' 
+                     name='password' 
+                     onChange={handleChange}
+                 />
+                <button 
+                    onClick={(event) => {
+                        event.preventDefault();
+                        setShowPassword(!showPassword);
+                    }}
+                  >
+                    {showPassword ? 'Hide' : 'Show'}
+                  </button>
+
+             </div>
+             <hr className='cur-horizontal-line'></hr>
+             <div className='cur-addpopup-first'>
+                 <input type='text' placeholder=' Role' name='role' onChange={handleChange}/>
+             </div>
+             <div><button className='cr-addcar-buttonn' type='submit'>Add</button></div>
          </div>
-        </form>
+      </form>
+      
         
      )}
      {UpdateshowPopup && (
@@ -124,10 +143,6 @@ const handleUpdateClose =() => {
      <hr className='cur-horizontal-line'></hr>
      <div className='cur-addpopup-first'>
        <input type='text' placeholder=' Phone Number' name='phoneNumber' value={formData.phoneNumber} onChange={handleChange}/>
-     </div>
-     <hr className='cur-horizontal-line'></hr>
-     <div className='cur-addpopup-first'>
-       <input type='text' placeholder=' Password' name='password' value={formData.password} onChange={handleChange}/>
      </div>
      <hr className='cur-horizontal-line'></hr>
      <div className='cur-addpopup-first'>
@@ -156,12 +171,12 @@ const handleUpdateClose =() => {
                <td>{user.email}</td>
                <td>
                 {passwordShown[user._id] ? user.password : '*************'}
-                <button onClick={() => handlePasswordVisibility(user)}>Show/Hide</button>
+         
                </td>
                <td>{user.role}</td>
                <td>
-                <button onClick={() => handleUpdate(user)}>Update</button>
-                <button onClick={() => handleDelete(user)}>Delete</button>
+               <img className='crMn-carUpdate' src='./images/pen-square-svgrepo-com (1).svg'onClick={() => handleUpdate(user)}/>
+               <img className='crMn-carDelete' src='./images/bin-svgrepo-com.svg' onClick={() => handleDelete(user)}/>
                </td>
               </tr>
             ))}

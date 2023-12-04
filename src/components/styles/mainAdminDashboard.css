@@ -19,6 +19,18 @@
     margin-top: 0px;
     padding: 0px; 
 }
+.ad-menu-item1 a:hover{
+    background-color: #E08F8F;
+    padding: 10px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    font-size: 20px;
+    }
+.ad-menu-item1-img{
+    width: 35px;
+    height: 50px;
+    margin-bottom: -10px;
+}
 .ad-menu-item {
     margin-top: 30px;
     padding: 0px;
@@ -28,13 +40,14 @@ background-color: #E08F8F;
 padding: 10px;
 border-top-left-radius: 15px;
 border-bottom-left-radius: 15px;
+font-size: 20px;
 }
-.ad-menu-item1 a:hover{
-    background-color: #E08F8F;
-    padding: 10px;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    }
+.ad-menu-item1-img:hover{
+    width: 35px;
+    height: 50px;
+    margin-bottom: -10px;
+}
+
 .ad-menu-content a {
     text-decoration: none;
     color: white;

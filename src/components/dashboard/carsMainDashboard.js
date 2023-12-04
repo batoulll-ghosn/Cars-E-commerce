@@ -164,8 +164,8 @@ const handleSubmit = (event) => {
               <td>{car.quantity}</td>
               <td>{car.initialPrice}</td>
               <td>
-               <button onClick={() => handleUpdate(car)}>Update</button>
-               <button onClick={() => handleDelete(car)}>Delete</button>
+               <img className='crMn-carUpdate' src='./images/pen-square-svgrepo-com (1).svg' onClick={() => handleUpdate(car)}/>
+               <img className='crMn-carDelete' src='./images/bin-svgrepo-com.svg' onClick={() => handleDelete(car)}/>
               </td>
              </tr>
            ))}

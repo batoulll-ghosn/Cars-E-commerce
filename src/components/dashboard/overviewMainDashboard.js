@@ -21,11 +21,11 @@ function OverView() {
  useEffect(() => {
  dispatch(getAllCars());
  },[])
- const dataValues = [1552, 1019, 213, 600,1552, 1019, 213, 600,1552, 1019, 213, 600,1552, 1019, 213, 600];
+ const dataValues = [1552, 1019, 213, 600,1552, 1019, 213, 600,1552, 1019, 213, 600];
   const total = dataValues.reduce((a, b) => a + b, 0);
   const dataPercentages = dataValues.map(value => (value / total) * 100);
   const data = { 
-    labels: ["1st bar", "2nd bar", "3rd bar", "4th bar","1st bar", "2nd bar", "3rd bar", "4th bar","1st bar", "2nd bar", "3rd bar", "4th bar","1st bar", "2nd bar", "3rd bar", "4th bar"], 
+    labels: ["Jan", "Feb", "March", "April","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"], 
     datasets: [ 
       { 
         label: "Revnue", 
