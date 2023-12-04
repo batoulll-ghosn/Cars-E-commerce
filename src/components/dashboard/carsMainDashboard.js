@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getAllCars, addCar,removeCar } from '../actions/car';
 import userEvent from '@testing-library/user-event';
+import axios from 'axios';
 
 function MainOfCars() {
  const cars = useSelector((state) => state.cars);
@@ -29,43 +30,50 @@ const handleUpdateClose = () =>{
   setUpdateShowPopup(false);
 }
 
-   const handleSubmit = (event) => {
-    event.preventDefault();
-   
-    
-    const carName = event.target.elements.carName.value;
-    const company = event.target.elements.company.value;
-    const type = event.target.elements.type.value;
-    const description = event.target.elements.description.value;
-    const initialPrice = event.target.elements.price.value;
-    const sellingPrice = event.target.elements.price.value;
-    const TVA = event.target.elements.TVA.value;
-    const discount = event.target.elements.discount.value;
-    const quantity = event.target.elements.quantity.value;
-    const files = event.target.elements.files.files;
-    const DOR = event.target.elements.DOR.value;
-    const color = event.target.elements.color.value;
-   
-    const formData = new FormData();
-    formData.append('carName', carName);
-    formData.append('company', company);
-    formData.append('type', type);
-    formData.append('description', description);
-    formData.append('initialPrice', initialPrice);
-    formData.append('sellingPrice', sellingPrice);
-    formData.append('TVA', TVA);
-    formData.append('discount', discount);
-    formData.append('quantity', quantity);
-    formData.append('files', files[0]); 
-    formData.append('DOR', DOR);
-    formData.append('color', color);
-   
-    
-    dispatch(addCar(formData));
-   
-   
-    setAddShowPopup(false);
-   };
+const handleSubmit = (event) => {
+  event.preventDefault();
+ 
+  const carName = event.target.elements.carName.value;
+  const company = event.target.elements.company.value;
+  const type = event.target.elements.type.value;
+  const description = event.target.elements.description.value;
+  const initialPrice = event.target.elements.price.value;
+  const sellingPrice = event.target.elements.price.value;
+  const TVA = event.target.elements.TVA.value;
+  const discount = event.target.elements.discount.value;
+  const quantity = event.target.elements.quantity.value;
+  const files = event.target.elements.files.files;
+  const DOR = event.target.elements.DOR.value;
+  const color = event.target.elements.color.value;
+ 
+  const formData = new FormData();
+  formData.append('carName', carName);
+  formData.append('company', company);
+  formData.append('type', type);
+  formData.append('description', description);
+  formData.append('initialPrice', initialPrice);
+  formData.append('sellingPrice', sellingPrice);
+  formData.append('TVA', TVA);
+  formData.append('discount', discount);
+  formData.append('quantity', quantity);
+  formData.append('files', files[0]); 
+  formData.append('DOR', DOR);
+  formData.append('color', color);
+ 
+  axios.post('http://localhost:5000/cars/addCar', formData)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    }
+  });
+ setAddShowPopup(false);
+ };
+ 
    
 
  return (
