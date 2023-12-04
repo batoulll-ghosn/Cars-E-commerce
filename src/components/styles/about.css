@@ -1,6 +1,9 @@
 .about-container{
     background-color:#D9D9D9;
 }
+.about-container{
+    background-color:#D9D9D9;
+}
 .Abouts{
     display:flex;
     flex-direction:row;
@@ -16,6 +19,7 @@
     font-size:25px;
     margin:auto;
     width:fit-content;
+    text-align: justify;
     text-align: justify;
 }
 .as-imageOfAbout{
@@ -39,7 +43,7 @@
 @media screen and (min-width:767px) and (max-width:1023px){
     .Abouts{
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     .as-rightSide{
         display: flex;
