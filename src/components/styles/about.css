@@ -46,6 +46,9 @@
         flex-direction: column;
         align-items: center;
     }
+    .as-imageOfAbout{
+        width: 100%;
+    }
 }
 
 @media (max-width: 600px) {
