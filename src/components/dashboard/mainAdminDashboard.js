@@ -4,6 +4,7 @@ import Overview from './overviewMainDashboard';
 import Orders from './ordersMainDashboard';
 import Cars from'./carsMainDashboard';
 import Customers from './customersMainDashboard';
+import Discount from './discountMainDashboard'
 import '../styles/mainAdminDashboard.css';
 import Menu from './AdminDashboardMenu';
 
@@ -43,10 +44,10 @@ function Dashboard() {
                 </div>
             </div>
             <div id="ad-content">
-               
                 {activePage === 'overview' && <Overview />}
                 {activePage === 'orders' && <Orders />}
                 {activePage === 'cars' && <Cars />}
+                {activePage === 'discounts' && <Discount />}
                 {activePage === 'customer' && <Customers />}
             </div>
         </div>
