@@ -20,10 +20,9 @@ const Discount = () => {
        {cars.map((car) => (
          <div className='in-it' key={car._id}>
            <h1>{car.company} {car.carName}</h1>
-           <div className='in-itt'><p>{car.discount}</p><img src={car.files[0]}/></div>
-           <p>{car.type}</p>
-           <p>{car.description}</p>
-           <p>{car.color}</p>
+           <div className='in-itt'><p className='ds-the-red'>{car.discount}%</p><img src={car.files[0]}/></div>
+           <div className='in-it-down-one'><div>Type: {car.type}<br/>
+           color: {car.color}</div><div><p className='in-it-mashtoube'>${car.initialPrice}</p><br/><p>${car.sellingPrice}</p></div></div>
            
          </div>
        ))}
