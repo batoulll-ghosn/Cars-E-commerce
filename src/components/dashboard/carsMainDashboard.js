@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/carsOfDash.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getAllCars, addCar, removeCar } from "../actions/car";
+import { getAllCars, addCar, removeCar, updateCar } from "../actions/car";
 import userEvent from "@testing-library/user-event";
 import axios from "axios";
 
@@ -46,7 +46,6 @@ function MainOfCars() {
     event.preventDefault();
 
     const formData = new FormData();
-
     formData.append("carName", carName);
     formData.append("company", company);
     formData.append("type", type);
@@ -60,11 +59,32 @@ function MainOfCars() {
     formData.append("color", color);
 
     files.forEach((file) => {
-      formData.append('files', file);
+      formData.append("files", file);
     });
-    
 
     dispatch(addCar(formData));
+  };
+
+  const handleUpdateCar = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("carName", carName);
+    formData.append("company", company);
+    formData.append("type", type);
+    formData.append("description", description);
+    formData.append("initialPrice", initialPrice);
+    formData.append("sellingPrice", sellingPrice);
+    formData.append("TVA", TVA);
+    formData.append("discount", discount);
+    formData.append("quantity", quantity);
+    formData.append("DOR", DOR);
+    formData.append("color", color);
+
+    files.forEach((file) => {
+      formData.append("files", file);
+    });
+    dispatch(updateCar(formData));
   };
 
   return (
@@ -111,22 +131,22 @@ function MainOfCars() {
               <hr className="cr-horizontal-line"></hr>
               <div className="cr-addpopup-first">
                 <input
-                  type="text"
+                  type="number"
                   placeholder=" DOR"
                   onChange={(e) => setDOR(e.target.value)}
                 />
                 <input
-                  type="text"
+                  type="number"
                   placeholder="Initial price"
                   onChange={(e) => setInitialPrice(e.target.value)}
                 />
                 <input
-                  type="text"
+                  type="number"
                   placeholder="Selling price"
                   onChange={(e) => setSellingPrice(e.target.value)}
                 />
                 <input
-                  type="text"
+                  type="number"
                   placeholder=" TVA"
                   onChange={(e) => setTVA(e.target.value)}
                 />
@@ -181,7 +201,7 @@ function MainOfCars() {
           </form>
         )}
         {UpdateshowPopup && (
-          <form onSubmit="">
+          <form onSubmit={() => handleUpdateCar}>
             <div className="cr-addpopup">
               <div className="cr-addpopup-head">
                 <h2>Edit a Car</h2>
@@ -191,30 +211,90 @@ function MainOfCars() {
                 </span>
               </div>
               <div className="cr-addpopup-first">
-                <input type="text" placeholder=" Car Name" name="carName" />
-                <input type="text" placeholder=" Company" name="company" />
-                <input type="text" placeholder=" Type" name="type" />
-                <input type="number" placeholder=" Quantity" name="quantity" />
+                <input
+                  type="text"
+                  placeholder=" Car Name"
+                  onChange={(e) => setCarName(e.target.value)}
+                />
+                <input
+                  type="text"
+                  placeholder=" Company"
+                  onChange={(e) => setCompany(e.target.value)}
+                />
+                <input
+                  type="text"
+                  placeholder=" Type"
+                  onChange={(e) => setType(e.target.value)}
+                />
+                <input
+                  type="number"
+                  placeholder=" Quantity"
+                  onChange={(e) => setQuantity(e.target.value)}
+                />
               </div>
               <hr className="cr-horizontal-line"></hr>
               <div className="cr-addpopup-first">
-                <input type="text" placeholder=" DOR" name="DOR" />
-                <input type="text" placeholder=" Price" name="price" />
-
-                <input type="text" placeholder=" TVA" name="TVA" />
-                <input type="number" placeholder=" Discount" name="discount" />
+                <input
+                  type="number"
+                  placeholder=" DOR"
+                  onChange={(e) => setDOR(e.target.value)}
+                />
+                <input
+                  type="number"
+                  placeholder="Initial Price"
+                  onChange={(e) => setInitialPrice(e.target.value)}
+                />
+                <input
+                  type="number"
+                  placeholder="Selling price"
+                  onChange={(e) => setSellingPrice(e.target.value)}
+                />
+                <input
+                  type="number"
+                  placeholder=" TVA"
+                  onChange={(e) => setTVA(e.target.value)}
+                />
+                <input
+                  type="number"
+                  placeholder=" Discount"
+                  onChange={(e) => setDiscount(e.target.value)}
+                />
               </div>
               <hr className="cr-horizontal-line"></hr>
               <div className="cr-addpopup-first">
-                <textarea placeholder=" Description" name="description" />
+                <textarea
+                  placeholder=" Description"
+                  onChange={(e) => setDescription(e.target.value)}
+                />
               </div>
               <hr className="cr-horizontal-line"></hr>
               <div>
-                <label>Image:</label> <input type="file" name="files" />
-                <label>3D:</label> <input type="file" />
-                <label>Sound:</label> <input type="file" />
+                <label>Image:</label>{" "}
+                <input
+                  type="file"
+                  onChange={(e) =>
+                    setFiles((prev) => [...prev, e.target.files[0]])
+                  }
+                />
+                <label>3D:</label>{" "}
+                <input
+                  type="file"
+                  onChange={(e) =>
+                    setFiles((prev) => [...prev, e.target.files[0]])
+                  }
+                />
+                <label>Sound:</label>{" "}
+                <input
+                  type="file"
+                  onChange={(e) =>
+                    setFiles((prev) => [...prev, e.target.files[0]])
+                  }
+                />
                 <label>Color: </label>
-                <input type="color" name="color" />
+                <input
+                  type="color"
+                  onChange={(e) => setColor(e.target.value)}
+                />
               </div>
               <div>
                 <button className="cr-addcar-buttonn" type="submit">

@@ -84,36 +84,12 @@ export const getAllCarsBySelector = (selector) => {
 };
 export const updateCar = (
   Id,
-  carName,
-  company,
-  type,
-  description,
-  initialPrice,
-  sellingPrice,
-  TVA,
-  discount,
-  quantity,
-  image,
-  DOR,
-  color
+ data
 ) => {
-  const updatedCar = {
-    carName,
-    company,
-    type,
-    description,
-    initialPrice,
-    sellingPrice,
-    TVA,
-    discount,
-    quantity,
-    image,
-    DOR,
-    color,
-  };
+  
   return (dispatch) => {
     axios
-      .put(`http://localhost:5000/cars/updateCar/${Id}`, updatedCar)
+      .put(`http://localhost:5000/cars/updateCar/${Id}`, data)
       .then((response) => {
         const car = response.data.car;
         dispatch({
