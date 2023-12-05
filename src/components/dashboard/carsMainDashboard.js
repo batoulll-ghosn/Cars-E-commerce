@@ -11,6 +11,7 @@ function MainOfCars() {
   const dispatch = useDispatch();
   const [AddshowPopup, setAddShowPopup] = useState(false);
   const [UpdateshowPopup, setUpdateShowPopup] = useState(false);
+  const [DeleteshowPopup, setDeleteShowPopup] = useState(false);
   const [carName, setCarName] = useState("");
   const [company, setCompany] = useState("");
   const [type, setType] = useState("");
@@ -23,6 +24,7 @@ function MainOfCars() {
   const [files, setFiles] = useState([]);
   const [DOR, setDOR] = useState("");
   const [color, setColor] = useState("");
+  const [selectedCar, setSelectedCar] = useState(null);
 
   useEffect(() => {
     dispatch(getAllCars());
@@ -30,10 +32,21 @@ function MainOfCars() {
   const handleUpdate = (car) => {
     setUpdateShowPopup(true);
   };
-
-  const handleDelete = (car) => {
-    dispatch(removeCar(car._id));
-  };
+  const OpendeletePop = (car) => {
+    setSelectedCar(car);
+    setDeleteShowPopup(true);
+   }
+   
+   const handleDelete = () => {
+    if (selectedCar) {
+      dispatch(removeCar(selectedCar._id));
+      setSelectedCar(null);
+      setDeleteShowPopup(false);
+    }
+   };
+  const ClosedeletePop =() =>{
+    setDeleteShowPopup(false);
+  }   
 
   const handleAddClose = () => {
     setAddShowPopup(false);
@@ -304,6 +317,12 @@ function MainOfCars() {
             </div>
           </form>
         )}
+        {(DeleteshowPopup && <div className='cr-deletepopup'><div className='cr-deletepopup-head'>
+                 <h2>Are You Sure You want to Delete?</h2>
+                 <span className='cr-deletepopup-close' onClick={ClosedeletePop}> &times;</span>
+             </div>
+       <div className='yesNoButtons'><button className='cr-nodelete' onClick={ClosedeletePop}>No, Thank You!</button><button className='cr-yesDelete' onClick={handleDelete}>Yes PLease</button></div> 
+        </div>)}
         <div className="cr-third-main">
           <div className="cr-third-div-table">
             <table className="cr-third-table">
@@ -330,7 +349,7 @@ function MainOfCars() {
                       <img
                         className="crMn-carDelete"
                         src="./images/bin-svgrepo-com.svg"
-                        onClick={() => handleDelete(car)}
+                        onClick={() =>  OpendeletePop(car)}
                       />
                     </td>
                   </tr>

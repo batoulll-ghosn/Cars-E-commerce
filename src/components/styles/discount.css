@@ -1,0 +1,41 @@
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap:50px;
+    column-gap: 90px;
+   }
+.in-itt img{
+    width: 160px;
+    height: 160px;
+    align-items: right;
+}
+.in-it{border-radius: 13px ;
+    background-color: white;
+padding: 20px;
+padding-left: 50px;}
+
+.in-itt{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    padding-left: 20px;
+}
+.ds-the-red{
+    color: red;
+    font-weight: 800;
+    font-size: 24px;
+}
+.in-it-down-one{
+    display: flex;
+    flex-direction: row;
+    column-gap: 50px;
+    font-weight: 800;
+    align-items: center;
+    padding-left: 100px;
+}
+.in-it-mashtoube{
+    text-decoration: line-through;
+    text-decoration-color: red;
+    margin-bottom: -23px;
+    font-weight: 800;
+}

@@ -10,6 +10,7 @@ function MainOfCustomers() {
  const [AddshowPopup, setAddShowPopup] = useState(false);
  const [UpdateshowPopup, setUpdateShowPopup] = useState(false);
  const [currentUser, setCurrentUser] = useState(null);
+ const [DeleteshowPopup, setDeleteShowPopup] = useState(false);
  const [passwordShown, setPasswordShown] = useState({});
  const [showPassword, setShowPassword] = useState(false);
  const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ function MainOfCustomers() {
    password: '',
    role: '',
  });
-
+ const [selectedUser, setSelectedUser] = useState(null);
  useEffect(() => {
  dispatch(getAllUsers());
  }, [dispatch]);
@@ -29,18 +30,27 @@ function MainOfCustomers() {
  setFormData(user);
  setUpdateShowPopup(true);
  };
-
- const handleDelete = (user) => {
- dispatch(deleteUser(user._id));
- };
-
  const handleAddClose = () => {
  setAddShowPopup(false);
  };
 const handleUpdateClose =() => {
     setUpdateShowPopup(false);
 }
-
+const OpendeletePop = (user) => {
+  setSelectedUser(user);
+  setDeleteShowPopup(true);
+ }
+ 
+ const handleDelete = () => {
+  if (selectedUser) {
+    dispatch(deleteUser(selectedUser._id));
+    setSelectedUser(null);
+    setDeleteShowPopup(false);
+  }
+ };
+const ClosedeletePop =() =>{
+  setDeleteShowPopup(false);
+}   
  const handlePasswordVisibility = (user) => {
  setPasswordShown({
    ...passwordShown,
@@ -152,7 +162,12 @@ const handleUpdateClose =() => {
    </div>
  </form>
 )}
-
+{(DeleteshowPopup && <div className='cr-deletepopup'><div className='cr-deletepopup-head'>
+                 <h2>Are You Sure You want to Delete?</h2>
+                 <span className='cr-deletepopup-close' onClick={ClosedeletePop}> &times;</span>
+             </div>
+       <div className='yesNoButtons'><button className='cr-nodelete' onClick={ClosedeletePop}>No, Thank You!</button><button className='cr-yesDelete' onClick={handleDelete}>Yes PLease</button></div> 
+        </div>)}
       <div className='cur-third-main'><div className='cur-third-div-table'>
         <table className='cur-third-table'>
           <thead>
@@ -176,7 +191,7 @@ const handleUpdateClose =() => {
                <td>{user.role}</td>
                <td>
                <img className='crMn-carUpdate' src='./images/pen-square-svgrepo-com (1).svg'onClick={() => handleUpdate(user)}/>
-               <img className='crMn-carDelete' src='./images/bin-svgrepo-com.svg' onClick={() => handleDelete(user)}/>
+               <img className='crMn-carDelete' src='./images/bin-svgrepo-com.svg' onClick={() => OpendeletePop(user)}/>
                </td>
               </tr>
             ))}
