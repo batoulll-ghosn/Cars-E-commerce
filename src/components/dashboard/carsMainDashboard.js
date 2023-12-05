@@ -25,28 +25,29 @@ function MainOfCars() {
   const [DOR, setDOR] = useState("");
   const [color, setColor] = useState("");
   const [selectedCar, setSelectedCar] = useState(null);
-
+  
   useEffect(() => {
     dispatch(getAllCars());
   }, [dispatch]);
   const handleUpdate = (car) => {
+    setSelectedCar(car);
     setUpdateShowPopup(true);
   };
   const OpendeletePop = (car) => {
     setSelectedCar(car);
     setDeleteShowPopup(true);
-   }
-   
-   const handleDelete = () => {
+  };
+
+  const handleDelete = () => {
     if (selectedCar) {
       dispatch(removeCar(selectedCar._id));
       setSelectedCar(null);
       setDeleteShowPopup(false);
     }
-   };
-  const ClosedeletePop =() =>{
+  };
+  const ClosedeletePop = () => {
     setDeleteShowPopup(false);
-  }   
+  };
 
   const handleAddClose = () => {
     setAddShowPopup(false);
@@ -76,9 +77,10 @@ function MainOfCars() {
     });
 
     dispatch(addCar(formData));
+    setFiles([]);
   };
 
-  const handleUpdateCar = (e) => {
+  const handleUpdateCar = (e,id) => {
     e.preventDefault();
 
     const formData = new FormData();
@@ -97,9 +99,11 @@ function MainOfCars() {
     files.forEach((file) => {
       formData.append("files", file);
     });
-    dispatch(updateCar(formData));
+    dispatch(updateCar(id,formData));
+    setFiles([]);
+    setSelectedCar(null);
   };
-
+  console.log(selectedCar)
   return (
     <div className="cr-component">
       <div className="cr-third">
@@ -214,7 +218,7 @@ function MainOfCars() {
           </form>
         )}
         {UpdateshowPopup && (
-          <form onSubmit={() => handleUpdateCar}>
+          <form onSubmit={() => handleUpdateCar(selectedCar._id)}>
             <div className="cr-addpopup">
               <div className="cr-addpopup-head">
                 <h2>Edit a Car</h2>
@@ -227,21 +231,25 @@ function MainOfCars() {
                 <input
                   type="text"
                   placeholder=" Car Name"
+                  value={selectedCar.carName}
                   onChange={(e) => setCarName(e.target.value)}
                 />
                 <input
                   type="text"
                   placeholder=" Company"
+                  value={selectedCar.company}
                   onChange={(e) => setCompany(e.target.value)}
                 />
                 <input
                   type="text"
                   placeholder=" Type"
+                  value={selectedCar.type}
                   onChange={(e) => setType(e.target.value)}
                 />
                 <input
                   type="number"
                   placeholder=" Quantity"
+                  value={selectedCar.quantity}
                   onChange={(e) => setQuantity(e.target.value)}
                 />
               </div>
@@ -250,26 +258,31 @@ function MainOfCars() {
                 <input
                   type="number"
                   placeholder=" DOR"
+                  value={selectedCar.DOR}
                   onChange={(e) => setDOR(e.target.value)}
                 />
                 <input
                   type="number"
                   placeholder="Initial Price"
+                  value={selectedCar.initialPrice}
                   onChange={(e) => setInitialPrice(e.target.value)}
                 />
                 <input
                   type="number"
                   placeholder="Selling price"
+                  value={selectedCar.sellingPrice}
                   onChange={(e) => setSellingPrice(e.target.value)}
                 />
                 <input
                   type="number"
                   placeholder=" TVA"
+                  value={selectedCar.TVA}
                   onChange={(e) => setTVA(e.target.value)}
                 />
                 <input
                   type="number"
                   placeholder=" Discount"
+                  value={selectedCar.discount}
                   onChange={(e) => setDiscount(e.target.value)}
                 />
               </div>
@@ -277,6 +290,7 @@ function MainOfCars() {
               <div className="cr-addpopup-first">
                 <textarea
                   placeholder=" Description"
+                  value={selectedCar.description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
@@ -285,6 +299,7 @@ function MainOfCars() {
                 <label>Image:</label>{" "}
                 <input
                   type="file"
+                 
                   onChange={(e) =>
                     setFiles((prev) => [...prev, e.target.files[0]])
                   }
@@ -292,6 +307,7 @@ function MainOfCars() {
                 <label>3D:</label>{" "}
                 <input
                   type="file"
+                 
                   onChange={(e) =>
                     setFiles((prev) => [...prev, e.target.files[0]])
                   }
@@ -299,6 +315,7 @@ function MainOfCars() {
                 <label>Sound:</label>{" "}
                 <input
                   type="file"
+                  
                   onChange={(e) =>
                     setFiles((prev) => [...prev, e.target.files[0]])
                   }
@@ -306,6 +323,7 @@ function MainOfCars() {
                 <label>Color: </label>
                 <input
                   type="color"
+                  value={selectedCar.color}
                   onChange={(e) => setColor(e.target.value)}
                 />
               </div>
@@ -317,12 +335,25 @@ function MainOfCars() {
             </div>
           </form>
         )}
-        {(DeleteshowPopup && <div className='cr-deletepopup'><div className='cr-deletepopup-head'>
-                 <h2>Are You Sure You want to Delete?</h2>
-                 <span className='cr-deletepopup-close' onClick={ClosedeletePop}> &times;</span>
-             </div>
-       <div className='yesNoButtons'><button className='cr-nodelete' onClick={ClosedeletePop}>No, Thank You!</button><button className='cr-yesDelete' onClick={handleDelete}>Yes PLease</button></div> 
-        </div>)}
+        {DeleteshowPopup && (
+          <div className="cr-deletepopup">
+            <div className="cr-deletepopup-head">
+              <h2>Are You Sure You want to Delete?</h2>
+              <span className="cr-deletepopup-close" onClick={ClosedeletePop}>
+                {" "}
+                &times;
+              </span>
+            </div>
+            <div className="yesNoButtons">
+              <button className="cr-nodelete" onClick={ClosedeletePop}>
+                No, Thank You!
+              </button>
+              <button className="cr-yesDelete" onClick={handleDelete}>
+                Yes PLease
+              </button>
+            </div>
+          </div>
+        )}
         <div className="cr-third-main">
           <div className="cr-third-div-table">
             <table className="cr-third-table">
@@ -344,12 +375,12 @@ function MainOfCars() {
                       <img
                         className="crMn-carUpdate"
                         src="./images/pen-square-svgrepo-com (1).svg"
-                        onClick={() => handleUpdate(car)}
+                        onClick={() =>{handleUpdate(car)}}
                       />
                       <img
                         className="crMn-carDelete"
                         src="./images/bin-svgrepo-com.svg"
-                        onClick={() =>  OpendeletePop(car)}
+                        onClick={() => OpendeletePop(car)}
                       />
                     </td>
                   </tr>
