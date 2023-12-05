@@ -191,7 +191,7 @@ const ClosedeletePop =() =>{
                <td>{user.role}</td>
                <td>
                <img className='crMn-carUpdate' src='./images/pen-square-svgrepo-com (1).svg'onClick={() => handleUpdate(user)}/>
-               <img className='crMn-carDelete' src='./images/bin-svgrepo-com.svg' onClick={() => OpendeletePop(user)}/>
+               <img className='crMn-carDelete' src='./images/bin-svgrepo-com (1).svg' onClick={() => OpendeletePop(user)}/>
                </td>
               </tr>
             ))}

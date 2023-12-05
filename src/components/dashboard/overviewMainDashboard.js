@@ -59,7 +59,7 @@ function OverView() {
   return (
     <div className='ov-component'>
             <div>
-            <p>Let’s check the stats today!</p>
+            <p className='ov-component-p'>Let’s check the stats today!</p>
             </div>
              <div className='ov-second'>
                 <div className='ov-second-customers'>
@@ -76,7 +76,7 @@ function OverView() {
                 </div>
                 </div>
              <div className='ov-third'>
-             <p>Recent orders</p>
+             <p className='ov-component-p'>Recent orders</p>
              <div className='ov-third-main'><div className='ov-third-div-table'>
              <table className='ov-third-table'>
       <thead>

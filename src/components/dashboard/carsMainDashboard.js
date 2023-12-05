@@ -268,7 +268,7 @@ function MainOfCars() {
                       />
                       <img
                         className="crMn-carDelete"
-                        src="./images/bin-svgrepo-com.svg"
+                        src="./images/bin-svgrepo-com (1).svg"
                         onClick={() =>  OpendeletePop(car)}
                       />
                     </td>
