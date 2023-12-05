@@ -49,7 +49,19 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    cursor: pointer;
 
+}
+
+@media (max-width: 600px) {
+    .cars-image{
+        width: 400px;
+    }
+    .cars-allcars{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+
+    }
 }
 
 

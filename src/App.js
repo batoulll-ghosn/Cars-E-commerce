@@ -8,6 +8,7 @@ import Footer from './components/mainComponents/Footer';
 import Dashboard from './components/dashboard/mainAdminDashboard';
 import Header from './components/mainComponents/Header';
 import CarsPage from './components/mainComponents/CarsPage';
+import CarViewer from './components/mainComponents/CarViewer';
 function App() {
   return (
     <Router>
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={ <> <NavBar/><Header/><About /><FAQ/><Footer/> </>} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/cars" element={<CarsPage/>}/>
+          <Route path="/3d-viewer" element={<CarViewer />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
