@@ -4,49 +4,44 @@ import Footer from '../mainComponents/Footer';
 import '../styles/carsPage.css';
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getAllCars } from "../actions/car";
+import { getAllCars, getAllCarsBySelector  } from "../actions/car";
 
 
 const CarsPage = () => {
-
-  const [search,setSearch] = useState;
-  const [Car,setCar] = useState;
+ const [selector,setSelector] = useState("");
+ const[Search,setSearch] = useState("");
+ 
 
     const cars = useSelector((state) => state.cars);
     const dispatch = useDispatch();
 
     useEffect(() => {
+      // dispatch(getAllCarsBySelector("type"))
         dispatch(getAllCars());
     }, [dispatch]);
+  //  console.log(dispatch(getAllCarsBySelector("type")))
 
-    const handleSearchChange = (e) => {
-      const { name, value } = e.target;
-      setSearch({
-        ...search,
-        [name]: value,
-      });
-    };
-    
-    const handleSearch = () => {
-      if (search.searchBy === "CarName") {
-        const filteredCars = cars.filter(
-          (Car) => Car.CarName === search.searchTerm
-        );
-        setCar(filteredCars);
-      } else if (search.searchBy === "company") {
-        const filteredCars = cars.filter((Car) =>
-          Car.company.includes(search.searchTerm)
-        );
-        setCar(filteredCars);
-      }
-    };
-  
-    const resetSearch = () => {
-      setSearch({
-        searchBy: "CarName",
-        searchTerm: "",
-      });
-  
+const handleSearch = (e) => {
+  e.preventDefault()
+  const car = []
+  cars.forEach(element => {
+    if (selector=="type") {
+      if (!car.includes(element.type))car.push(element.type)
+    }
+    else if (selector=="carName") {
+      if (!car.includes(element.carName))car.push(element.carName)
+    }
+    else if (selector=="DOR") {
+      if (!car.includes(element.DOR))car.push(element.DOR)
+    }
+    else if (selector=="company") {
+      if (!car.includes(element.company))car.push(element.company)
+    }  else if (selector=="color") {
+      if (!car.includes(element.color))car.push(element.color)
+    }
+  });
+console.log(car)
+}
 
   return (
     <div>
@@ -55,45 +50,41 @@ const CarsPage = () => {
      <div className='cars-search-menu'>
      <div className='cars-company'>
 
-        <img src="/images/mercedes icon.png" className='cars-logo' alt="mercedes"/>
-        <img src="/images/BMW.svg.png" className='cars-logo' alt="bmw"/>
-        <img src="/images/chevrolet png.png" className='cars-logo' alt="chevrolet"/>
-        <img src="/images/audi png.png" className='cars-logo' alt="audi"/>
-        <img src="/images/maserati png.png" className='cars-logo' alt="maserati"/>
-        <img src="/images/cadillac png.png" className='cars-logo' alt="cadillac"/>
-        </div>
-        <div className='cars-search'>
-
-        <div className="seaching">
-        <label>Search by:</label>
-        <select
-          name="searchBy"
-          onChange={handleSearchChange}
-          value={search.searchBy}
-        >
-          <option value="CarName">CarName</option>
-          <option value="company">Company</option>
-          
-        </select>
-        <input
-          className="searching-text"
-          type="text"
-          name="searchTerm"
-          value={search.searchTerm}
-          onChange={handleSearchChange}
-        />
-        <button className="searching-button-search" onClick={handleSearch}>
-          Search
-        </button>
-        <button className="searching-button-reset" onClick={resetSearch}>
-          Reset
-        </button>
-      </div>
-        
+        <img src="/images/mercedes-benz-alt-svgrepo-com.svg" className='cars-logo' alt="mercedes"/>
+        <img src="/images/bmw-svgrepo-com.svg" className='cars-logo' alt="bmw"/>
+        <img src="/images/chevrolet-svgrepo-com.svg" className='cars-logo' alt="chevrolet"/>
+        <img src="/images/audi-svgrepo-com.svg" className='cars-logo' alt="audi"/>
+        <img src="/images/maserati-svgrepo-com.svg" className='cars-logo' alt="maserati"/>
+        <img src="/images/lamborghini-alt-svgrepo-com.svg" className='cars-logo' alt="lamborghini"/>
+        <img src="/images/jeep-svgrepo-com.svg" className='cars-logo' alt="lamborghini"/>
+        <img src="/images/porsche-svgrepo-com.svg" className='cars-logo' alt="lamborghini"/>
         
         </div>
+        <div className='cars-search-bar'>
+          <input className='cars-search-bar'
+          placeholder='Search...'
+          type='text'
+          onChange={(e)=>setSearch(e.target.value)}
+          />
+          <img src='/images/search-5-svgrepo-com.svg'
+          onClick={(e)=> handleSearch(e)}/>
+        </div>
+        <div className='cars-filter-by'>
+      <select id="cars-select-Dropdown" className='cars-search-bar' 
+      name="cars-Dropdown"
+      onChange={(e)=>setSelector(e.target.value)}
+      >
+        <option value="Filter By">Filter By</option>
+        <option value="carName">Car Name</option>
+        <option value="company">Company</option>
+        <option value="DOR">DOR</option>
+        <option value="type">Type</option>
+        <option value="color">Color</option>
+      </select>
+        </div>
+        
      </div>
-     <div className='cars-allcars'>
+     {/* <div className='cars-allcars'>
         {cars.map((car) =>(
 
         <div  key={car._id} className='cars-card'>
@@ -104,12 +95,12 @@ const CarsPage = () => {
         </div>
         ))}
       
-     </div>
+     </div> */}
 
     </div>
     <Footer/>
     </div>
   )
-}}
+}
 
 export default CarsPage;

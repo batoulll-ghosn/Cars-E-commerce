@@ -149,3 +149,4 @@ export const updateCar = (
       .catch((error) => console.log("Failed to update the car :", error));
   };
 };
+
