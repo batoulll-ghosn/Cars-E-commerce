@@ -51,22 +51,25 @@ export const getUsersByRole = (role) => {
   };
 };
 
-export const login = (email,password) => {
-    return (dispatch) => {
-      axios
-        .post(`http://localhost:5000/users/login`, { email,password })
-        .then((response) => {
-          const token = response.data.token;
-          dispatch({
-            type: "login",
-            payload: token
-          });
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
+export const login = (email, password) => {
+  return (dispatch) => {
+    return axios
+      .post(`http://localhost:5000/users/login`, { email, password })
+      .then((response) => {
+        const token = response.data.token;
+        dispatch({
+          type: "login",
+          payload: token
         });
-    };
+        return token;
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        throw error;
+      });
   };
+};
+
 
   export const register = (fullName, phoneNumber, email, password, role) => {
     const newUser = {

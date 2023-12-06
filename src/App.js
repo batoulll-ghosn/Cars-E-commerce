@@ -7,6 +7,7 @@ import FAQ from './components/mainComponents/FAQsection';
 import Footer from './components/mainComponents/Footer';
 import Dashboard from './components/dashboard/mainAdminDashboard';
 import Header from './components/mainComponents/Header';
+import Login from './components/mainComponents/Login';
 function App() {
   return (
     <Router>
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={ <> <NavBar/><Header/><About /><FAQ/><Footer/> </>} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>
