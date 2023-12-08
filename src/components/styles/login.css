@@ -1,5 +1,5 @@
 .register {
-  background-image: url("C:\Users\DEEL\Downloads\E-commerce-backend\Cars-E-commerce\src\components\styles\newCar.jpg");
+  background-image: url("./newCar.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;

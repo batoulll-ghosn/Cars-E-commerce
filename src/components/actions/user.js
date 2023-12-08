@@ -71,10 +71,9 @@ export const login = (email, password) => {
 };
 
 
-  export const register = (fullName, phoneNumber, email, password, role) => {
+  export const register = (fullName,email, password, role) => {
     const newUser = {
       fullName,
-      phoneNumber,
       email,
       password,
       role,
