@@ -1,0 +1,173 @@
+.contact-container {
+    background-image: url("../mainComponents/contact2.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    position: absolute;
+    top: 12%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+}
+
+.contact-container-d {
+    position: relative;
+    left: 10%;
+    top: 5%;
+    width: fit-content;
+}
+
+.contact-container-d form {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    justify-content: space-between;
+    height: 500px;
+
+
+}
+
+
+
+.contact-container-d h1 {
+    color: #C92424;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    align-self: center;
+}
+
+.contact-container-d textarea {
+    width: 422.037px;
+    max-width: 422.037px;
+    height: 264.807px;
+    border-radius: 10px;
+    background: rgba(217, 217, 217, 0.78);
+    opacity: 78%;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    resize: none;
+
+}
+
+.contact-container-d input {
+    border-radius: 10px;
+    background: rgba(217, 217, 217, 0.78);
+    opacity: 78%;
+    width: 422.037px;
+    height: 57.927px;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.contact-container-d textarea::placeholder {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 5px;
+}
+
+.contact-container-d input::placeholder {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 5px;
+}
+
+.contact-container-d button {
+    width: 187.5px;
+    height: 64px;
+    border-radius: 10px;
+    background: #C92424;
+    color: #FFF;
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.21);
+}
+
+.contact-container-d button:hover {
+    cursor: pointer;
+}
+@media screen and (min-width:767px) and (max-width:1280px) {
+    .contact-container {
+        position: absolute; 
+        top: 9%;
+    }
+    .contact-container-d {
+        position: relative;
+        left: 10%;
+        top: 10%;
+        width: fit-content;
+    }
+    
+}
+@media (max-width: 766px){
+    .contact-container {
+        background-image: url("../mainComponents/contact2.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        position: absolute;
+        top: 11%;
+        
+    
+    }
+ 
+    .contact-container-d form {
+        gap: 3%;
+        height: 400px;
+    }
+    .contact-container-d h1 {
+        font-size: 40px;
+        font-weight: 500;
+    }
+    
+    .contact-container-d textarea {
+        width: 90%; 
+        max-width: 422.037px;
+        height: 200px;
+        font-size: 20px;
+        font-weight: 300;
+        
+    }
+    
+    .contact-container-d input {
+        width: 90%;
+        height: 10%;
+        font-size: 20px;
+        font-weight: 300;
+    }
+    
+    .contact-container-d textarea::placeholder {
+        font-size: 30px;
+        font-weight: 400;
+    }
+    
+    .contact-container-d input::placeholder {
+        font-size: 30px;
+        font-weight: 400;
+    }
+    
+    .contact-container-d button {
+        width: 160.5px;
+        height: 64px;
+        font-size: 24px;
+        font-weight: 500;
+    }
+}
