@@ -16,7 +16,7 @@ import { toast, Toaster } from "react-hot-toast";
 
 const Login = () => {
   const [otp, setOtp] = useState("");
-  const [ph, setPh] = useState("");
+  const [phoneNumber, setphoneNumber] = useState("");
   const [loading, setLoading] = useState(false);
   const [showOTP, setShowOTP] = useState(false);
   const [user, setUser] = useState(null);
@@ -25,7 +25,6 @@ const Login = () => {
   const [registerShow, setRegisterShow] = useState(true);
   const [LoginShow, setLoginShow] = useState(false);
   const [fullName, setFullName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
@@ -61,6 +60,7 @@ const Login = () => {
       setFullNameError("First name and Last name*");
       return;
     }
+    
     const emailTest = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     if (!emailTest.test(email)) {
       setEmailError("myemail@example.com*");
@@ -76,7 +76,8 @@ const Login = () => {
       setConfirmPassError("passwords don't match*");
       return;
     }
-    dispatch(register(fullName,email,password,"customer"));
+    console.log(phoneNumber);
+    dispatch(register(fullName,email,password,phoneNumber,"customer"));
     onSignup();
   };
   function onSignup() {
@@ -84,8 +85,7 @@ const Login = () => {
     onCaptchVerify();
 
     const appVerifier = window.recaptchaVerifier;
-
-    const formatPh = "+" + ph;
+    const formatPh = "+" + phoneNumber;
 
     signInWithPhoneNumber(auth, formatPh, appVerifier)
       .then((confirmationResult) => {
@@ -103,8 +103,8 @@ const Login = () => {
     e.preventDefault();
     dispatch(login(email, password))
       .then(() => {
-        navigate("/");
         toast.success("You logged in successfully!");
+        navigate("/");
       })
       .catch(() => {
         setLoginError("Invalid email or password*");
@@ -118,8 +118,8 @@ const Login = () => {
         console.log(res);
         setUser(res.user);
         setLoading(false);
-        navigate("/");
         toast.success("You logged in successfully!");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -187,9 +187,8 @@ const Login = () => {
             {fullNameError && <p className="error">{fullNameError}</p>}
           </div>
           <div>
-          <PhoneInput  country={"lb"} value={ph} onChange={setPh}inputStyle={{ width: '240px',
+          <PhoneInput  country={"lb"} value={phoneNumber} onChange={setphoneNumber} inputStyle={{ width: '240px',
             height: '50px'}}/>
-            {phoneNumberError && <p className="error">{phoneNumberError}</p>}
           </div>
           <div>
             <input

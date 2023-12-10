@@ -71,11 +71,12 @@ export const login = (email, password) => {
 };
 
 
-  export const register = (fullName,email, password, role) => {
+  export const register = (fullName,email, password,phoneNumber, role) => {
     const newUser = {
       fullName,
       email,
       password,
+      phoneNumber,
       role,
     };
     return (dispatch) => {
@@ -123,16 +124,16 @@ export const deleteUser = (Id) => {
 export const updateUser = (
   Id,
   fullName,
-  phoneNumber,
   email,
   password,
+  phoneNumber,
   role
 ) => {
   const newUser = {
     fullName,
-    phoneNumber,
     email,
     password,
+    phoneNumber,
     role,
   };
   return (dispatch) => {
