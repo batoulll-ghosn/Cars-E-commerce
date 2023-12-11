@@ -3,7 +3,7 @@
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
-    height: 750px;
+    height: 695px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -54,7 +54,7 @@ right: 150px;
   gap: 15px;
   right: 150px;
     position: relative;
-    bottom: 75px;
+    bottom: 60px;
    
 }
 
@@ -126,6 +126,7 @@ right: 150px;
         top: 8px;
         right: 0px;
         margin-left: 30px;
+        position: unset;
     }
   
 
