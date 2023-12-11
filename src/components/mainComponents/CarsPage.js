@@ -111,20 +111,22 @@ const CarsPage = () => {
           </div>
           <div className="cars-search-bar">
             <input
-              className="cars-search-bar"
+              className="cars-search-bar-input"
               placeholder="Search..."
               type="text"
               onChange={(e) => setSearch(e.target.value)}
             />
             <img
+              className="cars-search-icon"
               src="/images/search-5-svgrepo-com.svg"
               onClick={(e) => handleSearch(e)}
+
             />
           </div>
-          <div className="cars-filter-by">
+          <div >
             <select
               id="cars-select-Dropdown"
-              className="cars-search-bar"
+              className="cars-filter-by"
               name="cars-Dropdown"
               onChange={(e) => setSelector(e.target.value)}
             >
@@ -147,6 +149,7 @@ const CarsPage = () => {
                 className="cars-image"
                 alt="jeep purple"
               />
+              
               <button
                 className="cars-shop-now"
               >
@@ -161,11 +164,15 @@ const CarsPage = () => {
                     className="cars-image"
                     alt="jeep purple"
                   />
+                  <h1
+                  className="cars-car-name">
+                    {car.carName}
+                  </h1>
                   <button
                     className="cars-shop-now"
                     // onClick={}
                   >
-                    Shop Now
+                    View More
                   </button>
                 </div>
               ))}

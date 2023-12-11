@@ -11,10 +11,24 @@
 }
 
 .cars-logo{
-    width: 100px;
+    width: 15%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    mix-blend-mode: color-burn;
 }
-.cars-logo:hover{
+/* .cars-logo:hover{
     transform: scale(1.2);
+} */
+.cars-filter-by{
+    border-radius: 10;
+    border: none;
+    color: #555353;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 45px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    padding: 4%;
 }
 
 .cars-search-bar{
@@ -26,6 +40,17 @@
     line-height: 45px;
     border-radius: 10px;
     background-color: #D9D9D9;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.cars-search-bar-input{
+    background: none;
+    border: none;
+    padding: 4%;
+}
+.cars-search-icon{
+    width: 15%;
 }
 
 .cars-allcars{
@@ -42,7 +67,7 @@
 }
 
 .cars-image{
-    width: 490px;
+    width: 100%;
 }
 
 .cars-shop-now{
