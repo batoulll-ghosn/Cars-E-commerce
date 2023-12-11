@@ -11,6 +11,7 @@ import Login from './components/mainComponents/Login';
 import LatestCars from './components/mainComponents/LatestCars';
 import CarsPage from './components/mainComponents/CarsPage';
 import CarViewer from './components/mainComponents/CarViewer';
+import ContactPage from './components/mainComponents/ContactPage';
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/cars" element={<CarsPage/>}/>
           <Route path="/3d-viewer" element={<CarViewer />} />
+          <Route path="/contactUs" element={<ContactPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
         </Routes>

@@ -10,7 +10,7 @@ const AdminDashboardMenu = () => {
 
   return (
     <div>
-      <nav className="Navbar">
+      <nav className="Navbarr">
         <Link className='N-logo' to='/'>DriveEpic</Link>
       <div>
         <ul id='N-menu' className={clicked ? "#N-menu active" : "#N-menu"} >
