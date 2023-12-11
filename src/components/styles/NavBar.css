@@ -90,6 +90,10 @@
     flex-direction: row;
 }
 @media (max-width: 766px){
+    .Navbar{
+        padding: 20px 20px 20px 20px;
+     
+    }
     #N-menu{
         display: flex;
         flex-direction: column;
@@ -122,4 +126,5 @@
        font-size: 24px;
        cursor: pointer;
     }
+  
 }
