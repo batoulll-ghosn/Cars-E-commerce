@@ -2,6 +2,7 @@ import React from 'react';
 import { ShoppingBag, Share2, Send, Youtube, Facebook, Instagram } from 'react-feather';
 import '../styles/footer.scss';
 import '../styles/test.css';
+import { Link } from 'react-router-dom';
 function Footer() {
  return (
    <footer className="footer">
@@ -42,9 +43,8 @@ function Footer() {
            </div>
       <div classname="thirdFooterColumn"> <ul className="footer__nav-list">
                <li className="footer__nav-item">
-                <div className='footer-buttons'><button className='Footer-login'>Login</button>
-                <button className='Footer-register'>Register</button></div>
-                
+                <div className='footer-buttons'><button className='Footer-login'><Link   style={{textDecoration:'none'}} className='Footer-login' to='/login'>Login</Link></button>
+                <button className='Footer-register'><Link to='/login' className='Footer-register' style={{textDecoration:'none'}}>Register</Link></button></div>
                </li>
              </ul></div>
     </div>
