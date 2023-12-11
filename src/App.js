@@ -8,10 +8,12 @@ import Footer from './components/mainComponents/Footer';
 import Dashboard from './components/dashboard/mainAdminDashboard';
 import Header from './components/mainComponents/Header';
 import Login from './components/mainComponents/Login';
+import { toast, Toaster } from "react-hot-toast";
 function App() {
   return (
     <Router>
       <div className="App">
+      <Toaster toastOptions={{ duration: 4000 }} />
         <Routes>
           {/* <Route path="/navbar" element={<NavBar/>} /> */}
           <Route path="/" element={ <> <NavBar/><Header/><About /><FAQ/><Footer/> </>} />
