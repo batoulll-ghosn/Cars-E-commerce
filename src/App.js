@@ -9,6 +9,7 @@ import Dashboard from './components/dashboard/mainAdminDashboard';
 import Header from './components/mainComponents/Header';
 import Login from './components/mainComponents/Login';
 import LatestCars from './components/mainComponents/LatestCars';
+import ContactPage from './components/mainComponents/ContactPage';
 function App() {
   return (
     <Router>
@@ -17,6 +18,7 @@ function App() {
           {/* <Route path="/navbar" element={<NavBar/>} /> */}
           <Route path="/" element={ <> <NavBar/><Header/><About/><LatestCars/><FAQ/><Footer/> </>} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/contactUs" element={<ContactPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
         </Routes>
