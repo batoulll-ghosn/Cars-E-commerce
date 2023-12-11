@@ -3,8 +3,8 @@
     background-size: cover;
     background-position: center;
     height: 100%;
-    position: absolute;
-    top: 12%;
+    position: fixed;
+    top: 11%;
     bottom: 0;
     right: 0;
     left: 0;
@@ -27,9 +27,6 @@
 
 
 }
-
-
-
 .contact-container-d h1 {
     color: #C92424;
     font-size: 60px;
@@ -52,6 +49,7 @@
     font-weight: 400;
     line-height: normal;
     resize: none;
+    border: 1px solid gray;
 
 }
 
@@ -65,6 +63,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    border: 1px solid gray;
 }
 
 .contact-container-d textarea::placeholder {
@@ -123,10 +122,10 @@
         background-size: cover;
         background-position: center;
         height: 100%;
-        position: absolute;
-        top: 11%;
-        
-    
+        position: fixed;
+    }
+    .unset-container{
+        position: unset;
     }
  
     .contact-container-d form {
@@ -155,13 +154,13 @@
     }
     
     .contact-container-d textarea::placeholder {
-        font-size: 30px;
-        font-weight: 400;
+        font-size: 20px;
+        font-weight: 300;
     }
     
     .contact-container-d input::placeholder {
-        font-size: 30px;
-        font-weight: 400;
+        font-size: 20px;
+        font-weight: 300;
     }
     
     .contact-container-d button {
