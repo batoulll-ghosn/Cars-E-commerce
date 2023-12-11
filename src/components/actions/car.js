@@ -1,35 +1,8 @@
 import axios from "axios";
-export const addCar = (
-  carName,
-  company,
-  type,
-  description,
-  initialPrice,
-  sellingPrice,
-  TVA,
-  discount,
-  quantity,
-  files,
-  DOR,
-  color
-) => {
-  const newCar = {
-    carName,
-    company,
-    type,
-    description,
-    initialPrice,
-    sellingPrice,
-    TVA,
-    discount,
-    quantity,
-    files,
-    DOR,
-    color,
-  };
+export const addCar = (data) => {
   return (dispatch) => {
     axios
-      .post(`http://localhost:5000/cars/addCar`, newCar)
+      .post(`http://localhost:5000/cars/addCar`, data)
       .then((response) => {
         const car = response.data.car;
         dispatch({
@@ -37,7 +10,9 @@ export const addCar = (
           payload: car,
         });
       })
-      .catch((error) => console.log("Failed to add car :", error.response.data));
+      .catch((error) =>
+        console.log("Failed to add car :", error.response.data)
+      );
   };
 };
 export const getAllCars = () => {
@@ -109,36 +84,12 @@ export const getAllCarsBySelector = (selector) => {
 };
 export const updateCar = (
   Id,
-  carName,
-  company,
-  type,
-  description,
-  initialPrice,
-  sellingPrice,
-  TVA,
-  discount,
-  quantity,
-  image,
-  DOR,
-  color
+ data
 ) => {
-  const updatedCar = {
-    carName,
-    company,
-    type,
-    description,
-    initialPrice,
-    sellingPrice,
-    TVA,
-    discount,
-    quantity,
-    image,
-    DOR,
-    color,
-  };
+  
   return (dispatch) => {
     axios
-      .put(`http://localhost:5000/cars/updateCar/${Id}`, updatedCar)
+      .put(`http://localhost:5000/cars/updateCar/${Id}`, data)
       .then((response) => {
         const car = response.data.car;
         dispatch({

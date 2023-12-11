@@ -10,7 +10,9 @@ function MainOfCustomers() {
  const [AddshowPopup, setAddShowPopup] = useState(false);
  const [UpdateshowPopup, setUpdateShowPopup] = useState(false);
  const [currentUser, setCurrentUser] = useState(null);
+ const [DeleteshowPopup, setDeleteShowPopup] = useState(false);
  const [passwordShown, setPasswordShown] = useState({});
+ const [showPassword, setShowPassword] = useState(false);
  const [formData, setFormData] = useState({
    fullName: '',
    phoneNumber: '',
@@ -18,7 +20,7 @@ function MainOfCustomers() {
    password: '',
    role: '',
  });
-
+ const [selectedUser, setSelectedUser] = useState(null);
  useEffect(() => {
  dispatch(getAllUsers());
  }, [dispatch]);
@@ -28,18 +30,27 @@ function MainOfCustomers() {
  setFormData(user);
  setUpdateShowPopup(true);
  };
-
- const handleDelete = (user) => {
- dispatch(deleteUser(user._id));
- };
-
  const handleAddClose = () => {
  setAddShowPopup(false);
  };
 const handleUpdateClose =() => {
     setUpdateShowPopup(false);
 }
-
+const OpendeletePop = (user) => {
+  setSelectedUser(user);
+  setDeleteShowPopup(true);
+ }
+ 
+ const handleDelete = () => {
+  if (selectedUser) {
+    dispatch(deleteUser(selectedUser._id));
+    setSelectedUser(null);
+    setDeleteShowPopup(false);
+  }
+ };
+const ClosedeletePop =() =>{
+  setDeleteShowPopup(false);
+}   
  const handlePasswordVisibility = (user) => {
  setPasswordShown({
    ...passwordShown,
@@ -82,29 +93,47 @@ const handleUpdateClose =() => {
       {AddshowPopup && (
          <form onSubmit={handleSubmit}>
          <div className='cur-addpopup'>
-           <div className='cur-addpopup-head'><h2>Add a User</h2><span className='cr-addpopup-close' onClick={handleAddClose}> &times;</span></div>
-           <div className='cur-addpopup-first'>
-             <input type='text' placeholder=' Full Name' name='fullName' onChange={handleChange}/>
-           </div>
-           <hr className='cur-horizontal-line'></hr>
-           <div className='cur-addpopup-first'>
-             <input type='text' placeholder=' Email' name='email' onChange={handleChange}/>
-           </div>
-           <hr className='cur-horizontal-line'></hr>
-           <div className='cur-addpopup-first'>
-             <input type='text' placeholder=' Phone Number' name='phoneNumber' onChange={handleChange}/>
-           </div>
-           <hr className='cur-horizontal-line'></hr>
-           <div className='cur-addpopup-first'>
-             <input type='text' placeholder=' Password' name='password' onChange={handleChange}/>
-           </div>
-           <hr className='cur-horizontal-line'></hr>
-           <div className='cur-addpopup-first'>
-             <input type='text' placeholder=' Role' name='role' onChange={handleChange}/>
-           </div>
-           <div><button className='cr-addcar-buttonn' type='submit'>Add</button></div>
+             <div className='cur-addpopup-head'>
+                 <h2>Add a User</h2>
+                 <span className='cr-addpopup-close' onClick={handleAddClose}> &times;</span>
+             </div>
+             <div className='cur-addpopup-first'>
+                 <input type='text' placeholder=' Full Name' name='fullName' onChange={handleChange}/>
+             </div>
+             <hr className='cur-horizontal-line'></hr>
+             <div className='cur-addpopup-first'>
+                 <input type='text' placeholder=' Email' name='email' onChange={handleChange}/>
+             </div>
+             <hr className='cur-horizontal-line'></hr>
+             <div className='cur-addpopup-first'>
+                 <input type='text' placeholder=' Phone Number' name='phoneNumber' onChange={handleChange}/>
+             </div>
+             <hr className='cur-horizontal-line'></hr>
+             <div className='cur-addpopup-first'>
+                 <input 
+                     type={showPassword ? 'text' : 'password'} 
+                     placeholder=' Password' 
+                     name='password' 
+                     onChange={handleChange}
+                 />
+                <button 
+                    onClick={(event) => {
+                        event.preventDefault();
+                        setShowPassword(!showPassword);
+                    }}
+                  >
+                    {showPassword ? 'Hide' : 'Show'}
+                  </button>
+
+             </div>
+             <hr className='cur-horizontal-line'></hr>
+             <div className='cur-addpopup-first'>
+                 <input type='text' placeholder=' Role' name='role' onChange={handleChange}/>
+             </div>
+             <div><button className='cr-addcar-buttonn' type='submit'>Add</button></div>
          </div>
-        </form>
+      </form>
+      
         
      )}
      {UpdateshowPopup && (
@@ -127,17 +156,18 @@ const handleUpdateClose =() => {
      </div>
      <hr className='cur-horizontal-line'></hr>
      <div className='cur-addpopup-first'>
-       <input type='text' placeholder=' Password' name='password' value={formData.password} onChange={handleChange}/>
-     </div>
-     <hr className='cur-horizontal-line'></hr>
-     <div className='cur-addpopup-first'>
        <input type='text' placeholder=' Role' name='role' value={formData.role} onChange={handleChange}/>
      </div>
      <div><button className='cr-addcar-buttonn' type='submit'>Done</button></div>
    </div>
  </form>
 )}
-
+{(DeleteshowPopup && <div className='cr-deletepopup'><div className='cr-deletepopup-head'>
+                 <h2>Are You Sure You want to Delete?</h2>
+                 <span className='cr-deletepopup-close' onClick={ClosedeletePop}> &times;</span>
+             </div>
+       <div className='yesNoButtons'><button className='cr-nodelete' onClick={ClosedeletePop}>No, Thank You!</button><button className='cr-yesDelete' onClick={handleDelete}>Yes PLease</button></div> 
+        </div>)}
       <div className='cur-third-main'><div className='cur-third-div-table'>
         <table className='cur-third-table'>
           <thead>
@@ -156,12 +186,12 @@ const handleUpdateClose =() => {
                <td>{user.email}</td>
                <td>
                 {passwordShown[user._id] ? user.password : '*************'}
-                <button onClick={() => handlePasswordVisibility(user)}>Show/Hide</button>
+         
                </td>
                <td>{user.role}</td>
                <td>
-                <button onClick={() => handleUpdate(user)}>Update</button>
-                <button onClick={() => handleDelete(user)}>Delete</button>
+               <img className='crMn-carUpdate' src='./images/pen-square-svgrepo-com (1).svg'onClick={() => handleUpdate(user)}/>
+               <img className='crMn-carDelete' src='./images/bin-svgrepo-com (1).svg' onClick={() => OpendeletePop(user)}/>
                </td>
               </tr>
             ))}
