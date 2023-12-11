@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState} from "react";
 import NavBar from "./NavBar";
 import Footer from "../mainComponents/Footer";
 import "../styles/carsPage.css";
@@ -15,51 +15,31 @@ import {
 const CarsPage = () => {
   const [selector, setSelector] = useState("");
   const [search, setSearch] = useState("");
-  let cars = useSelector((state) => state.cars);
+  const cars = useSelector((state) => state.cars);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllCars());
-    
   }, [dispatch]);
-  console.log(cars[cars.length-1])
-  const lastElement=cars[cars.length-1];
-  let newCars = [];
-  let car = [];
+
+  if (selector === "all") {
+    dispatch(getAllCars());
+  }
+
   const handleSearch = (e) => {
     e.preventDefault();
-    
-    cars.forEach((element) => {
-      if (selector == "type") {
-        if (!car.includes(element.type)) car.push(element.type);
-      } else if (selector == "carName") {
-        if (!car.includes(element.carName)) car.push(element.carName);
-      } else if (selector == "DOR") {
-        if (!car.includes(element.DOR)) car.push(element.DOR);
-      } else if (selector == "company") {
-        if (!car.includes(element.company)) car.push(element.company);
-      } else if (selector == "color") {
-        if (!car.includes(element.color)) car.push(element.color);
-      }
-    });
-
-    if (selector == "type") {
-     dispatch(getCarsByType(search))
-      
-      // console.log(cars)
-    }else if (selector == "all") {
-      dispatch(getAllCars())
-      
-    } else if (selector == "carName") {
-      dispatch(getCarByName(search))
-      
-    } else if (selector == "company") {
-      dispatch(getCarsByCompany)(search)
-    } else if (selector == "color") {
-     dispatch(GetCarsByColor(search))
+    if (selector === "all") {
+      dispatch(getAllCars());
+    } else if (selector === "type") {
+      dispatch(getCarsByType(search));
+    } else if (selector === "carName") {
+      dispatch(getCarByName(search));
+    } else if (selector === "company") {
+      dispatch(getCarsByCompany(search));
+    } else if (selector === "color") {
+      dispatch(GetCarsByColor(search));
     }
-    // console.log(newCars);
-    
+    setSearch("");
   };
 
   return (
@@ -109,21 +89,7 @@ const CarsPage = () => {
               alt="lamborghini"
             />
           </div>
-          <div className="cars-search-bar">
-            <input
-              className="cars-search-bar-input"
-              placeholder="Search..."
-              type="text"
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <img
-              className="cars-search-icon"
-              src="/images/search-5-svgrepo-com.svg"
-              onClick={(e) => handleSearch(e)}
-
-            />
-          </div>
-          <div >
+          <div>
             <select
               id="cars-select-Dropdown"
               className="cars-filter-by"
@@ -139,43 +105,39 @@ const CarsPage = () => {
               <option value="color">Color</option>
             </select>
           </div>
+          <div className="cars-search-bar">
+            <input
+              className="cars-search-bar-input"
+              placeholder="Search..."
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <img
+              className="cars-search-icon"
+              src="/images/search-5-svgrepo-com.svg"
+              onClick={(e) => handleSearch(e)}
+            />
+          </div>
         </div>
         <div className="cars-allcars">
-          { Array.isArray(lastElement) ?(
-          lastElement.map((car) => ( 
-            <div key={car._id} className="cars-card">
-              <img
-                src={car.files[0]}
-                className="cars-image"
-                alt="jeep purple"
-              />
-              
-              <button
-                className="cars-shop-now"
-              >
-                Shop Now
-              </button>
+          {Array.isArray(cars) && cars.length > 0 ? (
+            cars.map((car) => (
+              <div key={car._id} className="cars-card">
+                <img
+                  src={car.files[0]}
+                  className="cars-image"
+                  alt="jeep purple"
+                />
+                <h1 className="cars-car-name">{car.carName}</h1>
+                <button className="cars-shop-now">View More</button>
+              </div>
+            ))
+          ) : (
+            <div className="cars-card">
+              <p>No cars found</p>
             </div>
-          ))
-          ):cars.map((car) => ( 
-                <div key={car._id} className="cars-card">
-                  <img
-                    src={car.files[0]}
-                    className="cars-image"
-                    alt="jeep purple"
-                  />
-                  <h1
-                  className="cars-car-name">
-                    {car.carName}
-                  </h1>
-                  <button
-                    className="cars-shop-now"
-                    // onClick={}
-                  >
-                    View More
-                  </button>
-                </div>
-              ))}
+          )}
         </div>
       </div>
       <Footer />
