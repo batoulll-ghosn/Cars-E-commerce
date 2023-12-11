@@ -5,8 +5,17 @@ const CarViewer = () => {
     
   return (
     <div>
+      <div className='viewer-nav'>
        <a className='N-logo' href="/">DriveEpic</a>
-      <h1> Test</h1>
+       <button className='viewer-search'>
+        Search
+       </button>
+       </div>
+       <div className='viewer-3d-viewer'>
+        
+       </div>
+
+      
 
     </div>
   )

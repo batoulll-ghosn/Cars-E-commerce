@@ -1,0 +1,22 @@
+.viewer-nav{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    padding: 1%;
+}
+.N-logo{
+    text-decoration: none;
+    color: #000;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.viewer-search{
+    background: #C92424;
+    color: white;
+    padding: 1%;
+    border-radius: 10px;
+    border: none;
+}
