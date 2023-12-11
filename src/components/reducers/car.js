@@ -8,10 +8,13 @@ const carReducer=(state=[],action)=>{
             return state.filter((car)=>car.company===action.payload);
         case 'GetCarsByColor':
             return state.filter((car)=>car.color===action.payload);
-        case 'getCarsByType':
-            return state.filter((car)=>car.type===action.payload);
+        case 'getCarsByType':{
+            //console.log([...state,state.filter((car)=>car.type===action.payload)])
+            const cars=state.filter((car)=>car.type===action.payload)
+            return [...state,cars];
+        }
         case 'getAllCarsBySelector':
-            return state.map((car)=>car.action.payload);
+            return state.map((car)=>[...car,car.action.payload]);
         case 'addCar':
             return [...state,action.payload];
         case 'deleteCar':
