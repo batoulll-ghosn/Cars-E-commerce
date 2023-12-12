@@ -44,34 +44,61 @@ export const removeCar = (Id) => {
 };
 export const getCarByName = (carName) => {
   return (dispatch) => {
-    dispatch({
-      type: "getCarByName",
-      payload: carName,
-    });
+    axios
+      .get("http://localhost:5000/cars/getAll")
+      .then((response) => {
+        let cars = response.data.cars;
+        dispatch({
+          type: "getCarByName",
+          payload: {carName,cars}
+        });
+      })
+      .catch((error) => console.log("Failed to fetch data :", error));
   };
 };
 export const getCarsByCompany = (company) => {
   return (dispatch) => {
-    dispatch({
-      type: "getCarsByCompany",
-      payload: company,
-    });
+    axios
+      .get("http://localhost:5000/cars/getAll")
+      .then((response) => {
+        let cars = response.data.cars;
+        dispatch({
+          type: "getCarsByCompany",
+          payload: {company,cars},
+        });
+      })
+      .catch((error) => console.log("Failed to fetch data :", error));
+   
   };
 };
 export const GetCarsByColor = (color) => {
   return (dispatch) => {
-    dispatch({
-      type: "GetCarsByColor",
-      payload: color,
-    });
+    axios
+      .get("http://localhost:5000/cars/getAll")
+      .then((response) => {
+        let cars = response.data.cars;
+        dispatch({
+          type: "GetCarsByColor",
+          payload: {color,cars},
+        });
+      })
+      .catch((error) => console.log("Failed to fetch data :", error));
+    
   };
 };
 export const getCarsByType = (type) => {
   return (dispatch) => {
-    dispatch({
-      type: "getCarsByType",
-      payload: type,
-    });
+    axios
+      .get("http://localhost:5000/cars/getAll")
+      .then((response) => {
+        let cars = response.data.cars;
+        dispatch({
+          type: "getCarsByType",
+          payload: {type,cars},
+        });
+      })
+      .catch((error) => console.log("Failed to fetch data :", error));
+
   };
 };
 export const getAllCarsBySelector = (selector) => {
@@ -100,3 +127,4 @@ export const updateCar = (
       .catch((error) => console.log("Failed to update the car :", error));
   };
 };
+
