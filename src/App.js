@@ -12,10 +12,14 @@ import LatestCars from './components/mainComponents/LatestCars';
 import CarsPage from './components/mainComponents/CarsPage';
 import CarViewer from './components/mainComponents/CarViewer';
 import ContactPage from './components/mainComponents/ContactPage';
+import { toast, Toaster } from "react-hot-toast";
+
+
 function App() {
   return (
     <Router>
       <div className="App">
+      <Toaster toastOptions={{ duration: 5000 }} />
         <Routes>
           {/* <Route path="/navbar" element={<NavBar/>} /> */}
           <Route path="/" element={ <> <NavBar/><Header/><About/><LatestCars/><FAQ/><Footer/> </>} />
@@ -26,6 +30,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
         </Routes>
+        
       </div>
     </Router>
   );
