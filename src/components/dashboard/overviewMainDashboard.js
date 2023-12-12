@@ -6,7 +6,7 @@ import {getAllCars} from '../actions/car';
 import userEvent from '@testing-library/user-event';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-
+import { getAllUsers} from '../actions/user';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -17,9 +17,11 @@ ChartJS.register(
 );
 function OverView() {
     const cars = useSelector((state) => state.cars);
+    const users = useSelector((state) => state.users)
  const dispatch=useDispatch()
  useEffect(() => {
  dispatch(getAllCars());
+ dispatch(getAllUsers());
  },[])
  const dataValues = [1552, 1019, 213, 600,1552, 1019, 213, 600,1552, 1019, 213, 600];
   const total = dataValues.reduce((a, b) => a + b, 0);
@@ -64,7 +66,7 @@ function OverView() {
              <div className='ov-second'>
                 <div className='ov-second-customers'>
                     <div className='ov-second-img'><img src='./images/revenue.svg'/></div>
-                    <div className='ov-second-textContent'><p className='ov-second-textContent-p'>{cars.length}</p><p className='ov-second-textContent-pp'>CUSTOMERS</p></div>
+                    <div className='ov-second-textContent'><p className='ov-second-textContent-p'>{users.length}</p><p className='ov-second-textContent-pp'>CUSTOMERS</p></div>
                 </div>
                 <div className='ov-second-revenue'>
                     <div className='ov-second-img'><img src='./images/people.svg'/></div>

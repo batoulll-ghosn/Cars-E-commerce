@@ -1,21 +1,38 @@
 .cr-third{
     margin-top: 20px;
 }
+.last-one-in-cars{
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+}
+.the-tbody-cars {
+    overflow-y: auto;
+    height: 400px;
+  }
 .cr-third-main{
     display: flex;
     flex-direction: row;
     column-gap: 30px;
 }
 .cr-third-div-table{
-    width:100%;
+    width:98%;
     background-color: white;
     border-radius:5px;
     margin-top: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow-y: auto;
+    height: 400px;
 }
 .cr-third-table{
     width: 100%;
     font-size: 24px;
+}
+.cr-third-tableee{
+    width: 100%;
+    font-size: 24px;
+    overflow-y: scroll;
+    height: 400px;
 }
 .cr-third-table thead{
     background-color: #DFDFDF;
@@ -44,6 +61,11 @@
 .cr-addpopup-close{
     cursor: pointer;
     font-size: 30px;
+}
+.cr-addpopup-closee{
+    cursor: pointer;
+    font-size: 30px;
+    margin-left: 150px;
 }
 .cr-addcar-button{
     cursor: pointer;
@@ -80,7 +102,7 @@
     background-color: #DFDFDF;
     border-radius: 8px;
     border: 0px;
-    width: 650px;
+    width: 830px;
 }
 .cr-addpopup-first input {
     background-color: #DFDFDF;

@@ -13,5 +13,8 @@
     text-align: center;
 }
 .or-div-table{
+    width: 98%;
     background-color: white;
+    overflow-y: auto;
+    height: 400px;
 }
