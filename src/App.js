@@ -10,6 +10,7 @@ import Header from './components/mainComponents/Header';
 import Login from './components/mainComponents/Login';
 import LatestCars from './components/mainComponents/LatestCars';
 import ContactPage from './components/mainComponents/ContactPage';
+import SellerDashboard from './components/seller-dashboard/SellerDashboard';
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
           <Route path="/contactUs" element={<ContactPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/sellerDashboard" element={<SellerDashboard />} />
         </Routes>
       </div>
     </Router>

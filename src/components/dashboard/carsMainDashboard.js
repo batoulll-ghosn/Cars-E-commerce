@@ -3,7 +3,6 @@ import "../styles/carsOfDash.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getAllCars, addCar, removeCar, updateCar } from "../actions/car";
-import userEvent from "@testing-library/user-event";
 import axios from "axios";
 
 function MainOfCars() {

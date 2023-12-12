@@ -2,7 +2,6 @@ import { React, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getAllCars } from '../actions/car';
-import userEvent from "@testing-library/user-event";
 import '../styles/discount.css';
 import ReactPaginate from 'react-paginate';
 
