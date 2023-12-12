@@ -4,6 +4,7 @@ import Footer from "../mainComponents/Footer";
 import "../styles/carsPage.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import oops from '../styles/oops.svg';
 import {
   getAllCars,
   getCarsByCompany,
@@ -120,9 +121,10 @@ const CarsPage = () => {
             />
           </div>
         </div>
-        <div className="cars-allcars">
+        
           {Array.isArray(cars) && cars.length > 0 ? (
-            cars.map((car) => (
+            <div className="cars-allcars">
+            {cars.map((car) => (
               <div key={car._id} className="cars-card">
                 <img
                   src={car.files[0]}
@@ -132,13 +134,16 @@ const CarsPage = () => {
                 <h1 className="cars-car-name">{car.carName}</h1>
                 <button className="cars-shop-now">View More</button>
               </div>
-            ))
+              
+            ))}
+            </div>
           ) : (
-            <div className="cars-card">
-              <p>No cars found</p>
+            <div className="cars-not-found">
+                <img src={oops} className="oops-car"/>
+                <h2>OOPS!!No cars found</h2>
             </div>
           )}
-        </div>
+        
       </div>
       <Footer />
     </div>
