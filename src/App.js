@@ -9,13 +9,14 @@ import Dashboard from './components/dashboard/mainAdminDashboard';
 import Header from './components/mainComponents/Header';
 import Login from './components/mainComponents/Login';
 import LatestCars from './components/mainComponents/LatestCars';
+import Testimonial from './components/mainComponents/Carousel';
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
           {/* <Route path="/navbar" element={<NavBar/>} /> */}
-          <Route path="/" element={ <> <NavBar/><Header/><About/><LatestCars/><FAQ/><Footer/> </>} />
+          <Route path="/" element={ <> <NavBar/><Header/><About/><LatestCars/><FAQ/><Testimonial /><Footer/> </>} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />

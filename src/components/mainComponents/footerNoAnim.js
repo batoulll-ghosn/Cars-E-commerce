@@ -2,21 +2,10 @@ import React from 'react';
 import { ShoppingBag, Share2, Send, Youtube, Facebook, Instagram } from 'react-feather';
 import '../styles/footer.scss';
 import '../styles/test.css';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 function Footer() {
-  const navigate=useNavigate();
-  const handleClick = () =>{
-    navigate('/login');
-  }
  return (
    <footer className="footer">
-     <div className="footer__parralax">
-       <div className="footer__parralax-trees"></div>
-       <div className="footer__parralax-moto"></div>
-       <div className="footer__parralax-secondplan"></div>
-       <div className="footer__parralax-premierplan"></div>
-       <div className="footer__parralax-voiture"></div>
-     </div>
     <div className="container">
       <div className="footerFlexContainer">
         <div className="firstFooterColumn"> <h3 className="footer__col-title">
@@ -35,7 +24,7 @@ function Footer() {
              <Share2 /> <span>Social Media</span>
            </h3>
            <div className='footer__socialmedia'>
-           <svg className='footer_svg'  xmlns="http://www.w3.org/2000/svg" width="42" height="46" viewBox="0 0 42 46" fill="none">
+           <svg className='footer_svg'  xmlns="http://www.w3.org/2000/svg" width="45" height="46" viewBox="0 0 42 46" fill="none">
                 <ellipse cx="20.641" cy="23" rx="20.641" ry="23" fill="white"/>
                 <path d="M22.5 0C10.0734 0 0 10.2973 0 23C0 35.7027 10.0734 46 22.5 46C34.9266 46 45 35.7027 45 23C45 10.2973 34.9266 0 22.5 0ZM27.8297 15.894H24.4477C24.0469 15.894 23.6016 16.433 23.6016 17.1494V19.6458H27.832L27.1922 23.206H23.6016V33.8939H19.6102V23.206H15.9891V19.6458H19.6102V17.5519C19.6102 14.5475 21.6492 12.1061 24.4477 12.1061H27.8297V15.894Z" fill="#C92424"/>
          </svg>
@@ -47,8 +36,8 @@ function Footer() {
            </div>
       <div classname="thirdFooterColumn"> <ul className="footer__nav-list">
                <li className="footer__nav-item">
-                <div className='footer-buttons'><button className='Footer-login' onClick={handleClick}>Login</button>
-                <button className='Footer-register' onClick={handleClick}>Register</button></div>
+                <div className='footer-buttons'><button className='Footer-login'><Link   style={{textDecoration:'none'}} className='Footer-login' to='/login'>Login</Link></button>
+                <button className='Footer-register'><Link to='/login' className='Footer-register' style={{textDecoration:'none'}}>Register</Link></button></div>
                </li>
              </ul></div>
     </div>

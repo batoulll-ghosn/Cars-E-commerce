@@ -31,14 +31,33 @@
     height: 40px;
     border-radius: 10px;
 }
+.Footer-login:hover{
+  color: #C92424;
+    background-color: #fff;
+    border-color: #fff;
+    font-size: 20px;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 .Footer-register{
   color: #C92424;
-  border-color: #C92424;
+  /*border-color: #C92424;*/
   height: 40px;
   font-size: 20px;
   border-radius: 10px;
 }
-
+.Footer-register:hover {
+  color: #fff;
+  /*border-color: #fff;*/
+  height: 40px;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: #C92424;
+  cursor: pointer;
+}
 .footer__nav-list{
   list-style-type: none;
   margin-left: 20px;
@@ -49,7 +68,7 @@
  padding: 3rem 0; 
  color: #fff;
  background : #000;
- margin-top: 280px;
+ margin-top: 380px;
 }
 
 .footer__columns{
