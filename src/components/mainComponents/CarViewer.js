@@ -18,15 +18,22 @@ const CarViewer = () => {
         Search
        </button>
        </div>
+       <h2 className='viewer-car-price'>$45000 </h2>
+       <div className='viewer-title-3d'>
+
+       <div className='viewer-title'>
+        <h1 className='viewer-car-name-title'>Mercedes</h1>
+       </div>
        <div className='viewer-3d-viewer'>
-        <Canvas dpr={[1,2]} camera={{fov: 50}} style={{"position": "relative"}}>
-          <color attach="background" args={["#D9D9D9"]} />
+        <Canvas dpr={[1,2]} camera={{fov: 50}} style={{"position": "relative"}} shadows>
+          {/* <color attach="background" args={["#D9D9D9"]} /> */}
           <PresentationControls speed={3.5} global zoom={.5} polar={[-0.1, Math.PI / 4]} >
-            <Stage environment={"night"}>
+            <Stage environment={"sunset"}>
               <Model  scale={0.6} />
             </Stage>
           </PresentationControls>
         </Canvas>
+       </div>
        </div>
        
        <div className='viewer-all-infos'>
