@@ -4,7 +4,7 @@ import { Canvas } from '@react-three/fiber';
 import { useGLTF, Stage, PresentationControls } from '@react-three/drei';
 
 function Model(props) {
-  const { scene } = useGLTF("/audi_rs7_2014.glb");
+  const { scene } = useGLTF("/peugeot_3008.glb");
   return <primitive object={scene} {...props}/>
 }
 
@@ -22,14 +22,14 @@ const CarViewer = () => {
        <div className='viewer-title-3d'>
 
        <div className='viewer-title'>
-        <h1 className='viewer-car-name-title'>Mercedes</h1>
+        <h1 className='viewer-car-name-title'>Audi</h1>
        </div>
        <div className='viewer-3d-viewer'>
-        <Canvas dpr={[1,2]} camera={{fov: 50}} style={{"position": "relative"}} shadows>
+        <Canvas dpr={[1,2]} camera={{fov: 45}} style={{"position": "relative"}} shadows>
           {/* <color attach="background" args={["#D9D9D9"]} /> */}
           <PresentationControls speed={3.5} global zoom={.5} polar={[-0.1, Math.PI / 4]} >
             <Stage environment={"sunset"}>
-              <Model  scale={0.6} />
+              <Model  scale={.4} />
             </Stage>
           </PresentationControls>
         </Canvas>
