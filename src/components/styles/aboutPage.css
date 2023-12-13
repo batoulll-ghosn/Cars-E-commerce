@@ -1,10 +1,8 @@
 .about-p-c {
     display: flex;
     flex-direction: column;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    margin-left: 2%;
-    margin-right: 2%;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .about-p-c h1 {
@@ -82,6 +80,9 @@
     }
 }
 @media screen and (min-width:767px) and (max-width:1023px){
+    .about-p-c{
+        width: 95%;
+    }
     .about-p-c h1 {
         color: #C92424;
         font-size: 60px;

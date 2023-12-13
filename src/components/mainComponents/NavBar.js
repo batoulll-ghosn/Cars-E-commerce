@@ -11,7 +11,7 @@ const NavBar = () => {
   return (
     <div>
       <nav className="Navbar">
-        <a className='N-logo' href="index.html">DriveEpic</a>
+        <a className='N-logo' href="/">DriveEpic</a>
       <div>
         <ul id='N-menu' className={clicked ? "#N-menu active" : "#N-menu"} >
             <li className='N-menu-items'>

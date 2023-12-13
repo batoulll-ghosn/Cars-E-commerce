@@ -1,0 +1,73 @@
+.carousel .control-dots {
+    position: absolute;
+    bottom: 0;
+    margin: 10px 0;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+    display: none;
+}
+.carousel .carousel-status {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    font-size: 10px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
+    color: #fff;
+    display: none;
+}
+.testimonial-hr-line{
+    color: #C92424;
+    background-color: #C92424;
+    border-color: #C92424;
+}
+.testimonial-carousel-div{
+    background: #E1E1E1;
+    border-radius: 10px;
+    width:'350px';margin-left:'380px';
+}
+.carousel-in-phone{
+    display: none;
+}
+.mn-tahet{
+    margin-bottom: 100px;
+    margin-top: 65px;
+}
+.carousel-in-ipad{
+    display: none;
+}
+@media (max-width: 1024px){
+    .carousel-in-dashboard{
+        display: none;
+    }
+    .carousel-in-phone{
+        display: none;
+    }
+    .carousel-in-ipad{
+        display: block;
+    }
+}
+@media (max-width: 766px){
+    .carousel-in-dashboard{
+        display: none;
+    }
+    .carousel-in-phone{
+        display: block;
+    }
+    .carousel-in-ipad{
+        display: none;
+    }
+}
+@media (max-width: 820px){
+    .carousel-in-dashboard{
+        display: none;
+    }
+    .carousel-in-phone{
+        display: block;
+    }
+    .carousel-in-ipad{
+        display: none;
+    }
+}
