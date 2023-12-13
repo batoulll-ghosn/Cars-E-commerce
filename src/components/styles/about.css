@@ -12,13 +12,14 @@
 }
 .as-title{
     color:#C92424;
-    font-size: 45px;
+    font-size: 60px;
     margin: auto;
 }
 .as-text{
     font-size:25px;
     margin:auto;
     width:fit-content;
+    text-align: justify;
     text-align: justify;
     text-align: justify;
 }
@@ -49,6 +50,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+    .as-imageOfAbout{
+        width: 100%;
     }
     .as-imageOfAbout{
         width: 100%;

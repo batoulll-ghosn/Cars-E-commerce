@@ -1,35 +1,8 @@
 import axios from "axios";
-export const addCar = (
-  carName,
-  company,
-  type,
-  description,
-  initialPrice,
-  sellingPrice,
-  TVA,
-  discount,
-  quantity,
-  files,
-  DOR,
-  color
-) => {
-  const newCar = {
-    carName,
-    company,
-    type,
-    description,
-    initialPrice,
-    sellingPrice,
-    TVA,
-    discount,
-    quantity,
-    files,
-    DOR,
-    color,
-  };
+export const addCar = (data) => {
   return (dispatch) => {
     axios
-      .post(`http://localhost:5000/cars/addCar`, newCar)
+      .post(`http://localhost:5000/cars/addCar`, data)
       .then((response) => {
         const car = response.data.car;
         dispatch({
@@ -37,7 +10,9 @@ export const addCar = (
           payload: car,
         });
       })
-      .catch((error) => console.log("Failed to add car :", error.response.data));
+      .catch((error) =>
+        console.log("Failed to add car :", error.response.data)
+      );
   };
 };
 export const getAllCars = () => {
@@ -69,34 +44,61 @@ export const removeCar = (Id) => {
 };
 export const getCarByName = (carName) => {
   return (dispatch) => {
-    dispatch({
-      type: "getCarByName",
-      payload: carName,
-    });
+    axios
+      .get("http://localhost:5000/cars/getAll")
+      .then((response) => {
+        let cars = response.data.cars;
+        dispatch({
+          type: "getCarByName",
+          payload: {carName,cars}
+        });
+      })
+      .catch((error) => console.log("Failed to fetch data :", error));
   };
 };
 export const getCarsByCompany = (company) => {
   return (dispatch) => {
-    dispatch({
-      type: "getCarsByCompany",
-      payload: company,
-    });
+    axios
+      .get("http://localhost:5000/cars/getAll")
+      .then((response) => {
+        let cars = response.data.cars;
+        dispatch({
+          type: "getCarsByCompany",
+          payload: {company,cars},
+        });
+      })
+      .catch((error) => console.log("Failed to fetch data :", error));
+   
   };
 };
 export const GetCarsByColor = (color) => {
   return (dispatch) => {
-    dispatch({
-      type: "GetCarsByColor",
-      payload: color,
-    });
+    axios
+      .get("http://localhost:5000/cars/getAll")
+      .then((response) => {
+        let cars = response.data.cars;
+        dispatch({
+          type: "GetCarsByColor",
+          payload: {color,cars},
+        });
+      })
+      .catch((error) => console.log("Failed to fetch data :", error));
+    
   };
 };
 export const getCarsByType = (type) => {
   return (dispatch) => {
-    dispatch({
-      type: "getCarsByType",
-      payload: type,
-    });
+    axios
+      .get("http://localhost:5000/cars/getAll")
+      .then((response) => {
+        let cars = response.data.cars;
+        dispatch({
+          type: "getCarsByType",
+          payload: {type,cars},
+        });
+      })
+      .catch((error) => console.log("Failed to fetch data :", error));
+
   };
 };
 export const getAllCarsBySelector = (selector) => {
@@ -109,36 +111,12 @@ export const getAllCarsBySelector = (selector) => {
 };
 export const updateCar = (
   Id,
-  carName,
-  company,
-  type,
-  description,
-  initialPrice,
-  sellingPrice,
-  TVA,
-  discount,
-  quantity,
-  image,
-  DOR,
-  color
+ data
 ) => {
-  const updatedCar = {
-    carName,
-    company,
-    type,
-    description,
-    initialPrice,
-    sellingPrice,
-    TVA,
-    discount,
-    quantity,
-    image,
-    DOR,
-    color,
-  };
+  
   return (dispatch) => {
     axios
-      .put(`http://localhost:5000/cars/updateCar/${Id}`, updatedCar)
+      .put(`http://localhost:5000/cars/updateCar/${Id}`, data)
       .then((response) => {
         const car = response.data.car;
         dispatch({
@@ -149,3 +127,4 @@ export const updateCar = (
       .catch((error) => console.log("Failed to update the car :", error));
   };
 };
+
