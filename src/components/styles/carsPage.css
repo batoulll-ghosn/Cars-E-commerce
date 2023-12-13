@@ -106,3 +106,21 @@
 
 
 
+.cars-suggestions {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cars-suggestions option {
+    padding: 5px;
+  }
+  
+  .cars-suggestions:hover,
+  .cars-suggestions:focus {
+    border-color: DodgerBlue;
+  }

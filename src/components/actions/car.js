@@ -109,6 +109,7 @@ export const getAllCarsBySelector = (selector) => {
     });
   };
 };
+
 export const updateCar = (
   Id,
  data
