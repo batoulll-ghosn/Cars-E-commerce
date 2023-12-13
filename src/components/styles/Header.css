@@ -1,0 +1,165 @@
+.Header{
+    background-image: url('header e commerce3.jpg');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 695px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-evenly;
+    flex-wrap: wrap; 
+}
+
+.h-main-title{
+    display: flex;
+    flex-direction: column;
+    right: 150px;
+    position: relative;
+    top: 20px;
+}
+.h-title{
+    color: #ffffff;
+font-size: 100px;
+font-style: normal;
+font-weight: 600;
+line-height: 130px;
+text-transform: uppercase;
+
+}
+.h-perfect{
+    color: #C92424;
+font-family: Poppins;
+font-size: 100px;
+font-style: normal;
+font-weight: 600;
+line-height: 100px;
+text-transform: uppercase;
+
+}
+
+.h-description{
+    color: #FFF;
+font-family: Poppins;
+font-size: 30px;
+font-style: normal;
+font-weight: 500;
+line-height: 52px; 
+right: 150px;
+    position: relative;
+}
+
+.h-buttons{
+  display: flex;
+  gap: 15px;
+  right: 150px;
+    position: relative;
+    bottom: 60px;
+   
+}
+
+.h-exploremore-btn{
+    border-radius: 10px;
+    background: #C92424;
+    color: #FFF;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    cursor: pointer;
+    width: 200px;
+}
+.h-exploremore-btn:hover{
+    background: none;
+    border: 4px solid #C92424;
+}
+
+.h-register-btn{
+    border-radius: 10px;
+    border: 4px solid #C92424;
+    color: #FFF;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 52px;
+    cursor: pointer;
+    background: none;
+    width: 200px;
+}
+.h-register-btn:hover{
+    background: #C92424;
+    
+}
+/*Tablet*/
+@media screen and (min-width:767px) and (max-width:1023px){
+    .Header{
+        background-size: auto;
+    }
+    .h-main-title{
+        position: inherit;
+        margin-left: 110px;
+        margin-top: 20px;
+     
+    }
+    .h-description{
+        right: 0px;
+        display: flex;
+        justify-content: center;
+    }
+    .h-buttons{
+        right: 0px;
+    display: flex;
+    justify-content: center;
+    bottom: 0px;
+    }
+ 
+}
+
+
+/*Phone*/
+@media (max-width: 766px){
+    .Header{
+        background-image: url('header e commerce6.jpg');
+        background-size: cover;
+        height: 580px;
+    }
+    .h-main-title{
+        top: 8px;
+        right: 0px;
+        margin-left: 30px;
+        position: unset;
+    }
+  
+
+    .h-title{
+        font-size: 60px;
+        color: #ffffff;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 55px;
+}
+.h-perfect{
+    font-size: 60px;
+    line-height: 55px;
+}
+.h-description{
+    font-size: 20px;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    line-height: 25px;    
+}
+.h-buttons{
+    display: flex;
+    gap: 15px;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    right: 20px;
+    bottom: 35px;
+}
+.h-exploremore-btn{
+    padding: 11px
+}
+}
