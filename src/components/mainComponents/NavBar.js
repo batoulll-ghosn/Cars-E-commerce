@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/NavBar.css';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     const [clicked, setclicked] = useState(false);
@@ -11,28 +12,28 @@ const NavBar = () => {
   return (
     <div>
       <nav className="Navbar">
-        <a className='N-logo' href="index.html">DriveEpic</a>
+        <a className='N-logo' href="/">DriveEpic</a>
       <div>
         <ul id='N-menu' className={clicked ? "#N-menu active" : "#N-menu"} >
             <li className='N-menu-items'>
-                <a className='N-menu-tag active' href="#">Home
-                </a>
+                <Link className='N-menu-tag active' to="/">Home
+                </Link>
                 </li>
             <li className='N-menu-items'>
-                <a className='N-menu-tag' href="#">About us
-                </a>
+                <Link className='N-menu-tag' to="/about">About us
+                </Link>
                 </li>
             <li className='N-menu-items'>
-                <a className='N-menu-tag' href="#">Cars
-                </a>
+                <Link className='N-menu-tag' to="/cars">Cars
+                </Link>
                 </li>
             <li className='N-menu-items'>
-                <a className='N-menu-tag' href="#">Contact us
-                </a>
+                <Link className='N-menu-tag' to="contactUs">Contact us
+                </Link>
                 </li>
                 <li className='N-menu-button'>
-                <a className='N-register' href="#">Order Now
-                </a>
+                <Link className='N-register' to="/login">Order Now
+                </Link>
                 </li>
 
         </ul>
