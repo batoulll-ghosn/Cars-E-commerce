@@ -12,6 +12,7 @@ import {
   GetCarsByColor,
   getCarsByType,
 } from "../actions/car";
+import CarViewer from "./CarViewer";
 
 const CarsPage = () => {
   const [selector, setSelector] = useState("");
@@ -42,6 +43,11 @@ const CarsPage = () => {
     }
     setSearch("");
   };
+
+  const carViewerhandling = (id) => {
+    return(
+    <CarViewer  id={id}/>)
+  }
 
   return (
     <div>
@@ -124,6 +130,7 @@ const CarsPage = () => {
         
           {Array.isArray(cars) && cars.length > 0 ? (
             <div className="cars-allcars">
+             
             {cars.map((car) => (
               <div key={car._id} className="cars-card">
                 <img
@@ -132,7 +139,10 @@ const CarsPage = () => {
                   alt="jeep purple"
                 />
                 <h1 className="cars-car-name">{car.carName}</h1>
-                <button className="cars-shop-now">View More</button>
+                <button 
+                className="cars-shop-now"
+                onClick={carViewerhandling(car._id)}
+                >View More</button>
               </div>
               
             ))}

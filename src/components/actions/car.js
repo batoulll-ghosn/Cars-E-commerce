@@ -111,6 +111,22 @@ export const GetCarsByColor = (color) => {
     
   };
 };
+export const getCarById = (id) => {
+  return (dispatch) => {
+    axios
+      .get(`http://localhost:5000/cars/getCarById/${id}`)
+      .then((response) => {
+        let car = response.data.car;
+        dispatch({
+          type: "getCarById",
+          payload: car,
+        });
+      })
+      .catch((error) => console.log("Failed to fetch data :", error));
+    
+  };
+};
+
 export const getCarsByType = (type) => {
   return (dispatch) => {
     axios

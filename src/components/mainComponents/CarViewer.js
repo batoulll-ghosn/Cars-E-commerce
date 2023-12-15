@@ -4,24 +4,23 @@ import { Canvas } from '@react-three/fiber';
 import { useGLTF, Stage, PresentationControls } from '@react-three/drei';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { getAllCars} from '../actions/car';
+import { getCarById} from '../actions/car';
 
 function Model(props) {
   const { scene } = useGLTF("/peugeot_3008.glb");
   return <primitive object={scene} {...props}/>
 }
 
-const CarViewer = () => {
-  const [car, setCar] = useState();
+const CarViewer = ({id}) => {
+  // const [car, setCar] = useState();
 
-//   const cars = useSelector((state) => state.cars);
-//   const dispatch = useDispatch();
-//   useEffect(() => {
-//     dispatch(getAllCars());
-//   }, [dispatch]);
-//   setCar(cars.find((car) => car._id === '657c278d03ad3b9ded4dae28'))
+  const cars = useSelector((state) => state.cars);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCarById(id));
+  }, [dispatch,id]);
+console.log(cars)
   
-
   return (
     <div>
       <div className='viewer-nav'>
@@ -31,10 +30,12 @@ const CarViewer = () => {
        </button>
        </div>
        <h2 className='viewer-car-price'>$45000 </h2>
-       <div className='viewer-title-3d'>
+       {cars.map((car) => (
+
+         <div className='viewer-title-3d'  key={car._id}>
 
        <div className='viewer-title'>
-        <h1 className='viewer-car-name-title'>Maserati</h1>
+        <h1 className='viewer-car-name-title'>{car.carName}</h1>
        </div>
        <div className='viewer-3d-viewer'>
         <Canvas dpr={[1,2]} camera={{fov: 45}} style={{"position": "relative"}} shadows>
@@ -43,17 +44,18 @@ const CarViewer = () => {
             <Stage environment={"studio"}>
               <Model  scale={0.01} />
             </Stage>
+            
           </PresentationControls>
         </Canvas>
        </div>
        </div>
+        ))}
        
        <div className='viewer-all-infos'>
         <div className='viewer-details'>
-        <h3 className='viewer-car-name'>Audi</h3>
+        <h3 className='viewer-car-name'>maserati</h3>
         <p className='viewer-description'>
-        Mercedes-Benz: Where luxury meets performance, crafting iconic vehicles that epitomize elegance 
-        and cutting-edge innovation.
+        description
         </p>
         <button className='viewer-add-to-cart'>Add to cart</button>
         </div>
@@ -62,13 +64,13 @@ const CarViewer = () => {
         </div>
         <div className='viewer-more-details'>
           <p className='viewer-description'>
-          Type: sedan
+          Company: maserati
           </p>
           <p className='viewer-description'>
-          Type: sedan
+          Type: sport
           </p>
           <p className='viewer-description'>
-          Type: sedan
+          Date or release: 2020
           </p>
         </div>
        </div>

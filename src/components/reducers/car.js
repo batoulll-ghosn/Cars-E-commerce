@@ -20,6 +20,8 @@ const carReducer=(state=[],action)=>{
         case 'updateCar':
             return state.map((car)=>car._id===action.payload.Id?action.payload.car:car);
          default: return state;   
+        case 'getCarById':
+            return action.payload;
     }
 }
 export default carReducer;
