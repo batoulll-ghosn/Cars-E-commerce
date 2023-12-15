@@ -1,7 +1,10 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import '../styles/carViewer.css'
 import { Canvas } from '@react-three/fiber';
 import { useGLTF, Stage, PresentationControls } from '@react-three/drei';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { getAllCars} from '../actions/car';
 
 function Model(props) {
   const { scene } = useGLTF("/peugeot_3008.glb");
@@ -9,7 +12,16 @@ function Model(props) {
 }
 
 const CarViewer = () => {
-    
+  const [car, setCar] = useState();
+
+//   const cars = useSelector((state) => state.cars);
+//   const dispatch = useDispatch();
+//   useEffect(() => {
+//     dispatch(getAllCars());
+//   }, [dispatch]);
+//   setCar(cars.find((car) => car._id === '657c278d03ad3b9ded4dae28'))
+  
+
   return (
     <div>
       <div className='viewer-nav'>
@@ -22,7 +34,7 @@ const CarViewer = () => {
        <div className='viewer-title-3d'>
 
        <div className='viewer-title'>
-        <h1 className='viewer-car-name-title'>Audi</h1>
+        <h1 className='viewer-car-name-title'>Maserati</h1>
        </div>
        <div className='viewer-3d-viewer'>
         <Canvas dpr={[1,2]} camera={{fov: 45}} style={{"position": "relative"}} shadows>
