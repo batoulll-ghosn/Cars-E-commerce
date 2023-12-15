@@ -13,6 +13,7 @@ import {
   getCarsByType,
 } from "../actions/car";
 import CarViewer from "./CarViewer";
+import { Link } from "react-router-dom";
 
 const CarsPage = () => {
   const [selector, setSelector] = useState("");
@@ -44,10 +45,11 @@ const CarsPage = () => {
     setSearch("");
   };
 
-  const carViewerhandling = (id) => {
-    return(
-    <CarViewer  id={id}/>)
-  }
+  // const carViewerhandling = (id) => {
+  //   return() =>{
+  //     return <CarViewer  id={id}/>
+  //   }
+  // }
 
   return (
     <div>
@@ -139,10 +141,9 @@ const CarsPage = () => {
                   alt="jeep purple"
                 />
                 <h1 className="cars-car-name">{car.carName}</h1>
-                <button 
-                className="cars-shop-now"
-                onClick={carViewerhandling(car._id)}
-                >View More</button>
+                  <Link to={`/3d-viewer/${car._id}`}  className="cars-shop-now">
+                  </Link>
+                
               </div>
               
             ))}
