@@ -16,7 +16,7 @@ console.log(store.getState())
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <CarViewer />
+      < App />
     </Provider>
   </React.StrictMode>
 );
