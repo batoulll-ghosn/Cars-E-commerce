@@ -13,6 +13,8 @@ import Testimonial from './components/mainComponents/Carousel';
 import CarsPage from './components/mainComponents/CarsPage';
 import CarViewer from './components/mainComponents/CarViewer';
 import ContactPage from './components/mainComponents/ContactPage';
+import Example from './components/Loading/Example';
+
 import { toast, Toaster } from "react-hot-toast";
 function App() {
   return (
@@ -20,7 +22,6 @@ function App() {
       <div className="App">
       <Toaster toastOptions={{ duration: 5000 }} />
         <Routes>
-          {/* <Route path="/navbar" element={<NavBar/>} /> */}
           <Route path="/" element={ <> <NavBar/><Header/><About/><LatestCars/><FAQ/><Testimonial /><Footer/> </>} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/cars" element={<CarsPage/>}/>
@@ -28,6 +29,7 @@ function App() {
           <Route path="/contactUs" element={<ContactPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/ex" element={<Example />} />
         </Routes>
         
       </div>

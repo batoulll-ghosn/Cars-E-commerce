@@ -1,10 +1,14 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
+import axios from "axios";
 import Footer from "../mainComponents/Footer";
 import "../styles/carsPage.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import oops from '../styles/oops.svg';
+import oops from "../styles/oops.svg";
+import Example from "../Loading/Example";
+import {AutoComplete} from "antd";
+
 import {
   getAllCars,
   getCarsByCompany,
@@ -16,12 +20,20 @@ import {
 const CarsPage = () => {
   const [selector, setSelector] = useState("");
   const [search, setSearch] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [suggestions, setSuggestions] = useState([]);
   const cars = useSelector((state) => state.cars);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllCars());
-  }, [dispatch]);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    if (selector && selector !== "all" && selector !== "Filter By") {
+      handleSuggestions(selector);
+    }
+  }, [dispatch, selector]);
 
   if (selector === "all") {
     dispatch(getAllCars());
@@ -29,18 +41,52 @@ const CarsPage = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (selector === "all") {
-      dispatch(getAllCars());
-    } else if (selector === "type") {
-      dispatch(getCarsByType(search));
-    } else if (selector === "carName") {
-      dispatch(getCarByName(search));
-    } else if (selector === "company") {
-      dispatch(getCarsByCompany(search));
-    } else if (selector === "color") {
-      dispatch(GetCarsByColor(search));
+    if (selector && selector !== "Filter By") {
+      if (selector === "all") {
+        dispatch(getAllCars());
+      } else if (selector === "type") {
+        dispatch(getCarsByType(search));
+      } else if (selector === "carName") {
+        dispatch(getCarByName(search));
+      } else if (selector === "company") {
+        dispatch(getCarsByCompany(search));
+      } else if (selector === "color") {
+        dispatch(GetCarsByColor(search));
+      }
+      setSearch("");
+    } else {
+      alert("Please choose a valid filter before searching.");
     }
-    setSearch("");
+  };
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter") {
+      handleSearch(e);
+    }
+  };
+
+  const handleSuggestions = (selector) => {
+    axios
+      .post(`http://localhost:5000/cars/getAllCarsBySelector`, { selector })
+      .then((response) => {
+        // console.log(
+        //   (response.data.cars
+        //     .map((car) =>Object.values(car)[1])
+        //     .filter((value, index, element) => element.indexOf(value) === index))
+        //     .map((element)=>{
+        //       return {value:element}
+        //     })
+        // );
+        setSuggestions((response.data.cars
+          .map((car) =>Object.values(car)[1])
+          .filter((value, index, element) => element.indexOf(value) === index))
+          .map((element)=>{
+            return {value:element}
+          }));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -107,12 +153,22 @@ const CarsPage = () => {
             </select>
           </div>
           <div className="cars-search-bar">
-            <input
-              className="cars-search-bar-input"
-              placeholder="Search..."
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+            <AutoComplete
+              placeholder={
+                selector && selector !== "all" && selector !== "Filter By"
+                  ? "Type here to search"
+                  : "Choose a filter first"
+              }
+              style={{width:"180px",backgroundColor:"transparent"}}
+              
+              options={suggestions}
+              filterOption={true}
+              onSelect={(e) => setSearch(e)}
+              onKeyDown={handleEnter}
+              onSearch={(e) => setSearch(e)}
+              disabled={
+                !selector || selector === "Filter By" || selector === "all"
+              }
             />
             <img
               className="cars-search-icon"
@@ -121,9 +177,10 @@ const CarsPage = () => {
             />
           </div>
         </div>
-        
-          {Array.isArray(cars) && cars.length > 0 ? (
-            <div className="cars-allcars">
+        {isLoading ? (
+          <Example />
+        ) : Array.isArray(cars) && cars.length > 0 ? (
+          <div className="cars-allcars">
             {cars.map((car) => (
               <div key={car._id} className="cars-card">
                 <img
@@ -134,16 +191,14 @@ const CarsPage = () => {
                 <h1 className="cars-car-name">{car.carName}</h1>
                 <button className="cars-shop-now">View More</button>
               </div>
-              
             ))}
-            </div>
-          ) : (
-            <div className="cars-not-found">
-                <img src={oops} className="oops-car"/>
-                <h2>OOPS!!No cars found</h2>
-            </div>
-          )}
-        
+          </div>
+        ) : (
+          <div className="cars-not-found">
+            <img src={oops} className="oops-car" />
+            <h2>OOPS!!No cars found</h2>
+          </div>
+        )}
       </div>
       <Footer />
     </div>
@@ -151,3 +206,5 @@ const CarsPage = () => {
 };
 
 export default CarsPage;
+
+
