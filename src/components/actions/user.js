@@ -151,3 +151,20 @@ export const updateUser = (
       });
   };
 };
+
+export const updateProfile= (Id,email,password)=>{
+  return (dispatch) => {
+    axios
+      .post(`http://localhost:5000/users/updateEmailAndPass/${Id}`, {email,password})
+      .then((response) => {
+        const user = response.data.user;
+        dispatch({
+          type: "updateProfile",
+          payload: { user, Id },
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+}
