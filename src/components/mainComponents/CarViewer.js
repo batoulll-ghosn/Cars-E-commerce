@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react'
 import '../styles/carViewer.css'
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useLoader } from '@react-three/fiber';
 import { useGLTF, Stage, PresentationControls } from '@react-three/drei';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getCarById} from '../actions/car';
 import { useParams } from 'react-router-dom';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 
 
 const CarViewer = () => {
@@ -19,10 +20,12 @@ const CarViewer = () => {
   }, [dispatch,id]);
   console.log(cars)
   
-  const Model=(props) => {
-    const { scene } = useGLTF(cars?.files && cars.files[1] ? cars.files[1] : '');
-    return <primitive object={scene} {...props}/>
-  }
+  // const Model=(props) => {
+  //   const hayala =  cars.files && cars.files[1]
+  //   // const { scene } = useGLTF(hayala);
+  //   const gltf = useLoader(GLTFLoader, hayala);
+  //   return <primitive object={gltf.scene} {...props} />;
+  // }
   return (
     <div>
     <div className='viewer-nav'>
@@ -42,7 +45,7 @@ const CarViewer = () => {
       <h1 className='viewer-car-name-title'>{cars.carName}</h1>
      </div>
      <div className='viewer-3d-viewer'>
-      <Canvas dpr={[1,2]} camera={{fov: 45}} style={{"position": "relative"}} shadows>
+      {/* <Canvas dpr={[1,2]} camera={{fov: 45}} style={{"position": "relative"}} shadows>
         
         <PresentationControls speed={3.5}  polar={[-0.1, Math.PI / 4]} >
           <Stage environment={"studio"}>
@@ -50,7 +53,7 @@ const CarViewer = () => {
           </Stage>
           
         </PresentationControls>
-      </Canvas>
+      </Canvas> */}
      </div>
      </div>
      </div>
