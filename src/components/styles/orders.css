@@ -9,7 +9,17 @@
     border-color: #DFDFDF;
 }
 .or-third-table td {
-    text-align: center;
+    text-align: left;
+    width: 60px;
+    /* margin-left: 10px; */
+    padding-left: 20px;
+    /* padding-top: 200px; */
+}
+.or-third-table td div{
+    height: 88px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    padding-top: 15px;
 }
 .or-div-table{
     width: 98%;

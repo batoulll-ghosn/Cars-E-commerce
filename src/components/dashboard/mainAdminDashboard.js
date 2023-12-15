@@ -7,7 +7,7 @@ import Customers from './customersMainDashboard';
 import Discount from './discountMainDashboard'
 import '../styles/mainAdminDashboard.css';
 import Menu from './AdminDashboardMenu';
-
+import Reviews from './reviews';
 function Dashboard() {
     const [activePage, setActivePage] = useState('overview');
 
@@ -41,6 +41,9 @@ function Dashboard() {
                     <div className="ad-menu-item5">
                         <a href="#customer" onClick={() => handleMenuClick('customer')}><img className ='ad-menu-item1-img' src='./images/user-alt-1-svgrepo-com (1).svg' /> Customer</a>
                     </div>
+                    <div className="ad-menu-item6">
+                        <a href="#reviews" onClick={() => handleMenuClick('reviews')}><img className ='ad-menu-item1-img' src='./images/user-alt-1-svgrepo-com (1).svg' /> Reviews</a>
+                    </div>
                 </div>
             </div>
             <div id="ad-content">
@@ -49,6 +52,7 @@ function Dashboard() {
                 {activePage === 'cars' && <Cars />}
                 {activePage === 'discounts' && <Discount />}
                 {activePage === 'customer' && <Customers />}
+                {activePage === 'reviews' && <Reviews />}
             </div>
         </div>
         </>
