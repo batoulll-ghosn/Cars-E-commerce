@@ -7,6 +7,7 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import allReducers from "./components/reducers";
+import Testing3d from "./components/mainComponents/Testing3d";
 
 
 

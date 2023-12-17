@@ -156,7 +156,7 @@ const CarsPage = () => {
           )}
         
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
