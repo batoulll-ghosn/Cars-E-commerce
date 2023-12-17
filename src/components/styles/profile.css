@@ -1,0 +1,44 @@
+.profile{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 400px;
+    background-color:#C92424;
+    color: white;
+    font-size: 17px;
+    font-weight: 500;
+    float: right;
+    padding: 10px;
+}
+.profile p{
+    text-align: center;
+}
+
+.profile-container label{
+   position: absolute;
+   left: 76%;
+}
+.profile-container input{
+   margin-left: 51%;
+   height: 30px;
+   width: 180px;
+   border-radius: 10px;
+   border: none;
+   padding: 5px;
+ }
+.profile-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+.profile-buttons button{
+    padding: 7px;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+}

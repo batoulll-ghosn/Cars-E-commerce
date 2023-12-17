@@ -168,3 +168,20 @@ export const updateProfile= (Id,email,password)=>{
       });
   };
 }
+
+export const updatePassword= (Id,password)=>{
+  return (dispatch) => {
+    axios
+      .post(`http://localhost:5000/users/updatePassword/${Id}`, {password})
+      .then((response) => {
+        const user = response.data.user;
+        dispatch({
+          type: "updatePassword",
+          payload: { user, Id },
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import bcrypt from "bcryptjs";
-import { getUserById, updateProfile } from "../actions/user";
+import { getUserById, updateProfile, updatePassword } from "../actions/user";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles/profile.css";
 
@@ -10,84 +10,126 @@ function Profile(props) {
   const [Cpassword, setCPassword] = useState("");
   const [newpassword, setNewPassword] = useState("");
   const [modal, setmodal] = useState(true);
+  const [isEditable, setIsEditable] = useState(false);
   const { userId } = props;
   const user = useSelector((state) => state.users);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserById("6576cc55a83f9a4c5b14d3d7"));
+    dispatch(getUserById(userId));
   }, [dispatch]);
- console.log(user)
+  console.log(user);
 
   const toogleModal = () => {
     setmodal(false);
   };
-
-  const [isEditable, setIsEditable] = useState(true);
-  const handleEditing = () => {
-    var x = prompt("Enter your old password");
-    const match = bcrypt.compare(x, user[0].password);
+  
+  const handleEditing = async ()=>{
+    const match = await bcrypt.compare(password, user.password)
     if (match) {
       setIsEditable(true);
     }
-  };
+  }
 
-  const updateProfilee = () => {
+ 
+
+  const updateProfilee = (e) => {
+    e.preventDefault();
     if (newpassword.trim() === Cpassword.trim()) {
-      const updates = {
-        email: email.trim() || user.email,
-        password: newpassword.trim() || user.password,
-      };
-    dispatch(updateProfile("6576cc55a83f9a4c5b14d3d7",email,newpassword));
+      
+      var newMail= user.email;
+      if(email.trim()!== ""){
+        newMail=email;
+      }
+      var newPass =user.password;
+      if(password.trim()!== ""){
+        newPass=password;
+      }
+      if(newMail !== user.email){
+      dispatch(updateProfile(userId, newMail, newPass));
+      }
+      else{
+      dispatch(updatePassword(userId, newPass))
+      }
+      
     } else {
       alert("New password and confirm password do not match.");
     }
   };
 
   return (
-  (
-      <div className="popup d-flex flex-column">
-        <p className="text-center">YOUR PROFILE</p>
-       
-          <p className="text-center">Edit the field(s) of your choice</p>
-      
-
-        <div className="d-flex justify-content-end align-items-end">
-          <label>Email</label>
-    
-            <input
-              type="email"
-              placeholder={user.email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-     
-        </div>
-          <div className="d-flex justify-content-end align-items-end">
-            <label>New password</label>
-            <input
-              type="password"
-              placeholder="Enter new password"
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
-          </div>
-          <div className="d-flex justify-content-end align-items-end">
-            <label>Confirm password</label>
-            <input
-              type="password"
-              placeholder="Confirm your password"
-              onChange={(e) => setCPassword(e.target.value)}
-            />
-          </div>
-    
-
-        <div className="popup-buttons d-flex justify-content-center">
-            <button onClick={handleEditing}>EDIT</button>
-
-            <button onClick={updateProfilee}>SAVE</button>
-
-        </div>
+    <div className="profile">
+      <p>YOUR PROFILE</p>
+      { isEditable &&
+      <p>Edit the field(s) of your choice</p>
+      }
+      {!isEditable &&
+      <div className="profile-container">
+        <label>Fullname</label>
+        <input type="text" placeholder={user.fullName} readOnly />
       </div>
-    )
+      }
+      {isEditable &&
+      <div className="profile-container">
+        <label>Email</label>
+        <input
+          type="email"
+          placeholder={user.email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      }
+       {!isEditable &&
+      <div className="profile-container">
+        <label>Email</label>
+        <input
+          type="email"
+          placeholder={user.email}
+          readOnly
+        />
+      </div>
+      }
+      {isEditable &&
+      <div className="profile-container">
+        <label>New password</label>
+        <input
+          type="password"
+          placeholder="Enter new password"
+          onChange={(e) => setNewPassword(e.target.value)}
+        />
+      </div>
+}
+{isEditable &&
+      <div className="profile-container">
+        <label>Confirm password</label>
+        <input
+          type="password"
+          placeholder="Confirm your password"
+          onChange={(e) => setCPassword(e.target.value)}
+        />
+      </div>
+}
+{!isEditable &&
+   <div className="profile-container">
+   <label>Password</label>
+   <input
+     type="password"
+     placeholder="Enter your old pass to edit"
+     onChange={(e)=>setPassword(e.target.value)}
+     required
+   />
+ </div>
+}
+
+      <div className="profile-buttons">
+        {!isEditable ?
+        <button onClick={handleEditing}>EDIT</button>
+        :
+        <button onClick={updateProfilee}>SAVE</button>
+}
+      </div>
+      
+    </div>
   );
 }
 export default Profile;

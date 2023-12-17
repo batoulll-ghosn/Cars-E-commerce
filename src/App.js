@@ -11,6 +11,7 @@ import Login from './components/mainComponents/Login';
 import LatestCars from './components/mainComponents/LatestCars';
 import Review from './components/mainComponents/Review';
 import Profile from './components/mainComponents/Profile';
+import CustomerDash from './components/dashboard/CustomerDash';
 function App() {
   return (
     <Router>
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/review" element={<Review />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/customer" element={<CustomerDash />} />
         </Routes>
       </div>
     </Router>

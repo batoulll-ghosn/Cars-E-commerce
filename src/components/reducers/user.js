@@ -14,6 +14,10 @@ const userReducer = (state = [], action) => {
       return state.map((user) =>
         user._id === action.payload.Id ? action.payload.user : user
       );
+    case "updatePassword":
+      return state.map((user) =>
+        user._id === action.payload.Id ? action.payload.user : user
+      );
     case "getUserById":
       return action.payload;
     case "getUsersByRole":

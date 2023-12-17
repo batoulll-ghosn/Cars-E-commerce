@@ -3,7 +3,7 @@ import '../styles/carsOfDash.css';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getAllCars, addCar,removeCar } from '../actions/car';
-import userEvent from '@testing-library/user-event';
+
 
 function MainOfCars() {
  const cars = useSelector((state) => state.cars);
