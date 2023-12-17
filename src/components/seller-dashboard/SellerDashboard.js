@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Menu from './Menu';
 import Orders from './Orders';
-import Cars from './Cars';
+import Cars from '../dashboard/carsMainDashboard';
  export default function SellerDashboard(){
     const [activePage, setActivePage] = useState('orders');
     const handleMenuClick = (page) => {
@@ -17,10 +17,10 @@ import Cars from './Cars';
                 <div className="ad-menu-content">
                   
                     <div className="ad-menu-item1">
-                        <a href="#overview" onClick={() => handleMenuClick('orders')}><img className ='ad-menu-item1-img' src='./images/home-page-svgrepo-com.svg' /> Overview</a>
+                        <a href="#overview" onClick={() => handleMenuClick('orders')}><img className ='ad-menu-item1-img' src='./images/online-shop-svgrepo-com.svg' /> Orders</a>
                     </div>
                     <div className="ad-menu-item2">
-                        <a href="#orders" onClick={() => handleMenuClick('cars')}><img className ='ad-menu-item1-img' src='./images/online-shop-svgrepo-com.svg' />   Orders</a>
+                        <a href="#orders" onClick={() => handleMenuClick('cars')}><img className ='ad-menu-item1-img' src='./images/car-svgrepo-com (2).svg'  />Cars</a>
                     </div>
                 </div>
             </div>
