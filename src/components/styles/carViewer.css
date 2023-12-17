@@ -130,4 +130,10 @@
     align-items: center;
     padding-left: 16px;
     padding-top: 27px;
+    transition: transform 0.2s ease;
 }
+
+.viewer-start-stop.pressed {
+    background-color: #791212; 
+    transform: scale(0.95);
+  }

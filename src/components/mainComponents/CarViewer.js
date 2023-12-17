@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import '../styles/carViewer.css'
 import { Canvas, useLoader } from '@react-three/fiber';
-import { useGLTF, Stage, PresentationControls } from '@react-three/drei';
+import { Stage, PresentationControls } from '@react-three/drei';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getCarById} from '../actions/car';
@@ -9,9 +9,13 @@ import { useParams } from 'react-router-dom';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 
 
+
+
 const CarViewer = () => {
   const {id} = useParams();
   // const [car, setCar] = useState();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
   
   const cars = useSelector((state) => state.cars);
   const dispatch = useDispatch();
@@ -21,11 +25,35 @@ const CarViewer = () => {
   console.log(cars)
   
   // const Model=(props) => {
-  //   const hayala =  cars.files && cars.files[1]
-  //   // const { scene } = useGLTF(hayala);
-  //   const gltf = useLoader(GLTFLoader, hayala);
+  //   if (!props.carModel) {
+  //     return null;
+  //   }
+
+  //   const gltf = useLoader(GLTFLoader, props.carModel);
+
   //   return <primitive object={gltf.scene} {...props} />;
   // }
+
+  const handleSound = () => {
+    const soundFile = cars.files && cars.files[2];
+
+    if (soundFile) {
+      if (!audioRef.current) {
+        audioRef.current = new Audio(soundFile);
+      }
+
+      const audio = audioRef.current;
+
+      if (isPlaying) {
+        audio.pause();
+        audio.currentTime = 0;
+      } else {
+        audio.play();
+      }
+
+      setIsPlaying(!isPlaying);
+    }
+  }
   return (
     <div>
     <div className='viewer-nav'>
@@ -49,7 +77,7 @@ const CarViewer = () => {
         
         <PresentationControls speed={3.5}  polar={[-0.1, Math.PI / 4]} >
           <Stage environment={"studio"}>
-            <Model  scale={0.01} />
+            <Model  carModel={carModel} scale={0.01} />
           </Stage>
           
         </PresentationControls>
@@ -68,8 +96,10 @@ const CarViewer = () => {
       </p>
       <button className='viewer-add-to-cart'>Add to cart</button>
       </div>
-      <div className='viewer-start-stop'>
-        start
+      <div 
+      className={`viewer-start-stop ${isPlaying ? 'pressed' : ''}`}
+      onClick={handleSound}>
+        {isPlaying ? 'Stop' : 'Start'}
       </div>
       <div className='viewer-more-details'>
         <p className='viewer-description'>
