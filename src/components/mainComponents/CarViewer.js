@@ -5,7 +5,7 @@ import { Stage, PresentationControls, useGLTF } from '@react-three/drei';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getCarById} from '../actions/car';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 
 
@@ -81,15 +81,34 @@ const CarViewer = () => {
     default:
       carModel = '/maserati_levante.glb';
   }
+  if (cars.carName === 'Maserati Levante') {
+    let elements = document.getElementsByClassName('viewer-car-name-title')
+    elements[0].style.fontSize = '150px';
+  }
+
+ 
+
+let colorValue = cars.color;
+let colorDisplay = document.getElementById('colorDisplay');
+if (colorDisplay) {
+  colorDisplay.style.backgroundColor = colorValue;
+} else {
+  console.error('colorDisplay element not found');
+}
+
 
   
+
   return (
     <div>
     <div className='viewer-nav'>
+      <Link 
+      className='viewer-link'
+      to='/cars'>
+       <span className='viewer-arrow'>&larr;</span>
+      </Link>
      <a className='N-logo' href="/">DriveEpic</a>
-     <button className='viewer-search'>
-      Search
-     </button>
+    
      </div>
      <div>
      
@@ -120,18 +139,26 @@ const CarViewer = () => {
      
      <div className='viewer-all-infos'>
       <div className='viewer-details'>
+      <div className='viewer-flex'>
       <h3 className='viewer-car-name'>{cars.carName}</h3>
+      <div id="colorDisplay" className='viewer-circle-color'>.</div>
+      </div>
       <p className='viewer-description'>
      {cars.description}
       </p>
       <button className='viewer-add-to-cart'>Add to cart</button>
       </div>
-      <div 
-      className={`viewer-start-stop ${isPlaying ? 'pressed' : ''}`}
+      <div>
+
+      <div className='viewer-button-border'>
+      <button className={`viewer-start-stop ${isPlaying ? 'pressed' : ''}`}
       onClick={handleSound}>
         {isPlaying ? 'Stop' : 'Start'}
+        </button>
+      </div>
       </div>
       <div className='viewer-more-details'>
+        <h2 className='viewer-more-details-title'>More Details</h2>
         <p className='viewer-description'>
         Company: {cars.company}
         </p>
