@@ -9,8 +9,9 @@ import { CarouselItem } from "./CarouselItem";
 export default function Orders() {
   const orders = useSelector((state) => state.orders);
   const dispatch = useDispatch();
-  const [isVisible, setPopupVisibility] = useState(true);
+  const [isVisible, setPopupVisibility] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
+  const [carsOrder, setCarsOrder] = useState([]);
 
   useEffect(() => {
     dispatch(getAllOrders());
@@ -31,29 +32,14 @@ export default function Orders() {
   };
   const handleRowClick = (order) => {
     setSelectedOrder(order);
+    setCarsOrder(order.cars)
     setPopupVisibility(true);
   };
   const closePopup = () => {
     setPopupVisibility(false);
   };
   const [activeIndex, setActiveIndex] = useState(0);
-  const items = [
-    {
-      title: "Baseball",
-      description:
-        "Baseball is a bat-and-ball sport played between two teams of nine players each, taking turns batting and fielding. The game occurs over the course of several plays, with each play generally beginning when a player on the fielding team, called the pitcher.",
-    },
-    {
-      title: "Walking",
-      description:
-        "Walking (also known as ambulation) is one of the main gaits of terrestrial locomotion among legged animals. Walking is typically slower than running and other gaits. ",
-    },
-    {
-      title: "Weights",
-      description:
-        "Weightlifting generally refers to activities in which people lift weights, often in the form of dumbbells or barbells. People lift various kinds of weights for a variety of different reasons.",
-    },
-  ];
+  
   const orderData = [
     {
       label: "Image 1",
@@ -98,8 +84,8 @@ export default function Orders() {
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
       newIndex = 0;
-    } else if (newIndex >= items.length) {
-      newIndex = items.length - 1;
+    } else if (newIndex >= carsOrder.length) {
+      newIndex = carsOrder.length - 1;
     }
 
     setActiveIndex(newIndex);
@@ -149,8 +135,8 @@ export default function Orders() {
             </div>
             <div className='Hadi-popup-order-u'>
               Ordered by:<br />
-              hadimortada1245@gmail.com<br />
-              Phone Number:71079789
+              {selectedOrder.userId.email}<br />
+              Phone Number:{selectedOrder.userId.phoneNumber}
             </div>
             <div className="carousel">
             <button
@@ -166,7 +152,7 @@ export default function Orders() {
         style={{ transform: `translate(-${activeIndex * 100}%)`
      }}
       >
-        {orderData.map((item) => {
+        {carsOrder.map((item) => {
           return <CarouselItem item={item}/>;
         })}
       </div>        
