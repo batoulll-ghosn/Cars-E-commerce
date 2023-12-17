@@ -7,6 +7,8 @@ export const CarouselItem = ({ item }) => {
           <div className="item-info">
             <div>Company Name: {item.company}</div>
             <div>Car Name: {item.name}</div>
+            <div>Date Of Release: {item.DOR.substring(0,10)}</div>
+            <div>Selling Price:{item.sellingPrice}</div>
           </div>
     </div>
   );

@@ -61,7 +61,9 @@ export default function Orders() {
       url:
         "https://lh5.googleusercontent.com/xo6zDzj4Mq8JTuh31DRdzWPkmeekU1ykdvy7gmdGNkBnVzHoULgCA_MpL1ybOV2GKEkbvmswUl0iQW0lvnNQe3gqOFi_-bbt3MBzOAla29FvVN753jPZS87Bn7HyXoQ-dwA-ioYg",
       company:'Mercedes',
-      name:'Mercedes A class'  
+      name:'Mercedes A class',
+      DOR:'12/1/2022',
+      sellingPrice:4000  
     },
     {
       label: "Image 2",
@@ -70,6 +72,8 @@ export default function Orders() {
         "https://cdn.thomasnet.com/insights-images/eaf2ea91-c0ca-488d-ab63-af480b6f78cb/750px.png",
         company:'Mercedes',
         name:'Mercedes C class',
+        DOR:'12/1/2022',
+        sellingPrice:4000
     },
     {
       label: "Image 3",
@@ -77,6 +81,8 @@ export default function Orders() {
       url: "https://moneyinc.com/wp-content/uploads/2018/11/Willow-750x500.jpg",
       company:'Audi',
       name:'Audi s6',
+      DOR:'12/1/2022',
+      sellingPrice:4000
     },
     {
       label: "Image 4",
@@ -85,6 +91,8 @@ export default function Orders() {
         "https://japan.stripes.com/sites/default/files/styles/community_site_carousel_750x500/public/article-images/main_13.jpg?itok=_GELFbpY",
       company:'BMW',
       name:'BMW M3',
+      DOR:'12/1/2022',
+      sellingPrice:4000
     }
   ];
   const updateIndex = (newIndex) => {
