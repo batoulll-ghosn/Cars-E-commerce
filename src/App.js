@@ -9,11 +9,14 @@ import Dashboard from './components/dashboard/mainAdminDashboard';
 import Header from './components/mainComponents/Header';
 import Login from './components/mainComponents/Login';
 import LatestCars from './components/mainComponents/LatestCars';
+import CreditCard  from './components/mainComponents/CreditCard';
+import { Toaster } from 'react-hot-toast';
 import Cart from './components/Cart';
 function App() {
   return (
     <Router>
       <div className="App">
+        <Toaster duration="5000"/>
         <Routes>
           {/* <Route path="/navbar" element={<NavBar/>} /> */}
           <Route path="/" element={ <> <NavBar/><Header/><About/><LatestCars/><FAQ/><Footer/> </>} />
@@ -21,6 +24,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/creditCard" element={<CreditCard />} />
         </Routes>
       </div>
     </Router>
