@@ -24,7 +24,9 @@ const CarsPage = () => {
   const [suggestions, setSuggestions] = useState([]);
   const cars = useSelector((state) => state.cars);
   const dispatch = useDispatch();
+  
 
+  
   useEffect(() => {
     dispatch(getAllCars());
     setTimeout(() => {
