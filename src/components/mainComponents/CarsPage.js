@@ -16,6 +16,8 @@ import {
   GetCarsByColor,
   getCarsByType,
 } from "../actions/car";
+import CarViewer from "./CarViewer";
+import { Link } from "react-router-dom";
 
 const CarsPage = () => {
   const [selector, setSelector] = useState("");
@@ -41,52 +43,18 @@ const CarsPage = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (selector && selector !== "Filter By") {
-      if (selector === "all") {
-        dispatch(getAllCars());
-      } else if (selector === "type") {
-        dispatch(getCarsByType(search));
-      } else if (selector === "carName") {
-        dispatch(getCarByName(search));
-      } else if (selector === "company") {
-        dispatch(getCarsByCompany(search));
-      } else if (selector === "color") {
-        dispatch(GetCarsByColor(search));
-      }
-      setSearch("");
-    } else {
-      alert("Please choose a valid filter before searching.");
+    if (selector === "all") {
+      dispatch(getAllCars());
+    } else if (selector === "type") {
+      dispatch(getCarsByType(search));
+    } else if (selector === "carName") {
+      dispatch(getCarByName(search));
+    } else if (selector === "company") {
+      dispatch(getCarsByCompany(search));
+    } else if (selector === "color") {
+      dispatch(GetCarsByColor(search));
     }
-  };
-
-  const handleEnter = (e) => {
-    if (e.key === "Enter") {
-      handleSearch(e);
-    }
-  };
-
-  const handleSuggestions = (selector) => {
-    axios
-      .post(`http://localhost:5000/cars/getAllCarsBySelector`, { selector })
-      .then((response) => {
-        // console.log(
-        //   (response.data.cars
-        //     .map((car) =>Object.values(car)[1])
-        //     .filter((value, index, element) => element.indexOf(value) === index))
-        //     .map((element)=>{
-        //       return {value:element}
-        //     })
-        // );
-        setSuggestions((response.data.cars
-          .map((car) =>Object.values(car)[1])
-          .filter((value, index, element) => element.indexOf(value) === index))
-          .map((element)=>{
-            return {value:element}
-          }));
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    setSearch("");
   };
 
   return (
@@ -189,7 +157,9 @@ const CarsPage = () => {
                   alt="jeep purple"
                 />
                 <h1 className="cars-car-name">{car.carName}</h1>
-                <button className="cars-shop-now">View More</button>
+                  <Link to={`/3d-viewer/${car._id}`}  className="cars-shop-now">
+                  </Link>
+                
               </div>
             ))}
           </div>
@@ -200,7 +170,7 @@ const CarsPage = () => {
           </div>
         )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
