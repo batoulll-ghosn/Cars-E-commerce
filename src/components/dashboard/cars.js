@@ -1,7 +1,7 @@
 import { React, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import userEvent from "@testing-library/user-event";
+
 const Car = () => {
   const cars = useSelector((state) => state.cars);
   const dispatch = useDispatch();
