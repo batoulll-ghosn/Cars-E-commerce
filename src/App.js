@@ -11,15 +11,18 @@ import Login from './components/mainComponents/Login';
 import LatestCars from './components/mainComponents/LatestCars';
 import CreditCard  from './components/mainComponents/CreditCard';
 import { Toaster } from 'react-hot-toast';
-import Cart from './components/Cart';
+import Cart from './components/mainComponents/Cart';
 function App() {
+  const token =localStorage.getItem("token");
+  const id =localStorage.getItem("id");
   return (
     <Router>
       <div className="App">
         <Toaster duration="5000"/>
         <Routes>
+          {console.log(token,id)}
           {/* <Route path="/navbar" element={<NavBar/>} /> */}
-          <Route path="/" element={ <> <NavBar/><Header/><About/><LatestCars/><FAQ/><Footer/> </>} />
+          <Route path="/" element={token && id && <> <NavBar/><Header/><About/><LatestCars/><FAQ/><Footer/> </>} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />

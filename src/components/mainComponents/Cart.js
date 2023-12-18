@@ -1,15 +1,16 @@
-import './styles/cart.css';
+import '../styles/cart.css';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useState,useEffect } from 'react';
-import {getAllShipments} from './actions/shipment'
-import camaro from '../components/styles/camaro.png';
-import trash from '../components/styles/bin-svgrepo-com (1).svg';
-
+import {getAllShipments} from '../actions/shipment'
+import camaro from '../styles/camaro.png';
+import trash from '../styles/bin-svgrepo-com (1).svg';
+import CreditCard from './CreditCard';
 const Cart = () => {
     const [location,setLocation]=useState(null);
     const shipments=useSelector((state)=>state.shipments)
     const dispatch = useDispatch();
+    const [showCard, setShowCard]= useState(false);
     useEffect(() => {
         dispatch(getAllShipments());
       }, []);
@@ -17,8 +18,12 @@ const Cart = () => {
       const handleSelectLocation=(e)=>{
         console.log(e.target.value);
       }
+     const handleCreditCard= ()=>{
+        setShowCard(!showCard);
+     } 
     return (
         <div className='cart-b-div'>
+        
             <div className='cart-head'>
                 <div className='cart-head-title'><h2>DriveEpic</h2></div>
                 <div className='cart-head-button'><button >Continue shopping</button></div>
@@ -61,6 +66,9 @@ const Cart = () => {
                     </tr>
                 </table>
             </div>
+            {
+            showCard && <CreditCard userId="657f6130bddb5fab30a01537"/>
+        }
             <div className='footer-cart-container'>
                 <div className='footer-cart-container-white'>
                     <div className='white-part1'>
@@ -90,7 +98,7 @@ const Cart = () => {
                                 <td className='td-n'>42 000 $</td>
                             </tr>
                         </table>
-                        <div className='checkout-cart'><button >Checkout 42 000 $</button></div>
+                        <div className='checkout-cart'><button onClick={handleCreditCard}>Checkout 42 000 $</button></div>
                     </div>
                 </div>
             </div>
