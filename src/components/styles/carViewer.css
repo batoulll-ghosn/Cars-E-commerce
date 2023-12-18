@@ -41,7 +41,7 @@
 .viewer-car-name-title{
     color: rgba(154, 153, 153, 0.46);
     text-align: center;
-    font-size: 200px;
+    font-size: 120px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -83,13 +83,13 @@
     padding: 1%;
 }
 .viewer-details{
-    padding: 2%;
-    width: 30%;
+    padding: 1%;
+    width: 32%;
 }
 .viewer-flex{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     column-gap: 40px;
 }
 .viewer-car-name{
@@ -157,6 +157,9 @@
     background-color: #791212; 
     transform: scale(0.95);
   }
+  .viewer-more-details{
+    padding: 1%
+  }
   .viewer-more-details-title{
     color: #000;
     text-align: justify;
@@ -166,3 +169,25 @@
     line-height: normal;
     text-transform: capitalize;
   }
+
+  /*Phone*/
+@media (max-width: 766px){
+    .viewer-car-name-title{
+        font-size: 55px;
+    } 
+    .viewer-title{
+       height: 34vh;
+    }
+    .viewer-car-price{
+        font-size: 25px;
+        padding-right: 10px;
+    }
+    .viewer-start-stop{
+        height: 80px;
+        width: 80px;
+        font-size: 25px;
+    }
+    .viewer-button-border{
+        border: 8px solid #C92424;
+    }
+}

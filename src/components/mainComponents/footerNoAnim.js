@@ -1,9 +1,9 @@
 import React from 'react';
 import { ShoppingBag, Share2, Send, Youtube, Facebook, Instagram } from 'react-feather';
-import '../styles/footer.scss';
+import '../styles/footer-no-anim.css';
 import '../styles/test.css';
 import { Link } from 'react-router-dom';
-function Footer() {
+function FooterNoAnim() {
  return (
    <footer className="footer">
     <div className="container">
@@ -54,4 +54,4 @@ function Footer() {
  );
 }
 
-export default Footer;
+export default FooterNoAnim;

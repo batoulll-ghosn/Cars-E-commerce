@@ -4,8 +4,11 @@ const reviewsReducer = (state = [], action) => {
         return action.payload;
         case "deleteReview":
           return state.filter((review) => review._id !== action.payload);
+          case 'addReview':
+            return [...state,action.payload];
       default:
         return state;
     }
   };
-  export default reviewsReducer;
+  
+export default reviewsReducer;

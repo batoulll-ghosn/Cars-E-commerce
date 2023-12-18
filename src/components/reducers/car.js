@@ -19,9 +19,9 @@ const carReducer=(state=[],action)=>{
             return state.filter((car)=>car._id!==action.payload);
         case 'updateCar':
             return state.map((car)=>car._id===action.payload.Id?action.payload.car:car);
-         default: return state;   
         case 'getCarById':
             return action.payload;
+         default: return state;   
     }
 }
 export default carReducer;

@@ -5,7 +5,7 @@ import ordersReducer from "./order";
 import reviewsReducer from "./review";
 const allReducers = combineReducers({
   users : userReducer,
- // shipments: shipmentReducer,
+  // shipments: shipmentReducer,
   cars: carReducer,
   orders:ordersReducer,
   reviews:reviewsReducer,

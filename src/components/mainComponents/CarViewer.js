@@ -57,23 +57,23 @@ const CarViewer = () => {
   switch(cars.carName) {
     case 'BMW-i4':
     carModel = '/bmw_i4.glb';
-    Scale = 0.014
+    Scale = 0.020
     break;
     case 'Nissan GT-R':
     carModel = '/nissan_gt-r (1).glb';
-    Scale = 0.027
+    Scale = 0.03
     break;
     case 'Maserati Levante':
     carModel = '/maserati_levante.glb';
-    Scale = 0.01
+    Scale = 0.014
     break;
     case 'Peugeot 3008':
     carModel = '/peugeot_3008.glb';
-    Scale = 0.013
+    Scale = 0.014
     break;
     case 'Kia Sportage':
     carModel = '/2017_kia_sportage.glb';
-    Scale = 0.02
+    Scale = 0.022
     break;
     case 'Maserati Ghibli':
       carModel = '/maserati_ghibli_hybrid.glb'
@@ -83,7 +83,7 @@ const CarViewer = () => {
   }
   if (cars.carName === 'Maserati Levante') {
     let elements = document.getElementsByClassName('viewer-car-name-title')
-    elements[0].style.fontSize = '150px';
+    elements[0].style.fontSize = '120px';
   }
 
  
