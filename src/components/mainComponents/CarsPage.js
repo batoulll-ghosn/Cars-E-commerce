@@ -24,6 +24,8 @@ const CarsPage = () => {
   const [suggestions, setSuggestions] = useState([]);
   const cars = useSelector((state) => state.cars);
   const dispatch = useDispatch();
+  
+
 
   useEffect(() => {
     dispatch(getAllCars());
@@ -69,14 +71,6 @@ const CarsPage = () => {
     axios
       .post(`http://localhost:5000/cars/getAllCarsBySelector`, { selector })
       .then((response) => {
-        // console.log(
-        //   (response.data.cars
-        //     .map((car) =>Object.values(car)[1])
-        //     .filter((value, index, element) => element.indexOf(value) === index))
-        //     .map((element)=>{
-        //       return {value:element}
-        //     })
-        // );
         setSuggestions((response.data.cars
           .map((car) =>Object.values(car)[1])
           .filter((value, index, element) => element.indexOf(value) === index))
