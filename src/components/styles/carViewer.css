@@ -173,7 +173,7 @@
   /*Phone*/
 @media (max-width: 766px){
     .viewer-car-name-title{
-        font-size: 55px;
+        font-size: 53px;
     } 
     .viewer-title{
        height: 34vh;
@@ -181,6 +181,7 @@
     .viewer-car-price{
         font-size: 25px;
         padding-right: 10px;
+        text-align: center;
     }
     .viewer-start-stop{
         height: 80px;
@@ -189,5 +190,20 @@
     }
     .viewer-button-border{
         border: 8px solid #C92424;
+    }
+    .viewer-flex{
+        width: 348px;
+    }
+    .viewer-all-infos{
+        flex-direction: column-reverse;
+        
+    }
+    .viewer-details{
+        width: 100%;
+        padding: 3%;
+    }
+    .viewer-add-to-cart{
+        position: relative;
+        left: 22%;
     }
 }
