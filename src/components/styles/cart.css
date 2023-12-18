@@ -38,7 +38,6 @@ padding: 4px;
 .my-cart-div{
 padding-left: 1%;
 color: #FFF;
-font-family: Poppins;
 font-size: 30px;
 font-style: normal;
 font-weight: 700;
@@ -112,14 +111,21 @@ text-transform: capitalize;
 .white-part1 {
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
     width: 50%;
     height: 100%;
+    margin-top: 1.5%;
 }
-
 .white-part2 table{
  width: 45%;
  border-collapse: collapse;
+}
+.location-list{
+width: 50%;
+border-radius:10px ;
+background-color: #C92424;
+color: #FFF; 
+font-size: 25px;
 }
 
 .white-part2 {
@@ -148,9 +154,8 @@ text-transform: capitalize;
     text-transform: capitalize;  
 }
 .part2-free{
-    border-bottom: 1px solid #555353;
-    color: #C92424;
-font-family: Poppins;
+border-bottom: 1px solid #555353;
+color: #C92424;
 font-size: 20px;
 font-style: normal;
 font-weight: 700;
@@ -159,7 +164,6 @@ text-transform: capitalize;
 }
 .td-n{
     color: #000;
-font-family: Poppins;
 font-size: 20px;
 font-style: normal;
 font-weight: 600;
@@ -168,6 +172,7 @@ text-transform: capitalize;
 }
 .checkout-cart button{
     border-radius: 10px;
+    margin-top: 10px;
     background: #C92424;
     color: #FFF;
 text-align: center;
@@ -177,4 +182,7 @@ font-weight: 500;
 line-height: 40px;
 border: none;
 padding: 4px;
+}
+.checkout-cart button:hover{
+    cursor: pointer;
 }

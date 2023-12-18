@@ -5,9 +5,7 @@ const AdminDashboardMenu = () => {
     const [clicked, setclicked] = useState(false);
     const handleClick = () => {
         setclicked(!clicked)
-
     }
-
   return (
     <div>
       <nav className="Navbar">
