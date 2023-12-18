@@ -17,8 +17,6 @@ export default function Orders() {
     dispatch(getAllOrders());
   }, []);
 
-  console.log(orders);
-
   function readableDate(d) {
     const v = new Date(d).toLocaleDateString('en-GB');
     return v;
@@ -97,32 +95,33 @@ export default function Orders() {
               Phone Number:{selectedOrder.userId.phoneNumber}
             </div>
             <div className="carousel">
-            <button
-          className="button-arrow2"
-          onClick={() => {
-            updateIndex(activeIndex - 1);
-          }}
-        >
-          <span class="material-symbols-outlined">back</span>{" "}
-        </button>
-      <div
-        className="inner"
-        style={{ transform: `translate(-${activeIndex * 100}%)`
-     }}
-      >
-        {carsOrder.map((item) => {
-          return <CarouselItem item={item}/>;
-        })}
-      </div>        
-        <button
-          className="button-arrow1"
-          onClick={() => {
-            updateIndex(activeIndex + 1);
-          }}
-        >
-          <span class="material-symbols-outlined">next</span>
-        </button>
-    </div>
+              <button
+                className="button-arrow2"
+                onClick={() => {
+                  updateIndex(activeIndex - 1);
+                }}
+              >
+                <span class="material-symbols-outlined">back</span>{" "}
+              </button>
+              <div
+                className="inner"
+                style={{
+                  transform: `translate(-${activeIndex * 100}%)`
+                }}
+              >
+                {carsOrder.map((item) => {
+                  return <CarouselItem item={item} />;
+                })}
+              </div>
+              <button
+                className="button-arrow1"
+                onClick={() => {
+                  updateIndex(activeIndex + 1);
+                }}
+              >
+                <span class="material-symbols-outlined">next</span>
+              </button>
+            </div>
           </div>
         </div>
       )}
