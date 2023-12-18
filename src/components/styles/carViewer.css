@@ -172,6 +172,12 @@
 
   /*Tablet*/
 @media screen and (min-width:767px) and (max-width:1023px){
+    .viewer-car-name-title{
+        font-size: 100px;
+    } 
+    .viewer-title{
+        height: 34vh;
+    }
     .viewer-all-infos{
         flex-direction: column;
     }
