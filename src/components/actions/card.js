@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const addCard = ( userId,nameOnCard, cardNumber, cvv, expDate) => {
+export const addCard = ( userId,nameOnCard, cardNumber, cvc, expDate) => {
     const newCard = {
-        userId,nameOnCard, cardNumber, cvv, expDate
+        userId,nameOnCard, cardNumber, cvc, expDate
     };
     return (dispatch) => {
       axios
