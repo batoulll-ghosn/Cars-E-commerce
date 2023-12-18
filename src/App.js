@@ -12,10 +12,12 @@ import LatestCars from './components/mainComponents/LatestCars';
 import Review from './components/mainComponents/Review';
 import Profile from './components/mainComponents/Profile';
 import CustomerDash from './components/dashboard/CustomerDash';
+import { toast, Toaster } from "react-hot-toast";
 function App() {
   return (
     <Router>
       <div className="App">
+      <Toaster toastOptions={{ duration: 5000 }} />
         <Routes>
           {/* <Route path="/navbar" element={<NavBar/>} /> */}
           <Route path="/" element={ <> <NavBar/><Header/><About/><LatestCars/><FAQ/><Footer/> </>} />

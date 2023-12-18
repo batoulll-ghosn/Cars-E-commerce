@@ -3,12 +3,14 @@ import bcrypt from "bcryptjs";
 import { getUserById, updateProfile, updatePassword } from "../actions/user";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles/profile.css";
+import { toast, Toaster } from "react-hot-toast";
 
 function Profile(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [Cpassword, setCPassword] = useState("");
   const [newpassword, setNewPassword] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
   const [modal, setmodal] = useState(true);
   const [isEditable, setIsEditable] = useState(false);
   const { userId } = props;
@@ -25,9 +27,16 @@ function Profile(props) {
   };
   
   const handleEditing = async ()=>{
+    if(password === ""){
+      toast.error("Enter your old password")
+    }
     const match = await bcrypt.compare(password, user.password)
     if (match) {
+      setOldPassword(password)
       setIsEditable(true);
+    }
+    else{
+      toast.error("Wrong old password")
     }
   }
 
@@ -41,15 +50,17 @@ function Profile(props) {
       if(email.trim()!== ""){
         newMail=email;
       }
-      var newPass =user.password;
-      if(password.trim()!== ""){
-        newPass=password;
+      var newPass =password;
+      if(newpassword.trim()!== ""){
+        newPass=newpassword;
       }
       if(newMail !== user.email){
       dispatch(updateProfile(userId, newMail, newPass));
+      toast.success("Profile updated successfully");
       }
       else{
-      dispatch(updatePassword(userId, newPass))
+      dispatch(updatePassword(userId, newPass));
+      toast.success("Profile updated successfully");
       }
       
     } else {

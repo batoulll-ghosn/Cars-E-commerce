@@ -58,9 +58,10 @@
 .N-menu-items img{
     background-color: #C92424;
     width: 50px;
-    height: 45px;
+    height: 47px;
     border-radius: 10px;
-    padding: 2px
+    padding: 4px;
+    margin-top:5px
 }
 .N-menu-items img:hover{
   cursor: pointer;

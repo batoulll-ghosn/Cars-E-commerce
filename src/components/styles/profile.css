@@ -9,6 +9,9 @@
     font-weight: 500;
     float: right;
     padding: 10px;
+    position: absolute;
+    right: 1%;
+    border-radius: 10px;
 }
 .profile p{
     text-align: center;
@@ -16,7 +19,7 @@
 
 .profile-container label{
    position: absolute;
-   left: 76%;
+   left: 10%;
 }
 .profile-container input{
    margin-left: 51%;
@@ -39,6 +42,11 @@
     background-color: white;
     border: none;
     border-radius: 10px;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 17px;
+    font-weight: 600;
+    width: 70px;
+}
+.profile-buttons button:hover{
+    cursor: pointer;
+    scale: 1.1;
 }
