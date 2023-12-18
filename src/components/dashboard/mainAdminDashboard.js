@@ -4,22 +4,19 @@ import Overview from './overviewMainDashboard';
 import Orders from './ordersMainDashboard';
 import Cars from'./carsMainDashboard';
 import Customers from './customersMainDashboard';
-import Discount from './discountMainDashboard'
+import Discount from './discountMainDashboard';
 import '../styles/mainAdminDashboard.css';
 import Menu from './AdminDashboardMenu';
 import Reviews from './reviews';
 function Dashboard() {
     const [activePage, setActivePage] = useState('overview');
-
     const handleMenuClick = (page) => {
         setActivePage(page);
     };
     const navigate = useNavigate();
-  
-
     return (
         <>
-        <Menu />
+        <Menu/>
         <div className="ad-menu-and-content ">
 
             <div className="ad-menu">

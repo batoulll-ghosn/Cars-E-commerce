@@ -13,9 +13,7 @@ import Testimonial from './components/mainComponents/Carousel';
 import CarsPage from './components/mainComponents/CarsPage';
 import CarViewer from './components/mainComponents/CarViewer';
 import ContactPage from './components/mainComponents/ContactPage';
-import Example from './components/Loading/Example';
-
-import { toast, Toaster } from "react-hot-toast";
+import SellerDashboard from './components/seller-dashboard/SellerDashboard';
 function App() {
   return (
     <Router>
@@ -29,7 +27,7 @@ function App() {
           <Route path="/contactUs" element={<ContactPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/ex" element={<Example />} />
+          <Route path="/sellerDashboard" element={<SellerDashboard />} />
         </Routes>
         
       </div>
