@@ -21,11 +21,12 @@ export const addOrder = (
 export const getAllOrders = () => {
   return (dispatch) => {
     axios
-      .get("http://localhost:5000/orders/getAll")
+      .get("http://localhost:5000/orders/getOrders")
       .then((response) => {
         const orders = response.data.orders;
         dispatch({
           type: "getAll",
+          payload: orders,
           payload: orders,
         });
       })

@@ -18,6 +18,7 @@ import Review from './components/mainComponents/Review';
 import Profile from './components/mainComponents/Profile';
 import CustomerDash from './components/dashboard/CustomerDash';
 
+import SellerDashboard from './components/seller-dashboard/SellerDashboard';
 function App() {
   return (
     <Router>
@@ -35,6 +36,7 @@ function App() {
           <Route path="/review" element={<Review />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/customer" element={<CustomerDash />} />
+          <Route path="/sellerDashboard" element={<SellerDashboard />} />
         </Routes>
         
       </div>
