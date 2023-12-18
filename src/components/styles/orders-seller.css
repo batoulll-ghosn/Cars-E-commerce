@@ -1,0 +1,162 @@
+.seller-tr:hover{
+    background-color: #D9D9D9;
+    }
+    .Hadi-popup {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+      }
+      
+      .Hadi-popup-order h2 {
+        color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+      }
+      .Hadi-popup-order {
+        background: white;
+        width: 680px;
+        height: 630px;
+        padding: 20px;
+        position: relative;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .Hadi-popup-order-span {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 35px;
+        cursor: pointer;
+      }
+      .Hadi-popup-order-g{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width:100%;
+        height: 15%;
+        border-radius: 10px;
+        background: rgba(217, 217, 217, 0.50);
+      }
+      .Hadi-popup-order-close{
+        height: 10%;
+      }
+      .Hadi-popup-order-u{
+        height: 17%;
+        border-bottom: 2px solid #C92424;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    .car-image{
+      width: 50%;
+      height: 50%;
+    }
+    .carousel {
+      overflow: hidden;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .inner {
+      white-space: nowrap;
+      transition: transform 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .carousel-item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+     
+      background-color: #fff;
+    }
+    .coursel-item-img{
+      padding: 12px;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .carousel-item-text {
+      font-size: 1.15rem;
+      margin: 40px 0 40px 0;
+      padding: 0 20px 0 20px;
+      white-space: normal;
+      color: #617d98;
+    }
+    .carousel-img {
+      width: 250px;
+      padding: 0 20px 0 20px;
+    }
+    
+    
+    
+    .carousel-buttons {
+      display: flex;
+      justify-content: space-evenly;
+    }
+    
+    .button-arrow1 {
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      position: absolute;
+      top: 86%;
+      right: 3%;
+      font-size: 35px;
+      cursor: pointer;
+    }
+    .button-arrow2 {
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      position: absolute;
+      top: 86%;
+      left: 3%;
+      font-size: 35px;
+      cursor: pointer;
+    }
+    
+    .indicators {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 20px;
+    }
+    
+    .indicator-buttons {
+      border: none;
+      cursor: pointer;
+    }
+    
+    .indicators > button {
+      margin: 5px;
+      background: none;
+    }
+    
+    .indicator-symbol {
+      color: #26343f;
+    }
+    
+    .indicator-symbol-active {
+      color: #ffffff;
+    }
