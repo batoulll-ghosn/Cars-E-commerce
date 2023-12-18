@@ -28,7 +28,7 @@ const CarsPage = () => {
   const dispatch = useDispatch();
   
 
-  
+
   useEffect(() => {
     dispatch(getAllCars());
     setTimeout(() => {
@@ -45,18 +45,44 @@ const CarsPage = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (selector === "all") {
-      dispatch(getAllCars());
-    } else if (selector === "type") {
-      dispatch(getCarsByType(search));
-    } else if (selector === "carName") {
-      dispatch(getCarByName(search));
-    } else if (selector === "company") {
-      dispatch(getCarsByCompany(search));
-    } else if (selector === "color") {
-      dispatch(GetCarsByColor(search));
+    if (selector && selector !== "Filter By") {
+      if (selector === "all") {
+        dispatch(getAllCars());
+      } else if (selector === "type") {
+        dispatch(getCarsByType(search));
+      } else if (selector === "carName") {
+        dispatch(getCarByName(search));
+      } else if (selector === "company") {
+        dispatch(getCarsByCompany(search));
+      } else if (selector === "color") {
+        dispatch(GetCarsByColor(search));
+      }
+      setSearch("");
+    } else {
+      alert("Please choose a valid filter before searching.");
     }
-    setSearch("");
+  };
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter") {
+      handleSearch(e);
+    }
+  };
+
+  const handleSuggestions = (selector) => {
+    axios
+      .post(`http://localhost:5000/cars/getAllCarsBySelector`, { selector })
+      .then((response) => {
+        setSuggestions((response.data.cars
+          .map((car) =>Object.values(car)[1])
+          .filter((value, index, element) => element.indexOf(value) === index))
+          .map((element)=>{
+            return {value:element}
+          }));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
