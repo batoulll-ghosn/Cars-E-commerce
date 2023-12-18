@@ -102,6 +102,20 @@ padding-right:70px;
         font-size: 20px;
         padding-right:59.5px;
         }
+        .ad-menu-item7{
+            margin-top: 0px;
+            padding: 5px; 
+            padding-top: 20px;
+        }
+    
+    .ad-menu-item7 a:hover{
+        background-color: #E08F8F;
+        padding: 10px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        font-size: 20px;
+        padding-right:43px;
+        }
 .ad-menu-item1-img:hover{
     width: 35px;
     height: 50px;
