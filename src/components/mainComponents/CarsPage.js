@@ -26,7 +26,7 @@ const CarsPage = () => {
   const dispatch = useDispatch();
   
 
-  
+
   useEffect(() => {
     dispatch(getAllCars());
     setTimeout(() => {
@@ -71,14 +71,6 @@ const CarsPage = () => {
     axios
       .post(`http://localhost:5000/cars/getAllCarsBySelector`, { selector })
       .then((response) => {
-        // console.log(
-        //   (response.data.cars
-        //     .map((car) =>Object.values(car)[1])
-        //     .filter((value, index, element) => element.indexOf(value) === index))
-        //     .map((element)=>{
-        //       return {value:element}
-        //     })
-        // );
         setSuggestions((response.data.cars
           .map((car) =>Object.values(car)[1])
           .filter((value, index, element) => element.indexOf(value) === index))
