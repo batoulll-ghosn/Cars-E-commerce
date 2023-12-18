@@ -1,7 +1,6 @@
 .or-third-table{
     width: 100%;
     font-size: 24px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .or-third-table thead{
     background-color: #DFDFDF;
@@ -10,8 +9,22 @@
     border-color: #DFDFDF;
 }
 .or-third-table td {
-    text-align: center;
+    text-align: left;
+    width: 60px;
+    /* margin-left: 10px; */
+    padding-left: 20px;
+    /* padding-top: 200px; */
+}
+.or-third-table td div{
+    height: 88px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    padding-top: 15px;
 }
 .or-div-table{
+    width: 98%;
     background-color: white;
+    overflow-y: auto;
+    height: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

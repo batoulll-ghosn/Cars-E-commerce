@@ -3,8 +3,7 @@ import "../styles/carsOfDash.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getAllCars, addCar, removeCar, updateCar } from "../actions/car";
-import userEvent from "@testing-library/user-event";
-import axios from "axios";
+import { toast, Toaster } from "react-hot-toast";
 
 function MainOfCars() {
   const cars = useSelector((state) => state.cars);
@@ -29,9 +28,22 @@ function MainOfCars() {
   useEffect(() => {
     dispatch(getAllCars());
   }, [dispatch]);
+
   const handleUpdate = (car) => {
     setSelectedCar(car);
     setUpdateShowPopup(true);
+    setCarName(car.carName);
+    setCompany(car.company);
+    setColor(car.color);
+    setDOR(car.DOR);
+    setType(car.type);
+    setDescription(car.description);
+    setQuantity(car.quantity);
+    setInitialPrice(car.initialPrice);
+    setSellingPrice(car.sellingPrice);
+    setTVA(car.TVA);
+    setFiles(car.files);
+    console.log(setFiles)
   };
   const OpendeletePop = (car) => {
     setSelectedCar(car);
@@ -77,9 +89,12 @@ function MainOfCars() {
     });
 
     dispatch(addCar(formData));
+    setAddShowPopup(false)
+    toast.success("You have Added a new car Successfully!");
+   
     setFiles([]);
   };
-
+  
   const handleUpdateCar = (e,id) => {
     e.preventDefault();
 
@@ -100,12 +115,13 @@ function MainOfCars() {
       formData.append("files", file);
     });
     dispatch(updateCar(id,formData));
-    setFiles([]);
-    setSelectedCar(null);
+
+    setUpdateShowPopup(false);
+    toast.success("You have Update a car Successfully!");
   };
-  console.log(selectedCar)
   return (
     <div className="cr-component">
+      <Toaster toastOptions={{ duration: 4000 }} />
       <div className="cr-third">
         <button
           className="cr-addcar-button"
@@ -118,7 +134,7 @@ function MainOfCars() {
             <div className="cr-addpopup">
               <div className="cr-addpopup-head">
                 <h2>Add a Car</h2>
-                <span className="cr-addpopup-close" onClick={handleAddClose}>
+                <span className="cr-addpopup-closee" onClick={handleAddClose}>
                   {" "}
                   &times;
                 </span>
@@ -143,6 +159,11 @@ function MainOfCars() {
                   type="number"
                   placeholder=" Quantity"
                   onChange={(e) => setQuantity(e.target.value)}
+                />
+                 <input
+                  type="text"
+                  placeholder=" Color"
+                  onChange={(e) => setColor(e.target.value)}
                 />
               </div>
               <hr className="cr-horizontal-line"></hr>
@@ -177,36 +198,35 @@ function MainOfCars() {
               <div className="cr-addpopup-first">
                 <textarea
                   placeholder=" Description"
+                  className="description-in-cars"
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
               <hr className="cr-horizontal-line"></hr>
-              <div>
-                <label>Image:</label>{" "}
+              <div className="last-one-in-cars">
+                <label>Image: </label>{" "}
+                <input
+                  type="file"
+                  accept='image/*'
+                  onChange={(e) =>
+                    setFiles((prev) => [...prev, e.target.files[0]])
+                  }
+                />
+                <label>3D: </label>{" "}
                 <input
                   type="file"
                   onChange={(e) =>
                     setFiles((prev) => [...prev, e.target.files[0]])
                   }
                 />
-                <label>3D:</label>{" "}
+                </div>
+                <div>
+                <label className="sound-carAdd">Sound: </label>{" "}
                 <input
                   type="file"
                   onChange={(e) =>
                     setFiles((prev) => [...prev, e.target.files[0]])
                   }
-                />
-                <label>Sound:</label>{" "}
-                <input
-                  type="file"
-                  onChange={(e) =>
-                    setFiles((prev) => [...prev, e.target.files[0]])
-                  }
-                />
-                <label>Color: </label>
-                <input
-                  type="color"
-                  onChange={(e) => setColor(e.target.value)}
                 />
               </div>
               <div>
@@ -218,11 +238,11 @@ function MainOfCars() {
           </form>
         )}
         {UpdateshowPopup && (
-          <form onSubmit={() => handleUpdateCar(selectedCar._id)}>
+          <form onSubmit={(e) => handleUpdateCar(e,selectedCar._id)}>
             <div className="cr-addpopup">
               <div className="cr-addpopup-head">
                 <h2>Edit a Car</h2>
-                <span className="cr-addpopup-close" onClick={handleUpdateClose}>
+                <span className="cr-addpopup-closee" onClick={handleUpdateClose}>
                   {" "}
                   &times;
                 </span>
@@ -231,26 +251,32 @@ function MainOfCars() {
                 <input
                   type="text"
                   placeholder=" Car Name"
-                  value={selectedCar.carName}
+                  defaultValue={selectedCar.carName}
                   onChange={(e) => setCarName(e.target.value)}
                 />
                 <input
                   type="text"
                   placeholder=" Company"
-                  value={selectedCar.company}
+                  defaultValue={selectedCar.company}
                   onChange={(e) => setCompany(e.target.value)}
                 />
                 <input
                   type="text"
                   placeholder=" Type"
-                  value={selectedCar.type}
+                  defaultValue={selectedCar.type}
                   onChange={(e) => setType(e.target.value)}
                 />
                 <input
                   type="number"
                   placeholder=" Quantity"
-                  value={selectedCar.quantity}
+                  defaultValue={selectedCar.quantity}
                   onChange={(e) => setQuantity(e.target.value)}
+                />
+                 <input
+                  type="text"
+                  placeholder=" Color"
+                  defaultValue={selectedCar.color}
+                  onChange={(e) => setColor(e.target.value)}
                 />
               </div>
               <hr className="cr-horizontal-line"></hr>
@@ -258,31 +284,31 @@ function MainOfCars() {
                 <input
                   type="number"
                   placeholder=" DOR"
-                  value={selectedCar.DOR}
+                  defaultValue={selectedCar.DOR}
                   onChange={(e) => setDOR(e.target.value)}
                 />
                 <input
                   type="number"
                   placeholder="Initial Price"
-                  value={selectedCar.initialPrice}
+                  defaultValue={selectedCar.initialPrice}
                   onChange={(e) => setInitialPrice(e.target.value)}
                 />
                 <input
                   type="number"
                   placeholder="Selling price"
-                  value={selectedCar.sellingPrice}
+                  defaultValue={selectedCar.sellingPrice}
                   onChange={(e) => setSellingPrice(e.target.value)}
                 />
                 <input
                   type="number"
                   placeholder=" TVA"
-                  value={selectedCar.TVA}
+                  defaultValue={selectedCar.TVA}
                   onChange={(e) => setTVA(e.target.value)}
                 />
                 <input
                   type="number"
                   placeholder=" Discount"
-                  value={selectedCar.discount}
+                  defaultValue={selectedCar.discount}
                   onChange={(e) => setDiscount(e.target.value)}
                 />
               </div>
@@ -290,16 +316,15 @@ function MainOfCars() {
               <div className="cr-addpopup-first">
                 <textarea
                   placeholder=" Description"
-                  value={selectedCar.description}
+                  defaultValue={selectedCar.description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
               <hr className="cr-horizontal-line"></hr>
-              <div>
+              <div className="last-one-in-cars">
                 <label>Image:</label>{" "}
                 <input
                   type="file"
-                 
                   onChange={(e) =>
                     setFiles((prev) => [...prev, e.target.files[0]])
                   }
@@ -312,6 +337,8 @@ function MainOfCars() {
                     setFiles((prev) => [...prev, e.target.files[0]])
                   }
                 />
+                </div>
+                <div>
                 <label>Sound:</label>{" "}
                 <input
                   type="file"
@@ -319,12 +346,6 @@ function MainOfCars() {
                   onChange={(e) =>
                     setFiles((prev) => [...prev, e.target.files[0]])
                   }
-                />
-                <label>Color: </label>
-                <input
-                  type="color"
-                  value={selectedCar.color}
-                  onChange={(e) => setColor(e.target.value)}
                 />
               </div>
               <div>
@@ -385,7 +406,9 @@ function MainOfCars() {
                     </td>
                   </tr>
                 ))}
+              
               </tbody>
+             
             </table>
           </div>
         </div>
