@@ -6,17 +6,26 @@
     background: #E1E1E1;
 
   }
-  @keyframes moveRight {
-    from {
-      transform: translateX(-30%);
+  @keyframes driveInCircle {
+    0% {
+      transform: translateX(-50%) translateY(0) rotate(0deg);
     }
-    to {
-      transform: translateX(30%);
+    25% {
+      transform: translateX(0) translateY(-50%) rotate(-90deg);
+    }
+    50% {
+      transform: translateX(50%) translateY(0) rotate(-180deg);
+    }
+    75% {
+      transform: translateX(0) translateY(50%) rotate(-270deg);
+    }
+    100% {
+      transform: translateX(-50%) translateY(0) rotate(-360deg);
     }
   }
   
   .car-svg-not-found {
-    animation: moveRight 3s ease-in-out;
+    animation: driveInCircle 8s linear infinite; /* 'infinite' makes the animation loop */
     height: 20%;
   }
   
