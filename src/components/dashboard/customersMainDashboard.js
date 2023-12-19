@@ -144,13 +144,8 @@ function MainOfCustomers() {
                 </button>
               </div>
               <hr className='cur-horizontal-line'></hr>
-              <div className='cur-addpopup-first'>
-                <select value={formData.role} name='role' onChange={handleChange}>
-                  <option value='admin'>Admin</option>
-                  <option value='seller'>Seller</option>
-                  <option value='customer'>Customer</option>
-                </select>
-              </div>
+              <div className='cur-addpopup-first'><input type='text'  placeholder='Role' name='role' onChange={handleChange} /></div>
+              
               <div><button className='cr-addcar-buttonn' type='submit' >Add</button></div>
             </div>
           </form>
@@ -174,13 +169,8 @@ function MainOfCustomers() {
                 <input type='text' placeholder=' Phone Number' name='phoneNumber' value={formData.phoneNumber} onChange={handleChange} />
               </div>
               <hr className='cur-horizontal-line'></hr>
-              <div className='cur-addpopup-first'>
-                <select value={formData.role} name='role' onChange={handleChange}>
-                  <option value='admin'>Admin</option>
-                  <option value='seller'>Seller</option>
-                  <option value='customer'>Customer</option>
-                </select>
-              </div>
+              <div className='cur-addpopup-first'><input type='text'  placeholder='Role' name='role' onChange={handleChange} /></div>
+              
               <div><button className='cr-addcar-buttonn' type='submit'>Done</button></div>
             </div>
           </form>

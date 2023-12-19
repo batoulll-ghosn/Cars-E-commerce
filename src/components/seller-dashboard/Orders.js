@@ -16,7 +16,7 @@ export default function Orders() {
   useEffect(() => {
     dispatch(getAllOrders());
   }, []);
-
+   console.log(orders)
   function readableDate(d) {
     const v = new Date(d).toLocaleDateString('en-GB');
     return v;

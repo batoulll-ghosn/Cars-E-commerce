@@ -26,9 +26,7 @@ function Dashboard() {
                     <div className="ad-menu-item1">
                         <a href="#overview" onClick={() => handleMenuClick('overview')}><img className ='ad-menu-item1-img' src='./images/home-page-svgrepo-com.svg' /> Overview</a>
                     </div>
-                    <div className="ad-menu-item2">
-                        <a href="#orders" onClick={() => handleMenuClick('orders')}><img className ='ad-menu-item1-img' src='./images/online-shop-svgrepo-com.svg' />   Orders</a>
-                    </div>
+                   
                     <div className="ad-menu-item3">
                         <a href="#cars" onClick={() => handleMenuClick('cars')}><img className ='ad-menu-item1-img' src='./images/car-svgrepo-com (2).svg' />  Cars</a>
                     </div>
@@ -48,7 +46,7 @@ function Dashboard() {
             </div>
             <div id="ad-content">
                 {activePage === 'overview' && <Overview />}
-                {activePage === 'orders' && <Orders />}
+                
                 {activePage === 'cars' && <Cars />}
                 {activePage === 'discounts' && <Discount />}
                 {activePage === 'customer' && <Customers />}

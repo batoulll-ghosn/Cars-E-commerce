@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-tailwind/react": "^2.1.5",
-    "@react-three/drei": "^9.92.5",
+    "@react-three/drei": "^9.92.1",
     "@react-three/fiber": "^8.15.12",
     "@emailjs/browser": "^3.11.0",
     "@testing-library/jest-dom": "^5.16.5",

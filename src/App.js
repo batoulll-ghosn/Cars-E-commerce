@@ -17,7 +17,6 @@ import ContactPage from './components/mainComponents/ContactPage';
 import Review from './components/mainComponents/Review';
 import Profile from './components/mainComponents/Profile';
 import CustomerDash from './components/dashboard/CustomerDash';
-
 import SellerDashboard from './components/seller-dashboard/SellerDashboard';
 import CreditCard  from './components/mainComponents/CreditCard';
 import { Toaster } from 'react-hot-toast';
