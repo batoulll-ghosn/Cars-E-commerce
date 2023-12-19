@@ -40,10 +40,11 @@ function Testimonial() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 width: '800px',
-                marginLeft: '280px',
+                marginLeft: '360px',
                 fontSize: '24px',
                 padding: '10px',
                 height: '240px',
+                
               }}
               className='testimonial-carousel-div'
               key={review._id}
@@ -61,9 +62,9 @@ function Testimonial() {
       <div className='carousel-in-ipad'   style={{
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '800px',
-                marginLeft: '110px',
-                fontSize: '24px',
+                width: '680px',
+                marginLeft: '60px',
+                fontSize: '26px',
                 padding: '10px',
                 height: '240px',
               }}>
@@ -87,9 +88,9 @@ function Testimonial() {
               alignItems: 'center',
               justifyContent: 'center',
               margin: '40px',
-              fontSize: '20px',
+              fontSize: '17px',
               padding: '13px',
-              height:'300px'
+              height:'370px'
             }} key={review._id}>
               <p style={{
                 fontSize: '28px',
