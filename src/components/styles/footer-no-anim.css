@@ -62,7 +62,7 @@
   list-style-type: none;
   margin-left: 20px;
 }
-.footer{
+.footer1{
  position:relative;
  padding: 3rem 0; 
  color: #fff;
@@ -130,6 +130,12 @@
 }
 
 
+/*Tablet*/
+@media screen and (min-width:767px) and (max-width:1023px){
+  .footer1{
+    margin-top: 10px;
+  }
+}
 
 
 
@@ -142,7 +148,7 @@
   flex-direction: column;
   margin-top: 200px;
 }
-.footer{
+.footer1{
   position: relative;
   color: #fff;
   background: #000;

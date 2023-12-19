@@ -57,7 +57,7 @@ const CarViewer = () => {
   switch(cars.carName) {
     case 'BMW-i4':
     carModel = '/bmw_i4.glb';
-    Scale = 0.020
+    Scale = 0.03
     break;
     case 'Nissan GT-R':
     carModel = '/nissan_gt-r (1).glb';
@@ -113,7 +113,8 @@ if (colorDisplay) {
      <div>
      
       <div key={cars._id}>
-     <h2 className='viewer-car-price'>${cars.sellingPrice}</h2>
+     <h2 className='viewer-car-price' style={{textDecoration:"line-through"}}>${cars.sellingPrice}</h2>
+     <h2 className='viewer-car-price'>${((cars.sellingPrice)-(cars.sellingPrice*(cars.discount/100)))}</h2>
 
        <div className='viewer-title-3d'  >
 

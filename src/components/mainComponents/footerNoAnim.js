@@ -5,7 +5,7 @@ import '../styles/test.css';
 import { Link } from 'react-router-dom';
 function FooterNoAnim() {
  return (
-   <footer className="footer">
+   <footer className="footer1">
     <div className="container">
       <div className="footerFlexContainer">
         <div className="firstFooterColumn"> <h3 className="footer__col-title">

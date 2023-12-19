@@ -57,7 +57,9 @@
         display: flex;
         flex-direction: column-reverse;
     }
-
+    .about-p-c h1{
+        font-size: 59px;
+    }
     .about-p-c-first p {
         padding: 2px;
         width: 100%;

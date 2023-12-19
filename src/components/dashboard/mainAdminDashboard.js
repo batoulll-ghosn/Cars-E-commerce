@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Overview from './overviewMainDashboard';
-import Orders from './ordersMainDashboard';
+import Orders from '../seller-dashboard/Orders';
 import Cars from'./carsMainDashboard';
 import Customers from './customersMainDashboard';
 import Discount from './discountMainDashboard';

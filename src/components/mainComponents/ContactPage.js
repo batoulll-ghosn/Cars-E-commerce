@@ -8,6 +8,7 @@ export default function ContactPage(){
         <>
         <NavBar/>
         <div className={`contact-container ${unset&&`unset-container`}`}>
+                <div className="contact-overlay"></div>
             <div className='contact-container-d'>
                 <h1>CONTACT Us</h1>
                 <form>
