@@ -1,6 +1,6 @@
 const carReducer=(state=[],action)=>{
     switch(action.type){
-        case 'getAll':
+        case 'getAllCars':
             return action.payload;
         case 'getCarByName':
             return state.filter((car)=>car.carName===action.payload);

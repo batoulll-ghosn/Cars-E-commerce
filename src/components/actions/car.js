@@ -47,7 +47,7 @@ export const getAllCars = () => {
       .then((response) => {
         const cars = response.data.cars;
         dispatch({
-          type: "getAll",
+          type: "getAllCars",
           payload: cars,
         });
       })
