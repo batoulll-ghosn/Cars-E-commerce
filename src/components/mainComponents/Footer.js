@@ -31,7 +31,7 @@ function Footer() {
                </li>
              </ul>
            </nav></div>
-      <div classname="secondFooterColumn"> <h3 className="footer__col-title">
+      <div className="secondFooterColumn"> <h3 className="footer__col-title">
              <Share2 /> <span>Social Media</span>
            </h3>
            <div className='footer__socialmedia'>
@@ -45,7 +45,7 @@ function Footer() {
          </svg>
            </div>
            </div>
-      <div classname="thirdFooterColumn"> <ul className="footer__nav-list">
+      <div className="thirdFooterColumn"> <ul className="footer__nav-list">
                <li className="footer__nav-item">
                 <div className='footer-buttons'><button className='Footer-login' onClick={handleClick}>Login</button>
                 <button className='Footer-register' onClick={handleClick}>Register</button></div>

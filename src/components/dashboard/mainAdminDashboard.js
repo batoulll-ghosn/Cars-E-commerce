@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Overview from './overviewMainDashboard';
 import Orders from '../seller-dashboard/Orders';
 import Cars from'./carsMainDashboard';
@@ -14,7 +13,7 @@ function Dashboard() {
     const handleMenuClick = (page) => {
         setActivePage(page);
     };
-    const navigate = useNavigate();
+    
     return (
         <>
         <Menu/>

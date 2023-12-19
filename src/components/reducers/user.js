@@ -3,7 +3,7 @@ const userReducer = (state = [], action) => {
     case "getAllUsers":
       return action.payload;
     case "register":
-      return [...state, action.payload];
+      return [...state, action.payload.user];
     case "deleteUser":
       return state.filter((user) => user._id !== action.payload);
     case "updateUser":
@@ -23,6 +23,8 @@ const userReducer = (state = [], action) => {
     //     user._id === action.payload.Id ? action.payload.user : user
     //   );
     case "getUserById":
+      return action.payload;
+    case "register2":
       return action.payload;
     case "getUsersByRole":
       return action.payload;

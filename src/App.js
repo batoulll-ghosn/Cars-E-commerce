@@ -13,13 +13,18 @@ import Testimonial from './components/mainComponents/Carousel';
 import CarsPage from './components/mainComponents/CarsPage';
 import CarViewer from './components/mainComponents/CarViewer';
 import ContactPage from './components/mainComponents/ContactPage';
-import { toast, Toaster } from "react-hot-toast";
+// import { toast, Toaster } from "react-hot-toast";
 import Review from './components/mainComponents/Review';
 import Profile from './components/mainComponents/Profile';
 import CustomerDash from './components/dashboard/CustomerDash';
 
 import SellerDashboard from './components/seller-dashboard/SellerDashboard';
+import CreditCard  from './components/mainComponents/CreditCard';
+import { Toaster } from 'react-hot-toast';
+import Cart from './components/mainComponents/Cart';
 function App() {
+  // const token =localStorage.getItem("token");
+  // const id =localStorage.getItem("id");
   return (
     <Router>
       <div className="App">
@@ -37,6 +42,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/customer" element={<CustomerDash />} />
           <Route path="/sellerDashboard" element={<SellerDashboard />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/creditCard" element={<CreditCard />} />
         </Routes>
         
       </div>
