@@ -95,14 +95,6 @@ export default function Orders() {
               Phone Number:{selectedOrder.userId.phoneNumber}
             </div>
             <div className="carousel">
-              <button
-                className="button-arrow2"
-                onClick={() => {
-                  updateIndex(activeIndex - 1);
-                }}
-              >
-                <span class="material-symbols-outlined">back</span>{" "}
-              </button>
               <div
                 className="inner"
                 style={{
@@ -113,6 +105,14 @@ export default function Orders() {
                   return <CarouselItem item={item} />;
                 })}
               </div>
+                  <button
+                    className="button-arrow2"
+                    onClick={() => {
+                      updateIndex(activeIndex - 1);
+                    }}
+                  >
+                    <span class="material-symbols-outlined">back</span>{" "}
+                  </button>
               <button
                 className="button-arrow1"
                 onClick={() => {
