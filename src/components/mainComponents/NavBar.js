@@ -5,12 +5,7 @@ const NavBar = () => {
     const [clicked, setclicked] = useState(false);
     const handleClick = () => {
         setclicked(!clicked)
-
     }
- const logout = ()=>{
-  localStorage.removeItem("token");
-  localStorage.removeItem("id")
- }
   return (
     <div>
       <nav className="Navbar">
@@ -33,8 +28,7 @@ const NavBar = () => {
                 <a className='N-menu-tag' href="#">Contact us
                 </a>
                 </li>
-                <li className='N-menu-button'>
-                  
+                <li className='N-menu-button'>   
                 <a className='N-register' href="#" >Order Now
                 </a>
                
