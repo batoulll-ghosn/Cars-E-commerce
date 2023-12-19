@@ -9,6 +9,7 @@ import Dashboard from './components/dashboard/mainAdminDashboard';
 import Header from './components/mainComponents/Header';
 import Login from './components/mainComponents/Login';
 import LatestCars from './components/mainComponents/LatestCars';
+import PageNotFound from './components/mainComponents/PageNotFound';
 function App() {
   return (
     <Router>
@@ -19,6 +20,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
     </Router>
