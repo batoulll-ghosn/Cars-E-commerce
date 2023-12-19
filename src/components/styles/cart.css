@@ -186,6 +186,13 @@ padding: 4px;
 .checkout-cart button:hover{
     cursor: pointer;
 }
+.trash{
+height: 50px;
+}
+.trash:hover{
+   cursor: pointer;
+   scale: 1.08;
+    }
 @media screen and (min-width:767px) and (max-width:1023px){
     
     .footer-cart-container-white{

@@ -26,7 +26,7 @@ export const getAllOrders = () => {
         const orders = response.data.orders;
         dispatch({
           type: "getAll",
-          payload: cars,
+          payload: orders,
         });
       })
       .catch((error) => console.log("Failed to fetch data :", error));

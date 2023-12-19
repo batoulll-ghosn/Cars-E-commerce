@@ -8,7 +8,7 @@ import trash from "../styles/bin-svgrepo-com (1).svg";
 import CreditCard from "./CreditCard";
 const Cart = () => {
   const [location, setLocation] = useState(null);
-  const [cartItems, setCartItems] = useState([]);
+  
   const [prices, setPrices] = useState([]);
   const [discounts, setDiscounts] = useState([]);
   const cars = useSelector((state) => state.cars);
@@ -39,7 +39,7 @@ const Cart = () => {
   console.log(discounts);
 
   const handleSelectLocation = (e) => {
-    console.log(e.target.value);
+    setLocation(e.target.value);
   };
   const handleCreditCard = () => {
     setShowCard(!showCard);
@@ -122,6 +122,7 @@ const Cart = () => {
                     <td className="cart-details-order">
                       <span className="cart-car-details">
                         <img
+                        className="trash"
                           src={trash}
                           onClick={() => handleRemoveItem(item[0]._id)}
                         />
@@ -134,14 +135,14 @@ const Cart = () => {
             </tbody>
         </table>
       </div>
-      {showCard && <CreditCard userId="657f6130bddb5fab30a01537" />}
+      {showCard && <CreditCard userId="657f6130bddb5fab30a01537" order={{userId:"657f6130bddb5fab30a01537",cars:localStorage.getItem("id").split(","),shipmentId:location,status:false}}  />}
       <div className="footer-cart-container">
         <div className="footer-cart-container-white">
           <div className="white-part1">
             <span>Choose Pick Up Location</span>
             <select className="location-list" onChange={handleSelectLocation}>
               {shipments.map((shipment) => (
-                <option value={shipment.location}>{shipment.location}</option>
+                <option value={shipment._id}>{shipment.location}</option>
               ))}
             </select>
           </div>

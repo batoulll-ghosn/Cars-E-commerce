@@ -1,7 +1,6 @@
 .card-container{
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     position: fixed;
     top: 0;
     left: 0;
@@ -21,6 +20,19 @@
     border-radius: .25rem;
     transition: border-color .15s;
     width: 270px;
+}
+.close-span{
+    font-size: 35px;
+    position: absolute;
+    right: 36%;
+    top:4%;
+}
+.close-span:hover{
+    cursor: pointer;
+}
+.mmm:hover{
+    cursor: pointer;
+    scale: 1.05;
 }
 .credit-card{
     display: flex;
