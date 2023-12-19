@@ -169,7 +169,6 @@ function CreditCard(props) {
             expiry={item.expDate}
             cvc=""
             focused={focus}
-            
           />
           </div>
           ))
