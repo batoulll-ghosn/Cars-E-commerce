@@ -26,6 +26,7 @@ function MainOfCars() {
   const [color, setColor] = useState("");
   const [selectedCar, setSelectedCar] = useState(null);
   const [showImagePopup, setShowImagePopup] = useState(false);
+  const [carImage,setcarImage] = useState("");
   
   useEffect(() => {
     dispatch(getAllCars());
@@ -73,10 +74,10 @@ function MainOfCars() {
     setUpdateShowPopup(false);
   };
 
-  const showImage = (car) => {
-    setShowImagePopup(true);
-    let carImage = car.files[0];
-  };
+  // const showImage = (car) => {
+  //   setShowImagePopup(true);
+  //    setcarImage(car.files[0]);
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -217,7 +218,6 @@ function MainOfCars() {
                 <label>Image: </label>{" "}
                 <input
                   type="file"
-                  accept='image/*'
                   onChange={(e) =>
                     setFiles((prev) => [...prev, e.target.files[0]])
                   }
@@ -385,7 +385,7 @@ function MainOfCars() {
             </div>
           </div>
         )}
-        {showImagePopup && (
+        {/* {showImagePopup && (
           <div className="cr-addpopup">
             <span className="cr-addpopup-closee" onClick={handleImageClose}>
                   {" "}
@@ -394,7 +394,7 @@ function MainOfCars() {
             <img src={carImage}/>
           </div>
 
-        )}
+        )} */}
         <div className="cr-third-main">
           <div className="cr-third-div-table">
             <table className="cr-third-table">
@@ -408,7 +408,7 @@ function MainOfCars() {
               </thead>
               <tbody>
                 {cars.map((car) => (
-                  <tr key={car._id} onClick={showImage(car)}>
+                  <tr key={car._id} >
                     <td>{car.carName}</td>
                     <td>{car.quantity}</td>
                     <td>{car.initialPrice}</td>
