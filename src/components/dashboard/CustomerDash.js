@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/NavBar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getOrdersByUserId } from "../actions/order";
@@ -22,6 +22,11 @@ const CustomerDash = () => {
     dispatch(getOrdersByUserId("6576cc55a83f9a4c5b14d3d7"));
   }, [dispatch]);
   console.log(orders);
+  const navigate = useNavigate()
+  const handleSignOut = () => {
+    localStorage.clear()
+    navigate('/');
+  }
   return (
     <div>
       <nav className="Navbar">
@@ -34,7 +39,8 @@ const CustomerDash = () => {
               <h1 className="Mn-admin">Hello customer</h1>
             </li>
             <li className="N-menu-button">
-              <button className="N-register">Sign Out</button>
+              <button className="N-register"
+              onClick={handleSignOut}>Sign Out</button>
             </li>
             <li className="N-menu-items">
               <img

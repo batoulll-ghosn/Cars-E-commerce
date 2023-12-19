@@ -88,7 +88,7 @@ text-transform: capitalize;
 .coursel-item-img{
   padding: 12px;
   display: flex;
-  width: 60%;
+  width: 55%;
   align-items: center;
   justify-content: center;
 }
