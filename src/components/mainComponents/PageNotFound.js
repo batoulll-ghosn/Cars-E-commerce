@@ -5,8 +5,8 @@ import '../styles/PageNotFound.css'
 const PageNotFound = () => {
   return (
     <div className="not-found-container">
-    <img  src="images/car-svgrepo-com.svg" className="car-svg-not-found" alt="not found" />
     <div className="flex-title-not-found">
+    <img  src="images/car-svgrepo-com.svg" className="car-svg-not-found" alt="not found" />
       <h1 className="title-text-not-found">Ooooooops!</h1>
       <p className="subTitle-not-found"> Page Not Found</p>
       <div className="home-button-not-found">
