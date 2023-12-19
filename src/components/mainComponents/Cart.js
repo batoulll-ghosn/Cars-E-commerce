@@ -28,11 +28,11 @@ const Cart = () => {
       return cars.find((car) => car._id === id);
     });
     const prices = items.map((item) => {
-      return item.sellingPrice;
+      return item?item.sellingPrice:0;
     });
     setPrices(prices);
     const discounts = items.map((item) => {
-      return item.discount;
+      return item?item.discount:0;
     });
     setDiscounts(discounts);
   }, [ids,cars]);
@@ -49,7 +49,7 @@ const Cart = () => {
   };
   setTimeout(() => {
     localStorage.setItem("id", ids);
-  }, 5000);
+  }, 2000);
  const handleSubtotal= (() => {
     let subtotal=0;
     prices.forEach((price) => {
@@ -88,12 +88,15 @@ const Cart = () => {
       </div>
       <div className="cart-product">
         <table>
+          <thead>
           <tr>
             <td className="white-tr-td">Product</td>
             <td className="white-tr-td">Details</td>
             <td className="white-tr-td"> Price</td>
             <td className="white-tr-td"> Action</td>
           </tr>
+          </thead>
+          <tbody>
           {ids &&
             ids.map((id) => {
               const item = cars.filter((car) => car._id === id);
@@ -128,6 +131,7 @@ const Cart = () => {
                 )
               );
             })}
+            </tbody>
         </table>
       </div>
       {showCard && <CreditCard userId="657f6130bddb5fab30a01537" />}
@@ -143,12 +147,15 @@ const Cart = () => {
           </div>
           <div className="white-part2">
             <table>
+              <thead>
               <tr>
                 <td className="td-white">SubTotal</td>
                 <td className="td-n">
                   {handleSubtotal()+" $"}
                 </td>
               </tr>
+              </thead>
+              <tbody>
               <tr>
                 <td className="td-white">discount</td>
                 <td className="td-n">{handleDiscounts()}</td>
@@ -161,6 +168,7 @@ const Cart = () => {
                 <td className="td-white">TOTAL</td>
                 <td className="td-n">{handleTotal()+" $"}</td>
               </tr>
+              </tbody>
             </table>
             <div className="checkout-cart">
               <button onClick={handleCreditCard}>Checkout {handleTotal()} $</button>
