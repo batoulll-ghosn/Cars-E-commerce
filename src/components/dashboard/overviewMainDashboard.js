@@ -1,4 +1,4 @@
-import {React,useEffect} from 'react';
+import {React,useEffect, useState} from 'react';
 import '../styles/overview.css';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -19,6 +19,8 @@ function OverView() {
     const orders = useSelector((state) => state.orders);
     const users = useSelector((state) => state.users);
     const shipments = useSelector((state) => state.shipments);
+
+    const [revenue,setRevenue] = useState([]);
  const dispatch=useDispatch()
  useEffect(() => {
  dispatch(getAllOrders());
@@ -26,7 +28,21 @@ function OverView() {
  dispatch(getAllShipments())
  },[])
 
-
+ useEffect(() =>{
+  const revenues = orders.filter((order) => {
+    
+   if (order.status === true)
+    //  console.log(order.cars)}
+    return order.cars
+  })
+  setRevenue(revenues);
+  // let s = 0
+  // revenues.map((revenue)=>{
+  //     s += revenue[0].sellingPrice
+  // })
+  // console.log(s)
+ },[orders])
+console.log(revenue)
 
  function readableDate(d) {
   const v = new Date(d).toLocaleDateString('en-GB');
