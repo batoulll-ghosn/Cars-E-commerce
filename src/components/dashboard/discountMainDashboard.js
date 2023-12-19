@@ -32,10 +32,17 @@ const Discount = () => {
      <div className="car-grid">
        {currentCars.map((car) => (
          <div className='in-it' key={car._id}>
-           <h1>{car.company} {car.carName}</h1>
-           <div className='in-itt'><p className='ds-the-red'>{car.discount}%</p><img src={car.files[0]}/></div>
+           <h1> {car.carName}</h1>
+           <div className='in-itt'><p className='ds-the-red'>{car.discount}%</p>
+           <img src={car.files[0]}/>
+           </div>
            <div className='in-it-down-one'><div>Type: {car.type}<br/>
-           color: {car.color}</div><div><p className='in-it-mashtoube'>${car.initialPrice}</p><br/><p>${car.sellingPrice}</p></div></div>
+           color: {car.color}</div>
+           <div>
+            <p className='in-it-mashtoube'>${car.sellingPrice}</p><br/>
+            <h2>${((car.sellingPrice)-(car.sellingPrice*(car.discount/100)))}</h2>
+            </div>
+            </div>
          </div>
        ))}
      </div>

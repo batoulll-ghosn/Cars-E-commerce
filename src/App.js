@@ -13,6 +13,11 @@ import Testimonial from './components/mainComponents/Carousel';
 import CarsPage from './components/mainComponents/CarsPage';
 import CarViewer from './components/mainComponents/CarViewer';
 import ContactPage from './components/mainComponents/ContactPage';
+import { toast, Toaster } from "react-hot-toast";
+import Review from './components/mainComponents/Review';
+import Profile from './components/mainComponents/Profile';
+import CustomerDash from './components/dashboard/CustomerDash';
+
 import SellerDashboard from './components/seller-dashboard/SellerDashboard';
 import { toast, Toaster } from "react-hot-toast";
 function App() {
@@ -20,14 +25,18 @@ function App() {
     <Router>
       <div className="App">
       <Toaster toastOptions={{ duration: 5000 }} />
+      
         <Routes>
           <Route path="/" element={ <> <NavBar/><Header/><About/><LatestCars/><FAQ/><Testimonial /><Footer/> </>} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/cars" element={<CarsPage/>}/>
-          <Route path="/3d-viewer" element={<CarViewer />} />
+          <Route path="/3d-viewer/:id" element={<CarViewer />} />
           <Route path="/contactUs" element={<ContactPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/review" element={<Review />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/customer" element={<CustomerDash />} />
           <Route path="/sellerDashboard" element={<SellerDashboard />} />
         </Routes>
         

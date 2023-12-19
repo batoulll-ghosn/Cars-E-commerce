@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getAllCars, addCar, removeCar, updateCar } from "../actions/car";
 import { toast, Toaster } from "react-hot-toast";
+import axios from "axios";
+
 function MainOfCars() {
   const cars = useSelector((state) => state.cars);
   const dispatch = useDispatch();
@@ -23,6 +25,8 @@ function MainOfCars() {
   const [DOR, setDOR] = useState("");
   const [color, setColor] = useState("");
   const [selectedCar, setSelectedCar] = useState(null);
+  const [showImagePopup, setShowImagePopup] = useState(false);
+  const [carImage,setcarImage] = useState("");
   
   useEffect(() => {
     dispatch(getAllCars());
@@ -63,9 +67,17 @@ function MainOfCars() {
   const handleAddClose = () => {
     setAddShowPopup(false);
   };
+  const handleImageClose = () => {
+    setShowImagePopup(false);
+  };
   const handleUpdateClose = () => {
     setUpdateShowPopup(false);
   };
+
+  // const showImage = (car) => {
+  //   setShowImagePopup(true);
+  //    setcarImage(car.files[0]);
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -206,7 +218,6 @@ function MainOfCars() {
                 <label>Image: </label>{" "}
                 <input
                   type="file"
-                  accept='image/*'
                   onChange={(e) =>
                     setFiles((prev) => [...prev, e.target.files[0]])
                   }
@@ -374,6 +385,16 @@ function MainOfCars() {
             </div>
           </div>
         )}
+        {/* {showImagePopup && (
+          <div className="cr-addpopup">
+            <span className="cr-addpopup-closee" onClick={handleImageClose}>
+                  {" "}
+                  &times;
+                </span>
+            <img src={carImage}/>
+          </div>
+
+        )} */}
         <div className="cr-third-main">
           <div className="cr-third-div-table">
             <table className="cr-third-table">
@@ -387,7 +408,7 @@ function MainOfCars() {
               </thead>
               <tbody>
                 {cars.map((car) => (
-                  <tr key={car._id}>
+                  <tr key={car._id} >
                     <td>{car.carName}</td>
                     <td>{car.quantity}</td>
                     <td>{car.initialPrice}</td>

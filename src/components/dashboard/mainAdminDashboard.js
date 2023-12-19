@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Overview from './overviewMainDashboard';
+import Orders from '../seller-dashboard/Orders';
 import Cars from'./carsMainDashboard';
 import Customers from './customersMainDashboard';
 import Discount from './discountMainDashboard';
 import '../styles/mainAdminDashboard.css';
 import Menu from './AdminDashboardMenu';
 import Reviews from './reviews';
+import Shipping from './Shipping';
 function Dashboard() {
     const [activePage, setActivePage] = useState('overview');
     const handleMenuClick = (page) => {
@@ -38,6 +40,9 @@ function Dashboard() {
                     <div className="ad-menu-item6">
                         <a href="#reviews" onClick={() => handleMenuClick('reviews')}><img className ='ad-menu-item1-img' src='./images/user-alt-1-svgrepo-com (1).svg' /> Reviews</a>
                     </div>
+                    <div className="ad-menu-item7">
+                        <a href="#shipping" onClick={() => handleMenuClick('shipping')}><img className ='ad-menu-item1-img' src='./images/location-pin-alt-1-svgrepo-com.svg' /> Shipment</a>
+                    </div>
                 </div>
             </div>
             <div id="ad-content">
@@ -47,6 +52,7 @@ function Dashboard() {
                 {activePage === 'discounts' && <Discount />}
                 {activePage === 'customer' && <Customers />}
                 {activePage === 'reviews' && <Reviews />}
+                {activePage === 'shipping' && <Shipping />}
             </div>
         </div>
         </>

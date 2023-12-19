@@ -64,7 +64,17 @@
     padding: 0 20px;
     position: relative;
 }
-
+.N-menu-items img{
+    background-color: #C92424;
+    width: 50px;
+    height: 47px;
+    border-radius: 10px;
+    padding: 4px;
+    margin-top:5px
+}
+.N-menu-items img:hover{
+  cursor: pointer;
+}
 .N-menu-button .N-register{
     text-decoration: none;
     cursor: pointer;
@@ -111,6 +121,13 @@
         padding: 0px 10px
     }
     
+}
+
+@media screen and (min-width:767px) and (max-width:1023px){
+    .N-menu-button .N-register{
+        display: block;
+        width: 100%;
+    }
 }
 
 @media (max-width: 766px){

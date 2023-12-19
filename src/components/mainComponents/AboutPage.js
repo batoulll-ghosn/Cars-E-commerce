@@ -1,9 +1,9 @@
 
 import NaBar from './NavBar';
-import Footer from './Footer';
 import '../styles/aboutPage.css';
 import img1 from '../styles/customer service.jpg';
 import img2 from '../styles/new-car-tips.jpg-1140x618.jpeg';
+import FooterNoAnim from './footerNoAnim';
 export default function aboutPage() {
     return (
         <>
@@ -26,7 +26,7 @@ export default function aboutPage() {
                     </p>
                 </div>
             </div>
-            <Footer />
+            <FooterNoAnim />
         </>
     );
 }

@@ -10,6 +10,15 @@
     left: 0;
 
 }
+.contact-overlay {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.3); /* Adjust the opacity by changing the last parameter (0.5 in this case) */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 
 .contact-container-d {
     position: relative;

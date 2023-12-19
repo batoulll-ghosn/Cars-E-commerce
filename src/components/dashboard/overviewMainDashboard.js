@@ -1,11 +1,11 @@
-import {React,useEffect} from 'react';
+import {React,useEffect, useState} from 'react';
 import '../styles/overview.css';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { getAllOrders } from '../actions/order';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { getAllUsers} from '../actions/user';
-import { getAllOrders } from '../actions/order';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -15,14 +15,13 @@ ChartJS.register(
   Legend
 );
 function OverView() {
-    const orders = useSelector((state) => state.orders);
+    const cars = useSelector((state) => state.cars);
     const users = useSelector((state) => state.users)
  const dispatch=useDispatch()
  useEffect(() => {
+ dispatch(getAllCars());
  dispatch(getAllUsers());
- dispatch(getAllOrders());
  },[])
-
  const dataValues = [1552, 1019, 213, 600,1552, 1019, 213, 600,1552, 1019, 213, 600];
   const total = dataValues.reduce((a, b) => a + b, 0);
   const dataPercentages = dataValues.map(value => (value / total) * 100);
@@ -75,7 +74,7 @@ function OverView() {
                 </div>
                 <div className='ov-second-shipping'>
                     <div className='ov-second-img'><img src='./images/shipping.svg'/></div>
-                    <div className='ov-second-textContent'><p className='ov-second-textContent-p'>70</p><p className='ov-second-textContent-pp'>SHIPPED</p></div>
+                    <div className='ov-second-textContent'><p className='ov-second-textContent-p'>{shipments.length}</p><p className='ov-second-textContent-pp'>LOCATIONS</p></div>
                 </div>
                 </div>
              <div className='ov-third'>
@@ -84,17 +83,17 @@ function OverView() {
              <table className='ov-third-table'>
       <thead>
         <tr>
-          <th className='ov-third-table-th'>Title</th>
-          <th className='ov-third-table-th'>Qty</th>
-          <th className='ov-third-table-th'>Price</th>
+          <th className='ov-third-table-th'>Order</th>
+          <th className='ov-third-table-th'>Date</th>
+          <th className='ov-third-table-th'>Status</th>
         </tr>
       </thead>
       <tbody>
-      
-          <tr key={orders[0]._id}>
-                
-                <td>{orders[0].status === false ? 'pending' : 'completed'}</td>
-                <td>{orders[0].cars}</td>
+        {cars.slice(0, 4).map((car) => (
+          <tr key={car._id}>
+            <td>{car.carName}</td>
+            <td>{car.quantity}</td>
+            <td>{car.initialPrice}</td>
           </tr>
         
       </tbody>

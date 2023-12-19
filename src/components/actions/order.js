@@ -27,6 +27,7 @@ export const getAllOrders = () => {
         dispatch({
           type: "getAll",
           payload: orders,
+          payload: orders,
         });
       })
       .catch((error) => console.log("Failed to fetch data :", error));
@@ -76,5 +77,20 @@ export const updateStatus = (Id)=>{
         });
       })
       .catch((error) => console.log("Failed to update the order's status :", error));
+  };
+};
+
+export const getOrdersByUserId = (Id)=>{
+  return (dispatch) => {
+    axios
+      .get(`http://localhost:5000/orders/getOrdersByUserId/${Id}`)
+      .then((response) => {
+        const orders = response.data.orders;
+        dispatch({
+          type: "getOrdersByUserId",
+          payload:  orders ,
+        });
+      })
+      .catch((error) => console.log("Failed to update the orders :", error));
   };
 };

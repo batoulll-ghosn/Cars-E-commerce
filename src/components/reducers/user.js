@@ -1,6 +1,6 @@
 const userReducer = (state = [], action) => {
   switch (action.type) {
-    case "getAll":
+    case "getAllUsers":
       return action.payload;
     case "register":
       return [...state, action.payload];
@@ -10,6 +10,18 @@ const userReducer = (state = [], action) => {
       return state.map((user) =>
         user._id === action.payload.Id ? action.payload.user : user
       );
+    case "updateProfile":
+        return action.payload.user;
+    case "updatePassword":
+        return action.payload.user;    
+    // case "updateProfile":
+    //   return state.map((user) =>
+    //     user._id === action.payload.Id ? action.payload.user : user
+    //   );
+    // case "updatePassword":
+    //   return state.map((user) =>
+    //     user._id === action.payload.Id ? action.payload.user : user
+    //   );
     case "getUserById":
       return action.payload;
     case "getUsersByRole":

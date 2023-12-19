@@ -70,6 +70,7 @@ text-transform: capitalize;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: unset!important;
 }
 
 .inner {
@@ -83,13 +84,11 @@ text-transform: capitalize;
   align-items: center;
   justify-content: center;
   flex-direction: column;
- 
-  background-color: #fff;
 }
 .coursel-item-img{
   padding: 12px;
   display: flex;
-  width: 100%;
+  width: 60%;
   align-items: center;
   justify-content: center;
 }

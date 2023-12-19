@@ -4,6 +4,11 @@
     justify-content: space-evenly;
     background: #C92424;
     padding: 1%;
+    height: 75px;
+}
+.cars-quote{
+    color: white;
+    font-size: 20px;
 }
 .cars-company{
     display: flex;
@@ -14,7 +19,7 @@
     width: 15%;
     aspect-ratio: 3/2;
     object-fit: contain;
-    mix-blend-mode: color-burn;
+    /* mix-blend-mode: color-burn; */
 }
 /* .cars-logo:hover{
     transform: scale(1.2);
@@ -91,37 +96,41 @@
     font-weight: 500;
     line-height: normal;
     cursor: pointer;
+    text-decoration: none;
+    justify-content: center;
+    display: flex;
 
 }
-
-@media (max-width: 600px) {
- .cars-company{
-    justify-content: space-between;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    grid-template-columns: repeat(2,1fr);
-    align-content: space-evenly;
- }
+/*Tablet*/
+@media screen and (min-width:767px) and (max-width:1023px){
+    .cars-quote{
+        display: none;
+    }
+  
+    .cars-allcars{
+       display: grid;
+       grid-template-columns: repeat(2, 1fr);
+    }
 }
 
+/*Phone*/
+@media (max-width: 766px){
+    /* .cars-company{
+        display: none;
+    } */
+    .cars-quote{
+        display: none;
+    }
+    .cars-search-menu{
+       justify-content: center;
+       gap: 15px;
+    }
+    .cars-filter-by{
+        font-size: 18px;
+    }
+    .cars-allcars{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+     }
 
-
-.cars-suggestions {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .cars-suggestions option {
-    padding: 5px;
-  }
-  
-  .cars-suggestions:hover,
-  .cars-suggestions:focus {
-    border-color: DodgerBlue;
-  }
+}

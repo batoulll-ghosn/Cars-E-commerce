@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import axios from "axios";
-import Footer from "../mainComponents/Footer";
 import "../styles/carsPage.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -16,6 +15,9 @@ import {
   GetCarsByColor,
   getCarsByType,
 } from "../actions/car";
+import CarViewer from "./CarViewer";
+import { Link } from "react-router-dom";
+import FooterNoAnim from "./footerNoAnim";
 
 const CarsPage = () => {
   const [selector, setSelector] = useState("");
@@ -88,7 +90,12 @@ const CarsPage = () => {
       <NavBar />
       <div className="cars-background">
         <div className="cars-search-menu">
-          <div className="cars-company">
+          <div className="cars-main-quote">
+            <p className="cars-quote">
+              'It's good when you follow your dreams, it's better when you drive your dream'
+            </p>
+          </div>
+          {/* <div className="cars-company">
             <img
               src="/images/mercedes-benz-alt-svgrepo-com.svg"
               className="cars-logo"
@@ -129,7 +136,7 @@ const CarsPage = () => {
               className="cars-logo"
               alt="lamborghini"
             />
-          </div>
+          </div> */}
           <div>
             <select
               id="cars-select-Dropdown"
@@ -183,7 +190,9 @@ const CarsPage = () => {
                   alt="jeep purple"
                 />
                 <h1 className="cars-car-name">{car.carName}</h1>
-                <button className="cars-shop-now">View More</button>
+                  <Link to={`/3d-viewer/${car._id}`}  className="cars-shop-now"> View More
+                  </Link>
+                
               </div>
             ))}
           </div>
@@ -194,7 +203,7 @@ const CarsPage = () => {
           </div>
         )}
       </div>
-      <Footer />
+      <FooterNoAnim />
     </div>
   );
 };
