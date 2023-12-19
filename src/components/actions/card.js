@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const addCard = ( userId,nameOnCard, cardNumber, cvv, expDate) => {
+export const addCard = ( userId,nameOnCard, cardNumber, cvc, expDate) => {
     const newCard = {
-        userId,nameOnCard, cardNumber, cvv, expDate
+        userId,nameOnCard, cardNumber, cvc, expDate
     };
     return (dispatch) => {
       axios
@@ -21,7 +21,18 @@ export const addCard = ( userId,nameOnCard, cardNumber, cvv, expDate) => {
   };
 
   export const getCardByUserId = (UserId) => {
-    return { type: "getCardByUserId", payload: UserId };
+    return (dispatch) => {
+      axios
+        .get(`http://localhost:5000/getCardInfoByUserId/${UserId}`)
+        .then((response) => {
+          const card = response.data.card;
+          dispatch({ type: "getCardByUserId", payload: card });
+        })
+        .catch((error) => {
+          console.error("Error adding card:", error);
+        });
+    };
+  
   };
 
 

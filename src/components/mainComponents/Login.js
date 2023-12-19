@@ -1,9 +1,9 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { login, register } from "../actions/user";
+import { login, register2 } from "../actions/user";
 import axios from "axios";
 import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
 import { CgSpinner } from "react-icons/cg";
@@ -34,6 +34,10 @@ const Login = () => {
   const [passwordError, setPasswordError] = useState("");
   const [confirmPassError, setConfirmPassError] = useState("");
   const [loginError, setLoginError] = useState("");
+  const users = useSelector(state => state.users);
+  useEffect(() => {
+    console.log("yes")
+  }, [login]);
   function onCaptchVerify() {
     if (!window.recaptchaVerifier) {
       window.recaptchaVerifier = new RecaptchaVerifier(
@@ -76,9 +80,37 @@ const Login = () => {
       setConfirmPassError("passwords don't match*");
       return;
     }
-    console.log(phoneNumber);
-    dispatch(register(fullName,email,password,phoneNumber,"customer"));
-    onSignup();
+    const newUser = {
+      fullName,
+      email,
+      password,
+      phoneNumber,
+      role:"customer"
+    };
+    axios
+    .post(`http://localhost:5000/users/register`, newUser)
+    .then((response) => {
+      const token = response.data.token;
+      const id = response.data.id;
+      localStorage.setItem("token",token);
+      localStorage.setItem("id",id);
+      onSignup();
+    })
+    .catch((error) => {
+      if (error.response) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error.config);
+    });
+ 
+   
+    
   };
   function onSignup() {
     setLoading(true);
@@ -101,14 +133,21 @@ const Login = () => {
   }
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(login(email, password))
-      .then(() => {
+    axios
+      .post(`http://localhost:5000/users/login`, { email, password })
+      .then((response) => {
+        const token = response.data.token;
+        const id = response.data.id;
         toast.success("You logged in successfully!");
-        navigate("/");
+        localStorage.setItem("token",token);
+        localStorage.setItem("id",id);
+        navigate('/')
       })
-      .catch(() => {
-        setLoginError("Invalid email or password*");
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        throw error;
       });
+    
   };
   function onOTPVerify() {
     setLoading(true);

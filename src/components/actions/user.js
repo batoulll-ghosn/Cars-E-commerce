@@ -57,9 +57,10 @@ export const login = (email, password) => {
       .post(`http://localhost:5000/users/login`, { email, password })
       .then((response) => {
         const token = response.data.token;
+        const id = response.data.id;
         dispatch({
           type: "login",
-          payload: token
+          payload: {token,id}
         });
         return token;
       })
@@ -84,9 +85,11 @@ export const login = (email, password) => {
         .post(`http://localhost:5000/users/register`, newUser)
         .then((response) => {
           const user = response.data.user;
+          const token = response.data.token;
+          const id = response.data.id;
           dispatch({
             type: "register",
-            payload: user
+            payload: {user,token, id}
           });
         })
         .catch((error) => {
@@ -104,6 +107,39 @@ export const login = (email, password) => {
     };
    };
    
+   export const register2 = (fullName,email, password,phoneNumber, role) => {
+    const newUser = {
+      fullName,
+      email,
+      password,
+      phoneNumber,
+      role,
+    };
+    return (dispatch) => {
+      axios
+        .post(`http://localhost:5000/users/register`, newUser)
+        .then((response) => {
+          const token = response.data.token;
+          const id = response.data.id;
+          dispatch({
+            type: "register2",
+            payload: {token, id}
+          });
+        })
+        .catch((error) => {
+          if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log('Error', error.message);
+          }
+          console.log(error.config);
+        });
+    };
+   };
 
 export const deleteUser = (Id) => {
   return (dispatch) => {
