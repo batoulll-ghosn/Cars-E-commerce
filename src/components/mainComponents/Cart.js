@@ -74,7 +74,7 @@ const Cart = () => {
     return Math.round(total);
   })
   return (
-    <div className="cart-b-div">
+    <div className={`cart-b-div ${ids.length==2 &&'cart-b-div1'}`}>
       <div className="cart-head">
         <div className="cart-head-title">
           <h2>DriveEpic</h2>
@@ -104,7 +104,7 @@ const Cart = () => {
                 item[0] && (
                   <tr key={id}>
                     <td className="cart-details-order">
-                      <img src={item[0].files[0]} alt="produc" />
+                      <img  className="cart-details-order-img" src={item[0].files[0]} alt="produc" />
                     </td>
                     <td className="cart-details-order">
                       <span className="cart-carName">{item[0].carName}</span>
