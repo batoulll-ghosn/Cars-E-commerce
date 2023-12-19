@@ -6,6 +6,7 @@ import { getAllOrders } from '../actions/order';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { getAllUsers} from '../actions/user';
+import { getAllShipments } from '../actions/shipment.';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -15,13 +16,40 @@ ChartJS.register(
   Legend
 );
 function OverView() {
-    const cars = useSelector((state) => state.cars);
-    const users = useSelector((state) => state.users)
+    const orders = useSelector((state) => state.orders);
+    const users = useSelector((state) => state.users);
+    const shipments = useSelector((state) => state.shipments);
+
+    const [revenue,setRevenue] = useState([]);
  const dispatch=useDispatch()
  useEffect(() => {
- dispatch(getAllCars());
+ dispatch(getAllOrders());
  dispatch(getAllUsers());
+ dispatch(getAllShipments())
  },[])
+
+ useEffect(() =>{
+  const revenues = orders.filter((order) => {
+    
+   if (order.status === true)
+    //  console.log(order.cars)}
+    return order.cars
+  })
+  setRevenue(revenues);
+  // let s = 0
+  // revenues.map((revenue)=>{
+  //     s += revenue[0].sellingPrice
+  // })
+  // console.log(s)
+ },[orders])
+console.log(revenue)
+
+ function readableDate(d) {
+  const v = new Date(d).toLocaleDateString('en-GB');
+  return v;
+}
+
+
  const dataValues = [1552, 1019, 213, 600,1552, 1019, 213, 600,1552, 1019, 213, 600];
   const total = dataValues.reduce((a, b) => a + b, 0);
   const dataPercentages = dataValues.map(value => (value / total) * 100);
@@ -57,7 +85,6 @@ function OverView() {
       }, 
     }, 
   };
-  console.log(orders);
   return (
     <div className='ov-component'>
             <div>
@@ -89,13 +116,15 @@ function OverView() {
         </tr>
       </thead>
       <tbody>
-        {cars.slice(0, 4).map((car) => (
-          <tr key={car._id}>
-            <td>{car.carName}</td>
-            <td>{car.quantity}</td>
-            <td>{car.initialPrice}</td>
+        {orders.slice(0, 4).map((order,index) => (
+          <tr key={order._id}>
+            <td>{index + 1}</td>
+            <td>{readableDate(order.createdAt)}</td>
+            <td>{order.status === false ? 'pending' : 'completed'}</td>
+            
+           
           </tr>
-        
+        ))}
       </tbody>
     </table>
     </div>
