@@ -2,10 +2,10 @@ import {React,useEffect} from 'react';
 import '../styles/overview.css';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import {getAllCars} from '../actions/car';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { getAllUsers} from '../actions/user';
+import { getAllOrders } from '../actions/order';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -15,13 +15,14 @@ ChartJS.register(
   Legend
 );
 function OverView() {
-    const cars = useSelector((state) => state.cars);
+    const orders = useSelector((state) => state.orders);
     const users = useSelector((state) => state.users)
  const dispatch=useDispatch()
  useEffect(() => {
- dispatch(getAllCars());
  dispatch(getAllUsers());
+ dispatch(getAllOrders());
  },[])
+
  const dataValues = [1552, 1019, 213, 600,1552, 1019, 213, 600,1552, 1019, 213, 600];
   const total = dataValues.reduce((a, b) => a + b, 0);
   const dataPercentages = dataValues.map(value => (value / total) * 100);
@@ -57,6 +58,7 @@ function OverView() {
       }, 
     }, 
   };
+  console.log(orders);
   return (
     <div className='ov-component'>
             <div>
@@ -88,13 +90,13 @@ function OverView() {
         </tr>
       </thead>
       <tbody>
-        {cars.slice(0, 4).map((car) => (
-          <tr key={car._id}>
-            <td>{car.carName}</td>
-            <td>{car.quantity}</td>
-            <td>{car.initialPrice}</td>
+      
+          <tr key={orders[0]._id}>
+                
+                <td>{orders[0].status === false ? 'pending' : 'completed'}</td>
+                <td>{orders[0].cars}</td>
           </tr>
-        ))}
+        
       </tbody>
     </table>
     </div>

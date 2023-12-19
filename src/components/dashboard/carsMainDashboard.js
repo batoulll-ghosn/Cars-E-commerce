@@ -3,12 +3,7 @@ import "../styles/carsOfDash.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getAllCars, addCar, removeCar, updateCar } from "../actions/car";
-<<<<<<< HEAD
 import { toast, Toaster } from "react-hot-toast";
-=======
-import axios from "axios";
->>>>>>> origin/28-seller-dashboard
-
 function MainOfCars() {
   const cars = useSelector((state) => state.cars);
   const dispatch = useDispatch();

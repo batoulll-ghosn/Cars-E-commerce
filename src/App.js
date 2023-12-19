@@ -14,6 +14,7 @@ import CarsPage from './components/mainComponents/CarsPage';
 import CarViewer from './components/mainComponents/CarViewer';
 import ContactPage from './components/mainComponents/ContactPage';
 import SellerDashboard from './components/seller-dashboard/SellerDashboard';
+import { toast, Toaster } from "react-hot-toast";
 function App() {
   return (
     <Router>
