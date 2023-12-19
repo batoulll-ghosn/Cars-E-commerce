@@ -6,6 +6,7 @@ import { getAllShipments } from "../actions/shipment";
 import { getAllCars } from "../actions/car";
 import trash from "../styles/bin-svgrepo-com (1).svg";
 import CreditCard from "./CreditCard";
+import { Link } from "react-router-dom";
 const Cart = () => {
   const [location, setLocation] = useState(null);
   
@@ -80,7 +81,7 @@ const Cart = () => {
           <h2>DriveEpic</h2>
         </div>
         <div className="cart-head-button">
-          <button>Continue shopping</button>
+          <Link to='/cars'><button>Continue shopping</button></Link>
         </div>
       </div>
       <div className="my-cart-div">

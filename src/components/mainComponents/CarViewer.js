@@ -22,7 +22,7 @@ const CarViewer = () => {
   useEffect(() => {
     dispatch(getCarById(id));
   }, [dispatch,id]);
-  console.log(cars)
+  
   const modelRef = useRef();
 
  

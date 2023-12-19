@@ -7,7 +7,7 @@ export const getAllShipments = () => {
       .then((response) => {
         const shipments = response.data.resultat;
         dispatch({
-          type: "getAll",
+          type: "getAllShipments",
           payload: shipments,
         });
       })
