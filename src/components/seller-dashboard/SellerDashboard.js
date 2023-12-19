@@ -17,10 +17,10 @@ import Cars from '../dashboard/carsMainDashboard';
                 <div className="ad-menu-content">
                   
                     <div className="ad-menu-item1">
-                        <a href="#orders" onClick={() => handleMenuClick('orders')}><img className ='ad-menu-item1-img' src='./images/online-shop-svgrepo-com.svg' /> Orders</a>
+                        <a href="#orders" onClick={() => handleMenuClick('orders')}><img className ='ad-menu-item1-img' src='./images/online-shop-svgrepo-com.svg' alt='order' /> Orders</a>
                     </div>
                     <div className="ad-menu-item2">
-                        <a href="#cars" onClick={() => handleMenuClick('cars')}><img className ='ad-menu-item1-img' src='./images/car-svgrepo-com (2).svg'  />Cars</a>
+                        <a href="#cars" onClick={() => handleMenuClick('cars')}><img className ='ad-menu-item1-img' src='./images/car-svgrepo-com (2).svg' alt='car' />Cars</a>
                     </div>
                 </div>
             </div>

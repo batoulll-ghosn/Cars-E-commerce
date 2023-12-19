@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingBag, Share2, Send, Youtube, Facebook, Instagram } from 'react-feather';
+import {Share2 } from 'react-feather';
 import '../styles/footer-no-anim.css';
 import '../styles/test.css';
 import { Link } from 'react-router-dom';
