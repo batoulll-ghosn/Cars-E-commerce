@@ -28,7 +28,7 @@ const NavBar = () => {
                 </Link>
                 </li>
             <li className='N-menu-items'>
-                <Link className='N-menu-tag' to="contactUs">Contact us
+                <Link className='N-menu-tag' to="/contactUs">Contact us
                 </Link>
                 </li>
                 <li className='N-menu-button'>
