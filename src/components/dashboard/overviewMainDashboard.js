@@ -2,10 +2,11 @@ import {React,useEffect} from 'react';
 import '../styles/overview.css';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import {getAllCars} from '../actions/car';
+import { getAllOrders } from '../actions/order';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { getAllUsers} from '../actions/user';
+import { getAllShipments } from '../actions/shipment.';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -15,13 +16,24 @@ ChartJS.register(
   Legend
 );
 function OverView() {
-    const cars = useSelector((state) => state.cars);
-    const users = useSelector((state) => state.users)
+    const orders = useSelector((state) => state.orders);
+    const users = useSelector((state) => state.users);
+    const shipments = useSelector((state) => state.shipments);
  const dispatch=useDispatch()
  useEffect(() => {
- dispatch(getAllCars());
+ dispatch(getAllOrders());
  dispatch(getAllUsers());
+ dispatch(getAllShipments())
  },[])
+
+
+
+ function readableDate(d) {
+  const v = new Date(d).toLocaleDateString('en-GB');
+  return v;
+}
+
+
  const dataValues = [1552, 1019, 213, 600,1552, 1019, 213, 600,1552, 1019, 213, 600];
   const total = dataValues.reduce((a, b) => a + b, 0);
   const dataPercentages = dataValues.map(value => (value / total) * 100);
@@ -73,7 +85,7 @@ function OverView() {
                 </div>
                 <div className='ov-second-shipping'>
                     <div className='ov-second-img'><img src='./images/shipping.svg'/></div>
-                    <div className='ov-second-textContent'><p className='ov-second-textContent-p'>70</p><p className='ov-second-textContent-pp'>SHIPPED</p></div>
+                    <div className='ov-second-textContent'><p className='ov-second-textContent-p'>{shipments.length}</p><p className='ov-second-textContent-pp'>LOCATIONS</p></div>
                 </div>
                 </div>
              <div className='ov-third'>
@@ -82,17 +94,19 @@ function OverView() {
              <table className='ov-third-table'>
       <thead>
         <tr>
-          <th className='ov-third-table-th'>Title</th>
-          <th className='ov-third-table-th'>Qty</th>
-          <th className='ov-third-table-th'>Price</th>
+          <th className='ov-third-table-th'>Order</th>
+          <th className='ov-third-table-th'>Date</th>
+          <th className='ov-third-table-th'>Status</th>
         </tr>
       </thead>
       <tbody>
-        {cars.slice(0, 4).map((car) => (
-          <tr key={car._id}>
-            <td>{car.carName}</td>
-            <td>{car.quantity}</td>
-            <td>{car.initialPrice}</td>
+        {orders.slice(0, 4).map((order,index) => (
+          <tr key={order._id}>
+            <td>{index + 1}</td>
+            <td>{readableDate(order.createdAt)}</td>
+            <td>{order.status === false ? 'pending' : 'completed'}</td>
+            
+           
           </tr>
         ))}
       </tbody>

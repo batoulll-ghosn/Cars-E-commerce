@@ -1,6 +1,6 @@
 const userReducer = (state = [], action) => {
   switch (action.type) {
-    case "getAll":
+    case "getAllUsers":
       return action.payload;
     case "register":
       return [...state, action.payload];

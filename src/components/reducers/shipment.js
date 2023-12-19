@@ -1,7 +1,7 @@
 const shipmentReducer=(state=[],action)=>{
     
     switch(action.type){
-        case 'getAll':
+        case 'getAllShipments':
             return action.payload;
         case 'addShipment':
             return [...state,action.payload];

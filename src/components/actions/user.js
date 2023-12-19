@@ -7,7 +7,7 @@ export const getAllUsers = () => {
       .then((response) => {
         const users = response.data.users;
         dispatch({
-          type: "getAll",
+          type: "getAllUsers",
           payload: users,
         });
       })
