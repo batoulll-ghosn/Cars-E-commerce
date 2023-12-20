@@ -76,6 +76,7 @@ const CustomerDash = () => {
             </thead>
             <tbody>
               { orders&&orders.map((order) => (
+                
                 <tr key={order._id}>
                   <td>{order.cars.map((car) => car.carName + " ")}</td>
                   <td>{order.status === false ? "Ordered" : "Bought"}</td>

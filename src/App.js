@@ -13,7 +13,6 @@ import Testimonial from './components/mainComponents/Carousel';
 import CarsPage from './components/mainComponents/CarsPage';
 import CarViewer from './components/mainComponents/CarViewer';
 import ContactPage from './components/mainComponents/ContactPage';
-// import { toast, Toaster } from "react-hot-toast";
 import Review from './components/mainComponents/Review';
 import Profile from './components/mainComponents/Profile';
 import CustomerDash from './components/dashboard/CustomerDash';
@@ -22,10 +21,11 @@ import { Toaster } from 'react-hot-toast';
 import Cart from './components/mainComponents/Cart';
 import PageNotFound from './components/mainComponents/PageNotFound';
 import {getUserRole} from './components/mainComponents/GetData';
-import CreditCard from "./components/mainComponents/CreditCard"
+import CreditCard from "./components/mainComponents/CreditCard";
+
 function App() {
   const role =getUserRole();
-  // const id =localStorage.getItem("id");
+
   return (
     <Router>
       <div className="App">

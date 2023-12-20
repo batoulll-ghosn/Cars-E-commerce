@@ -85,7 +85,7 @@ function CreditCard(props) {
 
       .catch((error) => {
         console.log("Failed to add an order :", error);
-        toast.error("Something went wrong")
+        
       });
     }
   };
@@ -104,7 +104,7 @@ function CreditCard(props) {
         })
         .catch((error) => {
           console.log("Failed to add an order :", error);
-          toast.error("Something went wrong");
+          
         });
         });
         localStorage.removeItem('ids')
