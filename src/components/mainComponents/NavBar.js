@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import '../styles/NavBar.css';
 import { Link } from 'react-router-dom';
 import { getUserRole } from './GetData';
 
 const NavBar = () => {
-  const navigate=useNavigate();
+ 
     const [clicked, setclicked] = useState(false);
     const handleClick = () => {
         setclicked(!clicked)
@@ -16,17 +15,7 @@ const NavBar = () => {
   localStorage.clear();
   
  }
- const handleLocalStorage=()=>{
-   let updatedId=localStorage.getItem('id')+',657c3125d1441942133457c1';
-   localStorage.setItem('id',updatedId);
-  //  let storageData=localStorage.getItem('id').split(',');
-  //  if(storageData.includes('123'))console.log(false);
-  // storageData.push('123455555');
-  // localStorage.setItem('id',storageData);
-  // console.log('hello',localStorage.getItem('id'));
-  // console.log('hello',localStorage.getItem('id'));
-  navigate('/cart');
- }
+ 
  const role = getUserRole();
   return (
     <div>
@@ -55,7 +44,10 @@ const NavBar = () => {
                   <div className='N-iconss'>
                     {
                       role === 'customer' ? 
+                      <>
+                    <Link to='/cart'> <img src='/images/cart-large-2-svgrepo-com.svg' className='cart-svg'/> </Link>
                     <Link className='N-registerr' to="/customer"><img src='/images/panel-svgrepo-com.svg' className='panel-icon'/></Link>
+                      </>
                       : role === 'seller' ?
                       <Link className='N-registerr' to="/sellerDashboard"><img src='/images/panel-svgrepo-com.svg' className='panel-icon'/></Link>
                       : 

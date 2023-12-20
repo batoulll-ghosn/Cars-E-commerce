@@ -144,6 +144,9 @@
     top: 2px;
 
 }
+.cart-svg{
+    height: 45px;
+}
 /*Tablet*/
 @media screen and (min-width:767px) and (max-width:1023px){
     .Navbar{

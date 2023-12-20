@@ -34,6 +34,7 @@ const Login = () => {
   const [passwordError, setPasswordError] = useState("");
   const [confirmPassError, setConfirmPassError] = useState("");
   const [loginError, setLoginError] = useState("");
+  const [showPassword,setShowPassword] = useState(false);
   const users = useSelector(state => state.users);
   useEffect(() => {
     console.log("yes")
@@ -292,12 +293,13 @@ const Login = () => {
           </div>
           <div>
           <input
-            type="text"
+            type='password'
             className="register-input"
             placeholder="PASSWORD"
             required
             onChange={(e) => setPassword(e.target.value)}
           />
+         
           {
             loginError &&
             <p className="error">{loginError}</p>

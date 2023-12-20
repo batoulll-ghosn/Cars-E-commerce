@@ -8,6 +8,7 @@ import { addOrder } from "../actions/order";
 import { useSelector, useDispatch } from "react-redux";
 import {toast} from "react-hot-toast";
 import axios from "axios";
+import { getUserID } from "./GetData";
 function CreditCard(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -16,16 +17,18 @@ function CreditCard(props) {
   const [expiry, setExpiry] = useState("");
   const [cvc, setCvc] = useState("");
   const [focus, setFocus] = useState("");
-  const {userId} = props;
   const {order} = props;
   const [card, setCard]= useState([]);
- 
+  const {carId} = props;
+  const userId = getUserID();
+  
+ console.log(order);
   const closePopup = ()=>{
     window.location.reload();
   }
   useEffect(()=>{
     axios
-        .get(`http://localhost:5000/userInfo/getCardInfoByUserId/65775daf4ab849f2d4842b59`)
+        .get(`http://localhost:5000/userInfo/getCardInfoByUserId/${userId}`)
         .then((response) => {
           const card = response.data.card;
           setCard(card)
@@ -51,13 +54,35 @@ function CreditCard(props) {
       toast.error("Counldn't add card credentials")
     }
     else{
-      dispatch(addCard("65775daf4ab849f2d4842b59",name,number,cvc,expiry))
+      dispatch(addCard(userId,name,number,cvc,expiry))
       axios
       .post(` http://localhost:5000/orders/add`, order)
       .then((response) => {
+        console.log(response.data)
         const order = response.data.order;
-        toast.success("Order successfully sent and paid, your order will be delivered asap")
+       response.data.resultat.cars.forEach(async(element) => {
+          console.log(element);
+          await axios.put(`http://localhost:5000/cars/reduceQty/${element}`)
+        .then((response) => {
+          
+          
+        })
+        .catch((error) => {
+          console.log("Failed to add an order :", error);
+          toast.error("Something went wrong");
+        });
+        const data = {
+          email:'hadimortada1245@gmail.com', name:"name",shipmentId:'65819b34ac9b702633fc44c5'
+        }
+        console.log(order)
+        axios.post(`http://localhost:5000/users/send`, data)
+        .then ((response) => {
+          toast.success("Order successfully sent and paid, your order will be delivered asap")
+        })
       })
+    localStorage.removeItem('ids');
+     navigate('/')})
+
       .catch((error) => {
         console.log("Failed to add an order :", error);
         toast.error("Something went wrong")
@@ -65,24 +90,25 @@ function CreditCard(props) {
     }
   };
   
-  const handleAddOrder=()=>{
-    axios
-      .post(` http://localhost:5000/orders/add`, order)
+  const handleAddOrder= async()=>{
+     await axios
+      .post(`http://localhost:5000/orders/add`, order)
       .then((response) => {
-        
-        order.cars.forEach(element => {
-          axios.put(` http://localhost:5000/cars/reduceQty/${element}`)
+        console.log(response.data)
+        response.data.resultat.cars.forEach(async(element) => {
+          console.log(element);
+          await axios.put(`http://localhost:5000/cars/reduceQty/${element}`)
         .then((response) => {
           toast.success("Order successfully sent and paid, your order will be delivered asap")
-          navigate('/cars')
+          
         })
         .catch((error) => {
           console.log("Failed to add an order :", error);
           toast.error("Something went wrong");
         });
         });
-        
-        //navigate('/cars')
+        localStorage.removeItem('ids')
+          navigate('/cars')
       })
       .catch((error) => {
         console.log("Failed to add an order :", error);
