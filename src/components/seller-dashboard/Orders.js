@@ -6,6 +6,7 @@ import { getAllOrders } from '../actions/order';
 import { useEffect } from 'react';
 import { CarouselItem } from "./CarouselItem";
 import axios from 'axios';
+import {toast} from 'react-hot-toast';
 
 export default function Orders() {
   const orders = useSelector((state) => state.orders);
@@ -39,6 +40,13 @@ export default function Orders() {
       name, email, orderId, 
     }
     axios.post(`http://localhost:5000/users/sendAfter`, data)
+    .then ((response) => {
+      toast.success('Email sent successfully')
+      window.location.reload();
+    })
+    .catch ((error)=>{
+      toast.error('There was an error while sending the email')
+    })
   }
   const handleRowClick = (order) => {
     setSelectedOrder(order);
