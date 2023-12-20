@@ -18,7 +18,6 @@ import Review from './components/mainComponents/Review';
 import Profile from './components/mainComponents/Profile';
 import CustomerDash from './components/dashboard/CustomerDash';
 import SellerDashboard from './components/seller-dashboard/SellerDashboard';
-import CreditCard  from './components/mainComponents/CreditCard';
 import { Toaster } from 'react-hot-toast';
 import Cart from './components/mainComponents/Cart';
 function App() {
@@ -42,7 +41,6 @@ function App() {
           <Route path="/customer" element={<CustomerDash />} />
           <Route path="/sellerDashboard" element={<SellerDashboard />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/creditCard" element={<CreditCard />} />
         </Routes>
         
       </div>

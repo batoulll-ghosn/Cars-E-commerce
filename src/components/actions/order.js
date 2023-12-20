@@ -7,7 +7,7 @@ export const addOrder = (
   };
   return (dispatch) => {
     axios
-      .post(` http://localhost:5000/orders/add`, newOrder)
+      .post(`http://localhost:5000/orders/add`, newOrder)
       .then((response) => {
         const order = response.data.order;
         dispatch({

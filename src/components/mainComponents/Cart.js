@@ -5,10 +5,8 @@ import { useState, useEffect } from "react";
 import { getAllShipments } from "../actions/shipment";
 import { getAllCars } from "../actions/car";
 import trash from "../styles/bin-svgrepo-com (1).svg";
-import CreditCard from "./CreditCard";
 const Cart = () => {
   const [location, setLocation] = useState(null);
-  
   const [prices, setPrices] = useState([]);
   const [discounts, setDiscounts] = useState([]);
   const cars = useSelector((state) => state.cars);
@@ -135,7 +133,6 @@ const Cart = () => {
             </tbody>
         </table>
       </div>
-      {showCard && <CreditCard userId="657f6130bddb5fab30a01537" order={{userId:"657f6130bddb5fab30a01537",cars:localStorage.getItem("id").split(","),shipmentId:location,status:false}}  />}
       <div className="footer-cart-container">
         <div className="footer-cart-container-white">
           <div className="white-part1">
