@@ -159,3 +159,12 @@ text-transform: capitalize;
 .indicator-symbol-active {
   color: #ffffff;
 }
+.pending-seller{
+  color: #C92424;
+  cursor: pointer;
+}
+.pending-seller:hover{
+  color: #C92424;
+  cursor: pointer;
+  transform: scale(2, 3);
+}

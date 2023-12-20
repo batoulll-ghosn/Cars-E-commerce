@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { getCarById} from '../actions/car';
 import { Link, useParams } from 'react-router-dom';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
+import { Prev } from 'react-bootstrap/esm/PageItem';
 
 
 
@@ -15,6 +16,7 @@ const CarViewer = () => {
   const {id} = useParams();
   // const [car, setCar] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
+  const [ids,setIds] = useState([]);
   const audioRef = useRef(null);
   
   const cars = useSelector((state) => state.cars);
@@ -24,7 +26,10 @@ const CarViewer = () => {
   }, [dispatch,id]);
   
   const modelRef = useRef();
-
+const handleAddToCart= () =>{
+  let updatedId=localStorage.getItem('id')+`,${id}`;
+   localStorage.setItem('id',updatedId);
+}
  
   const Model=(props) => {
     const { scene } = useGLTF(carModel);
@@ -96,9 +101,14 @@ if (colorDisplay) {
   console.error('colorDisplay element not found');
 }
 
+useEffect(()=>{
+// setIds(localStorage.getItem("id"))
+console.log(localStorage.getItem("id"))
+},[])
 
+localStorage.clear()
   
-
+// console.log(ids)
   return (
     <div>
     <div className='viewer-nav'>
@@ -147,7 +157,8 @@ if (colorDisplay) {
       <p className='viewer-description'>
      {cars.description}
       </p>
-      <button className='viewer-add-to-cart'>Add to cart</button>
+      <button className='viewer-add-to-cart'
+      onClick={handleAddToCart}>Add to cart</button>
       </div>
       <div>
 
