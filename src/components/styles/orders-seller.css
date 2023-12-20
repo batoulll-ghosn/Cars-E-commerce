@@ -88,7 +88,7 @@ text-transform: capitalize;
 .coursel-item-img{
   padding: 12px;
   display: flex;
-  width: 60%;
+  width: 55%;
   align-items: center;
   justify-content: center;
 }
@@ -158,4 +158,13 @@ text-transform: capitalize;
 
 .indicator-symbol-active {
   color: #ffffff;
+}
+.pending-seller{
+  color: #C92424;
+  cursor: pointer;
+}
+.pending-seller:hover{
+  color: #C92424;
+  cursor: pointer;
+  transform: scale(2, 3);
 }

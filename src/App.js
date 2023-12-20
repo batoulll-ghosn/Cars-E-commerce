@@ -20,8 +20,10 @@ import CustomerDash from './components/dashboard/CustomerDash';
 import SellerDashboard from './components/seller-dashboard/SellerDashboard';
 import { Toaster } from 'react-hot-toast';
 import Cart from './components/mainComponents/Cart';
+import PageNotFound from './components/mainComponents/PageNotFound';
+import {getUserRole} from './components/mainComponents/GetData';
 function App() {
-  // const token =localStorage.getItem("token");
+  const role =getUserRole();
   // const id =localStorage.getItem("id");
   return (
     <Router>
@@ -32,15 +34,18 @@ function App() {
           <Route path="/" element={ <> <NavBar/><Header/><About/><LatestCars/><FAQ/><Testimonial /><Footer/> </>} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/cars" element={<CarsPage/>}/>
-          <Route path="/3d-viewer/:id" element={<CarViewer />} />
+          <Route path="/3d-viewer/:id" element={role === 'customer'?<CarViewer /> : <PageNotFound/>} />
           <Route path="/contactUs" element={<ContactPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={role === 'admin'?<Dashboard /> : <Login/>} />
           <Route path="/login" element={<Login />} />
-          <Route path="/review" element={<Review />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/customer" element={<CustomerDash />} />
-          <Route path="/sellerDashboard" element={<SellerDashboard />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={role === 'customer' ?<Cart /> : <PageNotFound/>} />
+          <Route path="/review" element={role === 'customer' ?<Review /> : <Login/>} />
+          <Route path="/profile" element={role === 'customer' ?<Profile /> : <Login/>} />
+          <Route path="/customer" element={role === 'customer' ?<CustomerDash /> : <Login/>} />
+          <Route path="/sellerDashboard" element={role === 'seller' ?<SellerDashboard /> : <Login/>} />
+          <Route path="/creditCard" element={role === 'customer' ?<CreditCard /> : <PageNotFound/>} />
+          <Route path="*" element={<PageNotFound />} />
+          
         </Routes>
         
       </div>

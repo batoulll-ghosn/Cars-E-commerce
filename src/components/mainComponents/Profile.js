@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import { getUserById, updateProfile, updatePassword } from "../actions/user";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles/profile.css";
-import { toast, Toaster } from "react-hot-toast";
+import { toast} from "react-hot-toast";
 
 function Profile(props) {
   const [email, setEmail] = useState("");

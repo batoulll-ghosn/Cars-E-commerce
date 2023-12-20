@@ -2,7 +2,7 @@ import axios from "axios";
 export const addCar = (data) => {
   return (dispatch) => {
     axios
-      .post(`http://localhost:5000/cars/addCar`, data)
+      .post(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/cars/addCar`, data)
       .then((response) => {
         const car = response.data.car;
         dispatch({
@@ -18,7 +18,7 @@ export const addCar = (data) => {
 export const getAllCars = () => {
   return (dispatch) => {
     axios
-      .get("http://localhost:5000/cars/getAll")
+      .get(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/cars/getAll`)
       .then((response) => {
         const cars = response.data.cars;
         dispatch({
@@ -32,7 +32,7 @@ export const getAllCars = () => {
 export const removeCar = (Id) => {
   return (dispatch) => {
     axios
-      .delete(`http://localhost:5000/cars/deleteCar/${Id}`)
+      .delete(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/cars/deleteCar/${Id}`)
       .then((response) => {
         dispatch({
           type: "deleteCar",
@@ -45,7 +45,7 @@ export const removeCar = (Id) => {
 export const getCarByName = (carName) => {
   return (dispatch) => {
     axios
-      .get("http://localhost:5000/cars/getAll")
+      .get(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/cars/getAll`)
       .then((response) => {
         let cars = response.data.cars;
         dispatch({
@@ -59,7 +59,7 @@ export const getCarByName = (carName) => {
 export const getCarsByCompany = (company) => {
   return (dispatch) => {
     axios
-      .get("http://localhost:5000/cars/getAll")
+      .get(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/cars/getAll`)
       .then((response) => {
         let cars = response.data.cars;
         dispatch({
@@ -74,7 +74,7 @@ export const getCarsByCompany = (company) => {
 export const GetCarsByColor = (color) => {
   return (dispatch) => {
     axios
-      .get("http://localhost:5000/cars/getAll")
+      .get(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/cars/getAll`)
       .then((response) => {
         let cars = response.data.cars;
         dispatch({
@@ -89,7 +89,7 @@ export const GetCarsByColor = (color) => {
 export const getCarById = (id) => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:5000/cars/getCarById/${id}`)
+      .get(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/cars/getCarById/${id}`)
       .then((response) => {
         let car = response.data.car;
         dispatch({
@@ -105,7 +105,7 @@ export const getCarById = (id) => {
 export const getCarsByType = (type) => {
   return (dispatch) => {
     axios
-      .get("http://localhost:5000/cars/getAll")
+      .get(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/cars/getAll`)
       .then((response) => {
         let cars = response.data.cars;
         dispatch({
@@ -133,7 +133,7 @@ export const updateCar = (
   
   return (dispatch) => {
     axios
-      .put(`http://localhost:5000/cars/updateCar/${Id}`, data)
+      .put(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/cars/updateCar/${Id}`, data)
       .then((response) => {
         const car = response.data.car;
         dispatch({

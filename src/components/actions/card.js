@@ -6,7 +6,7 @@ export const addCard = ( userId,nameOnCard, cardNumber, cvc, expDate) => {
     };
     return (dispatch) => {
       axios
-        .post(`http://localhost:5000/userInfo/add`, newCard)
+        .post(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/userInfo/add`, newCard)
         .then((response) => {
           const card = response.data.card;
           dispatch({
@@ -23,7 +23,7 @@ export const addCard = ( userId,nameOnCard, cardNumber, cvc, expDate) => {
   export const getCardByUserId = (UserId) => {
     return (dispatch) => {
       axios
-        .get(`http://localhost:5000/getCardInfoByUserId/${UserId}`)
+        .get(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/getCardInfoByUserId/${UserId}`)
         .then((response) => {
           const card = response.data.card;
           dispatch({ type: "getCardByUserId", payload: card });

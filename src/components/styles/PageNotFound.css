@@ -1,0 +1,61 @@
+.not-found-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    background: #E1E1E1;
+
+  }
+  @keyframes driveInCircle {
+    0% {
+      transform: translateX(-5%) translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateX(0) translateY(-10%) rotate(-90deg);
+    }
+    50% {
+      transform: translateX(50%) translateY(0) rotate(-180deg);
+    }
+    75% {
+      transform: translateX(0) translateY(10%) rotate(-270deg);
+    }
+    100% {
+      transform: translateX(-5%) translateY(0) rotate(-360deg);
+    }
+  }
+  
+  .car-svg-not-found {
+    animation: driveInCircle 8s linear infinite; /* 'infinite' makes the animation loop */
+    height: 20vh;
+  }
+  
+  .flex-title-not-found {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 3;
+  }
+  
+  .title-text-not-found {
+    font-size: 2.5rem;
+    color: #C92424;
+  }
+  
+  .subTitle-not-found {
+    font-size: 1rem;
+  }
+  
+  .btn-not {
+    color: #ffff;
+    text-decoration: none;
+    padding: 13px 20px;
+    background: #C92424;
+    border-radius: 20px;
+  }
+  
+  .btn-not:hover {
+    background: #ffff;
+    color: #C92424;
+    border: 1px solid #C92424;
+  }

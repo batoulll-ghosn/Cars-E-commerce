@@ -2,7 +2,7 @@ import axios from "axios";
 export const getAllReviews = () => {
     return (dispatch) => {
       axios
-        .get(`http://localhost:5000/reviews/getAll`)
+        .get(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/reviews/getAll`)
         .then((response) => {
         console.log("action response",response)
           const reviews = response.data.get;
@@ -19,7 +19,7 @@ export const getAllReviews = () => {
 export const deleteReview = (Id) => {
     return (dispatch) => {
       axios
-        .delete(`http://localhost:5000/reviews/deleteReviewById/${Id}`)
+        .delete(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/reviews/deleteReviewById/${Id}`)
         .then((response) => {
           dispatch({
             type: "deleteReview",
@@ -36,7 +36,7 @@ export const addReview = (
 ) => {
   return (dispatch) => {
     axios
-      .post(` http://localhost:5000/reviews/add`, {fullName,comment,rating})
+      .post(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/reviews/add`, {fullName,comment,rating})
       .then((response) => {
         const result = response.data.result;
         dispatch({

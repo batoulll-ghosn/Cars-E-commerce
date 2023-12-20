@@ -7,7 +7,7 @@ export const addOrder = (
   };
   return (dispatch) => {
     axios
-      .post(`http://localhost:5000/orders/add`, newOrder)
+      .post(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/orders/add`, newOrder)
       .then((response) => {
         const order = response.data.order;
         dispatch({
@@ -21,7 +21,7 @@ export const addOrder = (
 export const getAllOrders = () => {
   return (dispatch) => {
     axios
-      .get("http://localhost:5000/orders/getOrders")
+      .get(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/orders/getOrders`)
       .then((response) => {
         const orders = response.data.orders;
         dispatch({
@@ -35,7 +35,7 @@ export const getAllOrders = () => {
 export const deleteOrder = (Id) => {
   return (dispatch) => {
     axios
-      .delete(`http://localhost:5000/orders/deleteOrder/${Id}`)
+      .delete(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/orders/deleteOrder/${Id}`)
       .then((response) => {
         dispatch({
           type: "deleteOrder",
@@ -53,7 +53,7 @@ export const updateOrder = (
   };
   return (dispatch) => {
     axios
-      .put(`http://localhost:5000/orders/updateOrder/${Id}`, updatedOrder)
+      .put(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/orders/updateOrder/${Id}`, updatedOrder)
       .then((response) => {
         const order = response.data.order;
         dispatch({
@@ -67,7 +67,7 @@ export const updateOrder = (
 export const updateStatus = (Id)=>{
   return (dispatch) => {
     axios
-      .put(`http://localhost:5000/orders/updateStatus/${Id}`)
+      .put(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/orders/updateStatus/${Id}`)
       .then((response) => {
         const order = response.data.order;
         dispatch({
@@ -82,7 +82,7 @@ export const updateStatus = (Id)=>{
 export const getOrdersByUserId = (Id)=>{
   return (dispatch) => {
     axios
-      .get(`http://localhost:5000/orders/getOrdersByUserId/${Id}`)
+      .get(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/orders/getOrdersByUserId/${Id}`)
       .then((response) => {
         const orders = response.data.orders;
         dispatch({

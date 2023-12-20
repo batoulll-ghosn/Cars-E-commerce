@@ -6,6 +6,11 @@ const AdminDashboardMenu = () => {
     const handleClick = () => {
         setclicked(!clicked)
     }
+    const navigate = useNavigate()
+    const handleSignOut = () => {
+      localStorage.clear()
+      navigate('/');
+    }
   return (
     <div>
       <nav className="Navbarr">
@@ -17,7 +22,8 @@ const AdminDashboardMenu = () => {
             </li>
             
                 <li className='N-menu-button'>
-                <button className='N-register' >Sign Out
+                <button className='N-register'
+                onClick={handleSignOut} >Sign Out
                 </button>
                 </li>
 

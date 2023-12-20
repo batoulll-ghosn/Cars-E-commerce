@@ -3,7 +3,7 @@ import axios from "axios";
 export const getAllShipments = () => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:5000/shipments/getAll`)
+      .get(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/shipments/getAll`)
       .then((response) => {
         const shipments = response.data.resultat;
         dispatch({
@@ -28,7 +28,7 @@ export const addShipment = (location, duration) => {
   };
   return (dispatch) => {
     axios
-      .post(`http://localhost:5000/shipments/add`, newShipment)
+      .post(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/shipments/add`, newShipment)
       .then((response) => {
         const shipment = response.data.resultat;
         dispatch({
@@ -45,7 +45,7 @@ export const addShipment = (location, duration) => {
 export const deleteShipment = (Id) => {
   return (dispatch) => {
     axios
-      .delete(`http://localhost:5000/shipments/deleteOne/${Id}`)
+      .delete(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/shipments/deleteOne/${Id}`)
       .then((response) => {
         dispatch({
           type: "deleteShipment",
@@ -67,7 +67,7 @@ export const updateShipment = (
   };
   return (dispatch) => {
     axios
-      .put(`http://localhost:5000/shipments/updateOne/${Id}`, newShipment)
+      .put(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/shipments/updateOne/${Id}`, newShipment)
       .then((response) => {
         const updatedShipment = response.data.updatedShipment;
         dispatch({

@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "../styles/NavBar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getOrdersByUserId } from "../actions/order";
 import person from "../styles/user-alt-1-svgrepo-com (1).svg";
 import Profile from "../mainComponents/Profile";
+import { getUserID } from "../mainComponents/GetData";
 
 const CustomerDash = () => {
   const [clicked, setclicked] = useState(false);
   const [profile, setProfile] = useState(false);
+  const userId = getUserID()
   const handleClick = () => {
     setclicked(!clicked);
   };
@@ -19,9 +21,15 @@ const CustomerDash = () => {
   const orders = useSelector((state) => state.orders);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getOrdersByUserId("6576cc55a83f9a4c5b14d3d7"));
+    
+    dispatch(getOrdersByUserId(userId));
   }, [dispatch]);
   console.log(orders);
+  const navigate = useNavigate()
+  const handleSignOut = () => {
+    localStorage.clear()
+    navigate('/');
+  }
   return (
     <div>
       <nav className="Navbar">
@@ -34,7 +42,8 @@ const CustomerDash = () => {
               <h1 className="Mn-admin">Hello customer</h1>
             </li>
             <li className="N-menu-button">
-              <button className="N-register">Sign Out</button>
+              <button className="N-register"
+              onClick={handleSignOut}>Sign Out</button>
             </li>
             <li className="N-menu-items">
               <img
@@ -51,7 +60,7 @@ const CustomerDash = () => {
       </nav>
       {
         profile &&
-        <Profile userId="657f6130bddb5fab30a01537"/>
+        <Profile userId={userId}/>
       }
       <div className="cr-third-main">
         <div className="cr-third-div-table">
@@ -62,10 +71,11 @@ const CustomerDash = () => {
                 <th className="cr-third-table-th">Status</th>
                 <th className="cr-third-table-th">Shipment Location</th>
                 <th className="cr-third-table-th">Date</th>
+                <th className="cr-third-table-th">Review</th>
               </tr>
             </thead>
             <tbody>
-              {orders.map((order) => (
+              { orders&&orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order.cars.map((car) => car.carName + " ")}</td>
                   <td>{order.status === false ? "Ordered" : "Bought"}</td>
@@ -87,6 +97,9 @@ const CustomerDash = () => {
                           .split("-")
                           .reverse()
                           .join("/")}
+                  </td>
+                  <td>
+                    <Link to='/review' className="review-customer-dash">Add Review</Link>
                   </td>
                 </tr>
               ))}

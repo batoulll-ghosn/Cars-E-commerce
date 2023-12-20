@@ -5,8 +5,12 @@ import { useState, useEffect } from "react";
 import { getAllShipments } from "../actions/shipment";
 import { getAllCars } from "../actions/car";
 import trash from "../styles/bin-svgrepo-com (1).svg";
+import CreditCard from "./CreditCard";
+import { Link } from "react-router-dom";
+import { getUserID } from "./GetData";
 const Cart = () => {
   const [location, setLocation] = useState(null);
+  const userId = getUserID();
   const [prices, setPrices] = useState([]);
   const [discounts, setDiscounts] = useState([]);
   const cars = useSelector((state) => state.cars);
@@ -17,7 +21,7 @@ const Cart = () => {
 
   useEffect(() => {
     dispatch(getAllCars());
-    setIds(localStorage.getItem("id").split(","));
+    setIds(localStorage.getItem("ids").split(","));
     dispatch(getAllShipments());
   }, []);
 
@@ -34,7 +38,6 @@ const Cart = () => {
     });
     setDiscounts(discounts);
   }, [ids,cars]);
-  console.log(discounts);
 
   const handleSelectLocation = (e) => {
     setLocation(e.target.value);
@@ -43,10 +46,11 @@ const Cart = () => {
     setShowCard(!showCard);
   };
   const handleRemoveItem = (id) => {
+    if (ids.length!==0) 
     setIds(ids.filter((Id) => Id !== id));
   };
   setTimeout(() => {
-    localStorage.setItem("id", ids);
+    localStorage.setItem("ids", ids);
   }, 2000);
  const handleSubtotal= (() => {
     let subtotal=0;
@@ -64,6 +68,7 @@ const Cart = () => {
   })
   const handleTotal= (() => {
     let total=0;
+    if (prices.length!== 0)
     prices.forEach((price,index) => {
        
             total+=(price-(price*(discounts[index]/100)))
@@ -78,7 +83,7 @@ const Cart = () => {
           <h2>DriveEpic</h2>
         </div>
         <div className="cart-head-button">
-          <button>Continue shopping</button>
+          <Link to='/cars'><button>Continue shopping</button></Link>
         </div>
       </div>
       <div className="my-cart-div">
@@ -133,13 +138,14 @@ const Cart = () => {
             </tbody>
         </table>
       </div>
+      {showCard && <CreditCard userId="657f6130bddb5fab30a01537" order={{userId:"657f6130bddb5fab30a01537",cars:localStorage.getItem("id").split(","),shipmentId:location,status:false}}  />}
       <div className="footer-cart-container">
         <div className="footer-cart-container-white">
           <div className="white-part1">
             <span>Choose Pick Up Location</span>
             <select className="location-list" onChange={handleSelectLocation}>
               {shipments.map((shipment) => (
-                <option value={shipment._id}>{shipment.location}</option>
+                <option value={shipment._id} key={shipment._id}>{shipment.location}</option>
               ))}
             </select>
           </div>

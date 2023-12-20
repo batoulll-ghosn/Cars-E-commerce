@@ -3,7 +3,7 @@ import axios from "axios";
 export const getAllUsers = () => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:5000/users/getAll`)
+      .get(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/users/getAll`)
       .then((response) => {
         const users = response.data.users;
         dispatch({
@@ -20,7 +20,7 @@ export const getAllUsers = () => {
 export const getUserById = (Id) => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:5000/users/findOneById/${Id}`)
+      .get(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/users/findOneById/${Id}`)
       .then((response) => {
         const user = response.data.user;
         dispatch({
@@ -37,7 +37,7 @@ export const getUserById = (Id) => {
 export const getUsersByRole = (role) => {
   return (dispatch) => {
     axios
-      .post(`http://localhost:5000/users/findByRole`, { role })
+      .post(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/users/findByRole`, { role })
       .then((response) => {
         const users = response.data.users;
         dispatch({
@@ -54,7 +54,7 @@ export const getUsersByRole = (role) => {
 export const login = (email, password) => {
   return (dispatch) => {
     return axios
-      .post(`http://localhost:5000/users/login`, { email, password })
+      .post(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/users/login`, { email, password })
       .then((response) => {
         const token = response.data.token;
         const id = response.data.id;
@@ -82,7 +82,7 @@ export const login = (email, password) => {
     };
     return (dispatch) => {
       axios
-        .post(`http://localhost:5000/users/register`, newUser)
+        .post(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/users/register`, newUser)
         .then((response) => {
           const user = response.data.user;
           const token = response.data.token;
@@ -117,7 +117,7 @@ export const login = (email, password) => {
     };
     return (dispatch) => {
       axios
-        .post(`http://localhost:5000/users/register`, newUser)
+        .post(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/users/register`, newUser)
         .then((response) => {
           const token = response.data.token;
           const id = response.data.id;
@@ -144,7 +144,7 @@ export const login = (email, password) => {
 export const deleteUser = (Id) => {
   return (dispatch) => {
     axios
-      .delete(`http://localhost:5000/users/deleteById/${Id}`)
+      .delete(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/users/deleteById/${Id}`)
       .then((response) => {
         dispatch({
           type: "deleteUser",
@@ -174,7 +174,7 @@ export const updateUser = (
   };
   return (dispatch) => {
     axios
-      .put(`http://localhost:5000/users/updateUser/${Id}`, newUser)
+      .put(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/users/updateUser/${Id}`, newUser)
       .then((response) => {
         const user = response.data.user;
         dispatch({
@@ -191,7 +191,7 @@ export const updateUser = (
 export const updateProfile= (Id,email,password)=>{
   return (dispatch) => {
     axios
-      .post(`http://localhost:5000/users/updateEmailAndPass/${Id}`, {email,password})
+      .post(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/users/updateEmailAndPass/${Id}`, {email,password})
       .then((response) => {
         const user = response.data.user;
         dispatch({
@@ -208,7 +208,7 @@ export const updateProfile= (Id,email,password)=>{
 export const updatePassword= (Id,password)=>{
   return (dispatch) => {
     axios
-      .post(`http://localhost:5000/users/updatePassword/${Id}`, {password})
+      .post(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/users/updatePassword/${Id}`, {password})
       .then((response) => {
         const user = response.data.user;
         dispatch({

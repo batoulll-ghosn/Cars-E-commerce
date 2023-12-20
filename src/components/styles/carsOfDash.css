@@ -52,6 +52,7 @@
  border: 1px solid black;
  padding: 20px;
  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+ border-radius: 10px;
 }
 .cr-addpopup-head{
     display: flex;
@@ -132,6 +133,7 @@
     border: 1px solid black;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    border-radius: 10px;
    }
    .cr-deletepopup-head{
        display: flex;
