@@ -67,6 +67,7 @@ right: 150px;
     font-weight: 500;
     cursor: pointer;
     width: 200px;
+    height: 60px
 }
 .h-exploremore-btn:hover{
     background: none;

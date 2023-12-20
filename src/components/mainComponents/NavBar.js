@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import '../styles/NavBar.css';
 import { Link } from 'react-router-dom';
+import { getUserRole } from './GetData';
 
 const NavBar = () => {
   const navigate=useNavigate();
@@ -10,11 +11,11 @@ const NavBar = () => {
         setclicked(!clicked)
 
     }
+    const token = localStorage.getItem("token")
  const logout = ()=>{
-  localStorage.removeItem("token");
-  localStorage.removeItem("id")
+  localStorage.clear();
+  
  }
- localStorage.setItem('id','657c278d03ad3b9ded4dae28');
  const handleLocalStorage=()=>{
    let updatedId=localStorage.getItem('id')+',657c3125d1441942133457c1';
    localStorage.setItem('id',updatedId);
@@ -26,7 +27,7 @@ const NavBar = () => {
   // console.log('hello',localStorage.getItem('id'));
   navigate('/cart');
  }
- console.log(localStorage.getItem('id'));
+ const role = getUserRole();
   return (
     <div>
       <nav className="Navbar">
@@ -50,8 +51,21 @@ const NavBar = () => {
                 </Link>
                 </li>
                 <li className='N-menu-button'>
-                <Link className='N-register' to="/login">Order Now
-                </Link>
+                  {token ? 
+                  <div className='N-iconss'>
+                    {
+                      role === 'customer' ? 
+                    <Link className='N-registerr' to="/customer"><img src='/images/panel-svgrepo-com.svg' className='panel-icon'/></Link>
+                      : role === 'seller' ?
+                      <Link className='N-registerr' to="/sellerDashboard"><img src='/images/panel-svgrepo-com.svg' className='panel-icon'/></Link>
+                      : 
+                      <Link className='N-registerr' to="/dashboard"><img src='/images/panel-svgrepo-com.svg' className='panel-icon'/></Link>
+                    } 
+                    <Link className='N-register' to="/login" onClick={logout}>Logout</Link>
+                  </div>
+                  
+                : 
+                <Link className='N-register' to="/login">Login</Link>}
                 </li>
 
         </ul>

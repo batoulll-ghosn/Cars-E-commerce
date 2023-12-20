@@ -86,6 +86,7 @@ function MainOfCustomers() {
     if (currentUser) {
       dispatch(updateUser(currentUser._id, formData.fullName, formData.phoneNumber, formData.email, formData.password, formData.role));
     } else {
+      console.log(formData.email)
       dispatch(register(formData.fullName, formData.phoneNumber, formData.email, formData.password, formData.role));
     }
     setAddShowPopup(false);
