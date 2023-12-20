@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getAllShipments, addShipment, deleteShipment} from "../actions/shipment.js";
 import { toast, Toaster } from "react-hot-toast";
-
+import bin from "../styles/bin-svgrepo-com (1).svg";
 
 const Shipping = () => {
     const shipments = useSelector((state) => state.shipments);
@@ -129,7 +129,7 @@ const Shipping = () => {
               <td>
                 <img
                   className="crMn-carDelete"
-                  src="./images/bin-svgrepo-com (1).svg"
+                  src={bin} alt="hello world"
                   onClick={() =>  OpendeletePop(shipment)}
                 />
               </td>
