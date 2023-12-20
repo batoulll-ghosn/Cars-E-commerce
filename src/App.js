@@ -22,6 +22,7 @@ import { Toaster } from 'react-hot-toast';
 import Cart from './components/mainComponents/Cart';
 import PageNotFound from './components/mainComponents/PageNotFound';
 import {getUserRole} from './components/mainComponents/GetData';
+import CreditCard from "./components/mainComponents/CreditCard"
 function App() {
   const role =getUserRole();
   // const id =localStorage.getItem("id");
