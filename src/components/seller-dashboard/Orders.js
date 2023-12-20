@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { getAllOrders } from '../actions/order';
 import { useEffect } from 'react';
 import { CarouselItem } from "./CarouselItem";
+import axios from 'axios';
 
 export default function Orders() {
   const orders = useSelector((state) => state.orders);
@@ -21,6 +22,10 @@ export default function Orders() {
     const v = new Date(d).toLocaleDateString('en-GB');
     return v;
   }
+  
+  
+
+
   const sum = (tab) => {
     let s = 0;
     tab.forEach((element) => {
@@ -28,6 +33,13 @@ export default function Orders() {
     });
     return s;
   };
+  const handleOnclickPending = (e, name, email,orderId) => {
+    e.stopPropagation()
+    const data = {
+      name, email, orderId, 
+    }
+    axios.post(`http://localhost:5000/users/sendAfter`, data)
+  }
   const handleRowClick = (order) => {
     setSelectedOrder(order);
     setCarsOrder(order.cars)
@@ -72,7 +84,13 @@ export default function Orders() {
                 <td>{index + 1}</td>
                 <td>{readableDate(order.createdAt)}</td>
                 <td>{order.cars.length}</td>
-                <td>{order.status === false ? 'pending' : 'completed'}</td>
+                <td>{order.status === false ? 
+                <span 
+                className='pending-seller'
+                onClick={(e) => handleOnclickPending(e, order.userId.fullName, order.userId.email, order._id)}
+                >pending </span> : 
+                <span>completed</span>}
+                </td>
                 <td>{sum(order.cars)}</td>
               </tr>
             ))}
