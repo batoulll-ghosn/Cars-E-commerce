@@ -2,6 +2,7 @@ import NavBar from "./NavBar"
 import '../styles/contact.css';
 import { useState ,useRef} from "react";
 import emailjs from '@emailjs/browser';
+import {toast} from 'react-hot-toast';
 export default function ContactPage(){
     const form = useRef();
     const [unset,setUnset]=useState(false);
@@ -26,6 +27,7 @@ export default function ContactPage(){
           .then((result) => {
               console.log(result.text);
               form.current.reset();
+              toast.success('Email sent successfully')
           }, (error) => {
               console.log(error.text);
           });

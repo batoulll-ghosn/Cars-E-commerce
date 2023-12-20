@@ -22,7 +22,7 @@ import CreditCard  from './components/mainComponents/CreditCard';
 import { Toaster } from 'react-hot-toast';
 import Cart from './components/mainComponents/Cart';
 function App() {
-  // const token =localStorage.getItem("token");
+  const token =localStorage.getItem("token");
   // const id =localStorage.getItem("id");
   return (
     <Router>
@@ -33,16 +33,16 @@ function App() {
           <Route path="/" element={ <> <NavBar/><Header/><About/><LatestCars/><FAQ/><Testimonial /><Footer/> </>} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/cars" element={<CarsPage/>}/>
-          <Route path="/3d-viewer/:id" element={<CarViewer />} />
+          <Route path="/3d-viewer/:id" element={token&&<CarViewer />} />
           <Route path="/contactUs" element={<ContactPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={token&&<Dashboard />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/review" element={<Review />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/customer" element={<CustomerDash />} />
-          <Route path="/sellerDashboard" element={<SellerDashboard />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/creditCard" element={<CreditCard />} />
+          <Route path="/review" element={token&&<Review />} />
+          <Route path="/profile" element={token&&<Profile />} />
+          <Route path="/customer" element={token&&<CustomerDash />} />
+          <Route path="/sellerDashboard" element={token&&<SellerDashboard />} />
+          <Route path="/cart" element={token&&<Cart />} />
+          <Route path="/creditCard" element={token&&<CreditCard />} />
         </Routes>
         
       </div>
