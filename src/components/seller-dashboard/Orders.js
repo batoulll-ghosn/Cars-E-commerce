@@ -39,7 +39,7 @@ export default function Orders() {
     const data = {
       name, email, orderId, 
     }
-    axios.post(`http://localhost:5000/users/sendAfter`, data)
+    axios.post(`${process.env.REACT_APP_HOSTING_BACKEND_LINK}/users/sendAfter`, data)
     .then ((response) => {
       toast.success('Email sent successfully')
       window.location.reload();
